@@ -20,10 +20,7 @@
         android:theme="@style/Theme.GEEKS_DEZIS"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.activity.serviceScreenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.fragments.servicescreen.serviceScreenActivity"
+            android:name=".presentation.activity.ServiceScreenActivity"
             android:exported="false"
             android:label="@string/title_activity_service_screen" />
         <activity
