@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">GEEKS_DEZIS</string>
+    <string name="alexey_ivanovich" translatable="false">Alexey Ivanovich</string>
+    <string name="profile" translatable="false">Профиль</string>
+    <string name="about_us" translatable="false">О нас</string>
+    <string name="settings" translatable="false">Настройки</string>
+    <string name="exit" translatable="false">Выйти</string>
+    <string name="dark_theme" translatable="false">Тёмная тема</string>
+    <string name="delete_account" translatable="false">Удалить аккаунт</string>
+    <string name="apartments_720" translatable="false">720 квартир</string>
+    <string name="processed_in_Kyrgyzstan" translatable="false">обработано в Кыргызстане</string>
+    <string name="on_guard_of_purity" translatable="false">на страже чистоты</string>
+    <string name="we_process_it_monthly" translatable="false">ежемесячно \nобрабатываем</string>
+    <string name="phone_number" translatable="false">Номер телефона</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="address" translatable="false">Адрес</string>
+    <string name="House" translatable="false">Дом</string>
+    <string name="Flat" translatable="false">Квартира</string>
+    <string name="save" translatable="false">Сохранить</string>
+    <string name="language" translatable="false">Язык:</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="_10_years" translatable="false">10 лет</string>
+    <string name="address_" translatable="false">Адрес:</string>
+    <string name="operating_mode" translatable="false">Режим работы:</string>
+    <string name="telephone" translatable="false">Телефон:</string>
 </resources>
