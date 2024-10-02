@@ -20,11 +20,11 @@
         android:theme="@style/Theme.GEEKS_DEZIS"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.activity.ServiceScreenActivity"
+            android:name=".presentation.activity.MainActivity"
 
             android:exported="false"/>
         <activity
-            android:name=".presentation.activity.MainActivity"
+            android:name=".presentation.activity.ServiceScreenActivity"
 
             android:exported="true">
             <intent-filter>

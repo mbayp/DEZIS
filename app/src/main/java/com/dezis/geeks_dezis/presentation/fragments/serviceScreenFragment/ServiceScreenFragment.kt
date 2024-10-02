@@ -7,25 +7,33 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.viewbinding.ViewBinding
 import com.dezis.geeks_dezis.R
+import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.BottomSheetTimePickerBinding
 import com.dezis.geeks_dezis.databinding.CalendarViewBinding
 import com.dezis.geeks_dezis.databinding.FragmentServiceScreenBinding
+import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceScreenViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class ServiceScreenFragment : Fragment() {
+class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, ServiceScreenViewModel>(R.layout.fragment_service_screen) {
 
     private var _binding: FragmentServiceScreenBinding? = null
-    private val binding get() = _binding!!
-    private val serviceSchedule = mutableMapOf<String, MutableList<Pair<String, String>>>()
+    override val binding get() = _binding!!
+    override val viewModel: ServiceScreenViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentServiceScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun init() {
+        super.init()
+        setupListeners()
+    }
+
+    private fun setupListeners() {
         binding.button1.setOnClickListener {
             showDialog("Дезинфекция", "Описание процесса дезинфекции...")
         }
@@ -37,8 +45,6 @@ class ServiceScreenFragment : Fragment() {
         binding.button3.setOnClickListener {
             showDialog("Дератизация", "Описание процесса дератизации...")
         }
-
-        return binding.root
     }
 
     private fun showDialog(serviceName: String, message: String) {
@@ -50,40 +56,30 @@ class ServiceScreenFragment : Fragment() {
             openCustomCalendar(serviceName)
         }
 
-        builder.setNegativeButton("Назад") { dialog, _ ->
-            dialog.dismiss()
-        }
-
+        builder.setNegativeButton("Назад") { dialog, _ -> dialog.dismiss() }
         val dialog = builder.create()
         dialog.show()
     }
 
     private fun openCustomCalendar(serviceName: String) {
         val builder = AlertDialog.Builder(requireContext())
-
         val calendarBinding = CalendarViewBinding.inflate(layoutInflater)
         builder.setView(calendarBinding.root)
 
         calendarBinding.calendarView.minDate = System.currentTimeMillis()
-
         calendarBinding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDate = "$dayOfMonth/${month + 1}/$year"
             Toast.makeText(requireContext(), "Выбрана дата: $selectedDate", Toast.LENGTH_SHORT).show()
-
             showTimePicker(serviceName, selectedDate)
         }
 
-        builder.setNegativeButton("Закрыть") { dialog, _ ->
-            dialog.dismiss()
-        }
-
+        builder.setNegativeButton("Закрыть") { dialog, _ -> dialog.dismiss() }
         val dialog = builder.create()
         dialog.show()
     }
 
     private fun showTimePicker(serviceName: String, selectedDate: String) {
         val bottomSheetDialog = BottomSheetDialog(requireContext())
-
         val timePickerBinding = BottomSheetTimePickerBinding.inflate(layoutInflater)
         bottomSheetDialog.setContentView(timePickerBinding.root)
 
@@ -104,42 +100,27 @@ class ServiceScreenFragment : Fragment() {
     }
 
     private fun handleTimeSelection(serviceName: String, selectedDate: String, selectedTime: String, dialog: BottomSheetDialog) {
-        val isTimeTaken = serviceSchedule.values.any { it.any { it.first == selectedDate && it.second == selectedTime } }
-
-        if (isTimeTaken) {
-            Toast.makeText(requireContext(), "Ошибка: выбранное время уже занято.", Toast.LENGTH_SHORT).show()
-        } else {
-            if (!serviceSchedule.containsKey(serviceName)) {
-                serviceSchedule[serviceName] = mutableListOf()
-            }
-            serviceSchedule[serviceName]?.add(Pair(selectedDate, selectedTime))
-
-            showBookingNotification(serviceName, selectedDate, selectedTime)
+        viewModel.handleTimeSelection(serviceName, selectedDate, selectedTime, { message ->
+            showBookingNotification(message)
             dialog.dismiss()
-        }
+        }, { errorMessage ->
+            showBookingNotification(errorMessage)
+        })
     }
 
-    private fun showBookingNotification(serviceName: String, selectedDate: String, selectedTime: String) {
-        val message = "Вы забронировали услугу \"$serviceName\" на $selectedDate в $selectedTime. С вами вскоре свяжется менеджер."
 
+    private fun showBookingNotification(message: String) {
         val inflater = layoutInflater
         val toastLayout = inflater.inflate(R.layout.custom_toast, null)
-
         val toastMessage = toastLayout.findViewById<TextView>(R.id.toast_message)
-
         toastMessage.text = message
 
         val toast = Toast(requireContext())
         toast.duration = Toast.LENGTH_LONG
         toast.view = toastLayout
-
         toast.setGravity(android.view.Gravity.CENTER, 0, 0)
-
         toast.show()
     }
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
