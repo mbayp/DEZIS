@@ -8,24 +8,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.dezis.geeks_dezis.R
+import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(
+    R.layout.fragment_profile
+) {
 
-    private var _binding: FragmentProfileBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        return binding.root
+    override val binding by lazy {
+        FragmentProfileBinding.bind(requireView())
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override val viewModel: ProfileViewModel by viewModels {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return ProfileViewModel(requireContext()) as T
+            }
+        }
+    }
+
+
+    override fun init() {
         loadUserData()
         setUpListener()
     }
@@ -70,6 +78,7 @@ class ProfileFragment : Fragment() {
         builder.setPositiveButton("Сохранить") { dialog, which ->
             val newName = editText.text.toString()
             binding.tvUserName.text = newName
+            viewModel.saveUserData(newName, binding.tvPhoneNumber.text.toString()) // Save data
         }
 
         builder.setNegativeButton("Отмена") { dialog, which ->
@@ -92,6 +101,7 @@ class ProfileFragment : Fragment() {
         builder.setPositiveButton("Сохранить") { dialog, which ->
             val newPhone = editText.text.toString()
             binding.tvPhoneNumber.text = newPhone
+            viewModel.saveUserData(binding.tvUserName.text.toString(), newPhone) // Save data
         }
 
         builder.setNegativeButton("Отмена") { dialog, which ->
@@ -109,10 +119,5 @@ class ProfileFragment : Fragment() {
         editor.putString("user_name", binding.tvUserName.text.toString())
         editor.putString("user_phone", binding.tvPhoneNumber.text.toString())
         editor.apply()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

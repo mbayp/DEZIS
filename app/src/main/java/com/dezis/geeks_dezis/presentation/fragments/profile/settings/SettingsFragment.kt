@@ -7,28 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.dezis.geeks_dezis.R
+import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSettingsBinding
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel>(
+    R.layout.fragment_settings
+) {
 
-    private var _binding: FragmentSettingsBinding? = null
-    private val binding get() = _binding!!
+    override val binding get() = FragmentSettingsBinding.bind(requireView())
+    override val viewModel: SettingsViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun init() {
         binding.imgBack.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -37,31 +33,32 @@ class SettingsFragment : Fragment() {
             toggleDarkMode(isChecked)
         }
 
-        binding.languageSpinner.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    val selectedLanguage = parent?.getItemAtPosition(position).toString()
-
-                    Toast.makeText(
-                        requireContext(),
-                        "Выбран язык: $selectedLanguage",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    TODO("Not yet implemented")
-                }
+        binding.languageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedLanguage = parent?.getItemAtPosition(position).toString()
+                showLanguageSelectionToast(selectedLanguage)
             }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
 
         binding.tvDeleteAccount.setOnClickListener {
             showDeleteDialog()
         }
+    }
+
+    private fun showLanguageSelectionToast(selectedLanguage: String) {
+        Toast.makeText(
+            requireContext(),
+            "Выбран язык: $selectedLanguage",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun toggleDarkMode(isChecked: Boolean) {
@@ -83,11 +80,11 @@ class SettingsFragment : Fragment() {
         builder.setTitle("Удаление аккаунта")
         builder.setMessage("Вы уверены, что хотите удалить свой аккаунт?")
 
-        builder.setPositiveButton("Да") { dialog, which ->
+        builder.setPositiveButton("Да") { _, _ ->
             deleteAccount()
         }
 
-        builder.setNegativeButton("Нет") { dialog, which ->
+        builder.setNegativeButton("Нет") { dialog, _ ->
             dialog.dismiss()
         }
 
@@ -97,10 +94,5 @@ class SettingsFragment : Fragment() {
 
     private fun deleteAccount() {
         Toast.makeText(requireContext(), "Аккаунт удален", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }
