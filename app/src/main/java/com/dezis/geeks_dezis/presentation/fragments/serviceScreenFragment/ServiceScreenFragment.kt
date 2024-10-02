@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
-import androidx.viewbinding.ViewBinding
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.BottomSheetTimePickerBinding
@@ -19,13 +19,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, ServiceScreenViewModel>(R.layout.fragment_service_screen) {
 
-    private var _binding: FragmentServiceScreenBinding? = null
-    override val binding get() = _binding!!
+    override val binding: FragmentServiceScreenBinding by viewBinding(FragmentServiceScreenBinding::bind)
     override val viewModel: ServiceScreenViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentServiceScreenBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
     }
 
     override fun init() {
@@ -50,15 +49,11 @@ class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, Service
     private fun showDialog(serviceName: String, message: String) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(serviceName)
-        builder.setMessage(message)
-
-        builder.setPositiveButton("Открыть календарь") { dialog, _ ->
-            openCustomCalendar(serviceName)
-        }
-
-        builder.setNegativeButton("Назад") { dialog, _ -> dialog.dismiss() }
-        val dialog = builder.create()
-        dialog.show()
+            .setMessage(message)
+            .setPositiveButton("Открыть календарь") { dialog, _ -> openCustomCalendar(serviceName) }
+            .setNegativeButton("Назад") { dialog, _ -> dialog.dismiss() }
+            .create()
+            .show()
     }
 
     private fun openCustomCalendar(serviceName: String) {
@@ -74,8 +69,7 @@ class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, Service
         }
 
         builder.setNegativeButton("Закрыть") { dialog, _ -> dialog.dismiss() }
-        val dialog = builder.create()
-        dialog.show()
+        builder.create().show()
     }
 
     private fun showTimePicker(serviceName: String, selectedDate: String) {
@@ -100,14 +94,20 @@ class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, Service
     }
 
     private fun handleTimeSelection(serviceName: String, selectedDate: String, selectedTime: String, dialog: BottomSheetDialog) {
-        viewModel.handleTimeSelection(serviceName, selectedDate, selectedTime, { message ->
-            showBookingNotification(message)
-            dialog.dismiss()
-        }, { errorMessage ->
-            showBookingNotification(errorMessage)
-        })
+        viewModel.handleTimeSelection(serviceName, selectedDate, selectedTime,
+            { message ->
+                if (isAdded) {
+                    showBookingNotification(message)
+                    dialog.dismiss()
+                }
+            },
+            { errorMessage ->
+                if (isAdded) {
+                    showBookingNotification(errorMessage)
+                }
+            }
+        )
     }
-
 
     private fun showBookingNotification(message: String) {
         val inflater = layoutInflater
@@ -120,10 +120,5 @@ class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, Service
         toast.view = toastLayout
         toast.setGravity(android.view.Gravity.CENTER, 0, 0)
         toast.show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
