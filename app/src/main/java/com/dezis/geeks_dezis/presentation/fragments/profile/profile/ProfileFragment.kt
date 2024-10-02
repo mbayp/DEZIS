@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
@@ -20,9 +21,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(
     R.layout.fragment_profile
 ) {
 
-    override val binding by lazy {
-        FragmentProfileBinding.bind(requireView())
-    }
+    override val binding: FragmentProfileBinding by viewBinding(FragmentProfileBinding::bind)
 
     override val viewModel: ProfileViewModel by viewModels {
         object : ViewModelProvider.Factory {

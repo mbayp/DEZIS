@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSettingsBinding
@@ -21,7 +22,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel
     R.layout.fragment_settings
 ) {
 
-    override val binding get() = FragmentSettingsBinding.bind(requireView())
+    override val binding: FragmentSettingsBinding by viewBinding(FragmentSettingsBinding::bind)
     override val viewModel: SettingsViewModel by viewModels()
 
     override fun init() {
@@ -33,20 +34,21 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel
             toggleDarkMode(isChecked)
         }
 
-        binding.languageSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val selectedLanguage = parent?.getItemAtPosition(position).toString()
-                showLanguageSelectionToast(selectedLanguage)
-            }
+        binding.languageSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedLanguage = parent?.getItemAtPosition(position).toString()
+                    showLanguageSelectionToast(selectedLanguage)
+                }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
             }
-        }
 
         binding.tvDeleteAccount.setOnClickListener {
             showDeleteDialog()

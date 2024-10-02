@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentAboutUsBinding
@@ -17,9 +18,7 @@ class AboutUsFragment : BaseFragment<FragmentAboutUsBinding, AboutUsViewModel>(
     R.layout.fragment_about_us
 ) {
 
-    override val binding by lazy {
-        FragmentAboutUsBinding.bind(requireView())
-    }
+    override val binding: FragmentAboutUsBinding by viewBinding(FragmentAboutUsBinding::bind)
 
     override val viewModel: AboutUsViewModel by viewModels()
 

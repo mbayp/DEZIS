@@ -78,4 +78,6 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     implementation(libs.glide)
+
+    implementation("com.github.kirich1409:viewbindingpropertydelegate:1.5.8")
 }
