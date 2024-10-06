@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_grey">#F6F6F6</color>
+    <color name="grey">#BABBBD</color>
+    <color name="dark_grey">#7C606060</color>
+    <color name="blue">#55AFF0</color>
+    <color name="red">#FF0000</color>
+    <color name="active_button_color">#FF6200EE</color>
+    <color name="default_button_color">#B0BEC5</color>
+    <color name="transparent">#00000000</color>
+    <color name="sapphire">#5191ba</color>
+
 </resources>

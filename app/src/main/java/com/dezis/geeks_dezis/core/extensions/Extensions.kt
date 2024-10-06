@@ -11,7 +11,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-
 object Extensions {
 
     fun showToast(context: Context, message: String) {
