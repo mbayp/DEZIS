@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.flowOn
 fun <T> makeNetworkRequest(
     gatherIsSucceed: ((T) -> Unit)? = null,
     request: suspend () -> T,
-
     ) = flow<Either<String, T>> {
     request().also {
         gatherIsSucceed?.invoke(it)
