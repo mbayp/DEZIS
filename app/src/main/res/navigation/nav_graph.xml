@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/history"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.history.History"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.history.OrderHistory"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_order_history" />
 </navigation>

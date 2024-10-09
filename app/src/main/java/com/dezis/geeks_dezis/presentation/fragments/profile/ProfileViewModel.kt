@@ -1,4 +1,4 @@
-package com.dezis.geeks_dezis.presentation.fragments.profile.history
+package com.dezis.geeks_dezis.presentation.fragments.profile
 
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import com.dezis.geeks_dezis.core.common.UiState
