@@ -1,4 +1,4 @@
-package com.dezis.geeks_dezis.presentation.activity
+package com.dezis.geeks_dezis.presentation.activity.servise_sereen_activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
