@@ -1,0 +1,35 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_send_massage"
+        android:fontFamily="sans-serif-medium"
+        android:maxWidth="320dp"
+        android:minWidth="100dp"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        tools:text="Ourehran re-use these to create\nthe perfect layout for your websitesijfuheurhhguiehgehgigni." />
+
+    <TextView
+        android:id="@+id/message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="4dp"
+        android:drawablePadding="4dp"
+        android:textColor="#B0A68B"
+        android:textSize="12sp"
+        app:drawableEndCompat="@drawable/ic_double_check"
+        tools:text="14:58" />
+
+</FrameLayout>
