@@ -51,6 +51,7 @@ class ChatViewModel : BaseViewModel() {
             is WebSocket.Event.OnConnectionClosing ->
                 updateConnectionStatus(ConnectionStatus.CLOSING)
 
+
             is WebSocket.Event.OnConnectionFailed ->
                 updateConnectionStatus(ConnectionStatus.FAILED)
 
