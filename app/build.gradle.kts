@@ -78,13 +78,4 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     implementation(libs.glide)
-
-    implementation(libs.splash.screen)
-
-    implementation(libs.binding)
-
-    implementation(libs.circelIndicator)
-
-    implementation(libs.view.pager)
-
 }
