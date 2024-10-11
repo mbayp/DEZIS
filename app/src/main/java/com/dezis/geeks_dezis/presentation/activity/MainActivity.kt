@@ -13,7 +13,6 @@ import com.dezis.geeks_dezis.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -23,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_controller) as NavHostFragment
         navHostFragment.navController
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -47,6 +47,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
 }

@@ -79,6 +79,8 @@ dependencies {
 
     implementation(libs.glide)
 
+    implementation(libs.circelIndicator)
+
     implementation(libs.google.material.v190)
 
 }
