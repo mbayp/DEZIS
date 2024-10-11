@@ -50,14 +50,14 @@ class CalendarFragment() : BaseFragment<FragmentCalendarBinding, CalendarViewMod
     }
 
     private fun setupServiceSelection() {
-        binding.checkboxDisinfection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.updateSelectedService(binding.checkboxDisinfection.text.toString(), isChecked)
+        binding.radioDisinfection.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.updateSelectedService(binding.radioDisinfection.text.toString(), isChecked)
         }
-        binding.checkboxDeratization.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.updateSelectedService(binding.checkboxDeratization.text.toString(), isChecked)
+        binding.radioDeratization.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.updateSelectedService(binding.radioDeratization.text.toString(), isChecked)
         }
-        binding.checkboxDisinsection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.updateSelectedService(binding.checkboxDisinsection.text.toString(), isChecked)
+        binding.radioDisinsection.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.updateSelectedService(binding.radioDisinsection.text.toString(), isChecked)
         }
     }
 

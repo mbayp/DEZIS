@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Базовая тема приложения -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Настройки темы приложения -->
+        <!-- Основные цвета -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <item name="colorSecondary">@color/teal</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <item name="android:windowBackground">@color/background_color</item>
+
+        <item name="fontFamily"></item>
+    </style>
+
+</resources>

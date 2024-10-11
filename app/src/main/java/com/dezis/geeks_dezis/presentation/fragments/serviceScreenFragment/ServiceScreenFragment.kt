@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.databinding.BottomSheetTimePickerBinding
 import com.dezis.geeks_dezis.databinding.FragmentServiceScreenBinding
 import com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment
 import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceScreenViewModel

@@ -80,4 +80,6 @@ dependencies {
     implementation(libs.glide)
 
     implementation(libs.binding)
+
+    implementation (libs.material.v190)
 }
