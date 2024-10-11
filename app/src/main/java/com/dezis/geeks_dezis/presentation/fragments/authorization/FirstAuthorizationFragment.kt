@@ -6,8 +6,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.databinding.FragmentFirstAuthorizationBinding
+import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
     override val binding: FragmentFirstAuthorizationBinding by viewBinding(

@@ -83,9 +83,8 @@ dependencies {
 
     implementation(libs.binding)
 
+    implementation(libs.circelIndicator)
+
     implementation(libs.view.pager)
 
-    implementation(libs.onboarding)
-
-    
 }

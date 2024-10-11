@@ -4,10 +4,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSecondAuthorizationBinding
+import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class SecondAuthorizationFragment:BaseFragment<FragmentSecondAuthorizationBinding,SecondAuthorizationViewModel>(R.layout.fragment_second_authorization){
     override val binding: FragmentSecondAuthorizationBinding by viewBinding(FragmentSecondAuthorizationBinding::bind)
