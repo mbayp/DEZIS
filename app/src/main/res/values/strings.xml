@@ -15,7 +15,6 @@
     <string name="accept_policy_txt">Я принимаю политику конфиденциальности</string>
     <string name="txt_1">Уже есть аккаунт?</string>
     <string name="sign_in_txt">Войти</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="welcome_txt">С возвращением!</string>
     <string name="error_in_sign_in_txt">Не удалось войти?</string>
     <string name="skip_txt">Пропустить</string>
@@ -33,7 +32,6 @@
     <string name="after_second_txt">через 1 минуту</string>
     <string name="further_txt">Далее</string>
     <string name="success_txt">Вы успешно зарегистрировались</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="Information_about_the_record">Информация о записи</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
@@ -52,8 +50,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="full_name">Ф.И.О</string>
     <string name="e_mail">E-mail</string>
@@ -64,5 +60,26 @@
     <string name="services">Услуги:</string>
     <string name="all_treatments">Все обработки:</string>
     <string name="date">Дата:</string>
-    <string name="address">Адрес:</string>
+    <string name="alexey_ivanovich" translatable="false">Alexey Ivanovich</string>
+    <string name="profile" translatable="false">Профиль</string>
+    <string name="about_us" translatable="false">О нас</string>
+    <string name="settings" translatable="false">Настройки</string>
+    <string name="exit" translatable="false">Выйти</string>
+    <string name="dark_theme" translatable="false">Тёмная тема</string>
+    <string name="delete_account" translatable="false">Удалить аккаунт</string>
+    <string name="apartments_720" translatable="false">720 квартир</string>
+    <string name="processed_in_Kyrgyzstan" translatable="false">обработано в Кыргызстане</string>
+    <string name="on_guard_of_purity" translatable="false">на страже чистоты</string>
+    <string name="we_process_it_monthly" translatable="false">ежемесячно \nобрабатываем</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="address" translatable="false">Адрес</string>
+    <string name="House" translatable="false">Дом</string>
+    <string name="Flat" translatable="false">Квартира</string>
+    <string name="save" translatable="false">Сохранить</string>
+    <string name="language" translatable="false">Язык:</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="_10_years" translatable="false">10 лет</string>
+    <string name="address_" translatable="false">Адрес:</string>
+    <string name="operating_mode" translatable="false">Режим работы:</string>
+    <string name="telephone" translatable="false">Телефон:</string>
 </resources>

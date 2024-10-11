@@ -17,7 +17,6 @@
     <color name="gray_2">#2B373E</color>
     <color name="blue_2">#087FB2</color>
     <color name="dark_white">#c8cacb</color>
-    <color name="blue">#0a84ff</color>
 
     <color name="teal">#009688</color>
 
@@ -34,4 +33,6 @@
     <color name="dark_grayish_blue">#2b373e</color>
     <color name="light_blue">#0A84FF</color>
 
+    <color name="light_gray">#D2D2D2</color>
+    <color name="blue">#0688C1</color>
 </resources>

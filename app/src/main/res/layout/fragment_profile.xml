@@ -6,17 +6,51 @@
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.profile.Profile">
+    android:layout_marginTop="12dp"
+    tools:context=".presentation.fragments.profile.profile.ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                tools:ignore="ContentDescription" />
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/profile"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="11.5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="9dp"
+                android:background="@android:color/black" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
 
             <ImageView
                 android:id="@+id/img_avatar"
@@ -26,14 +60,41 @@
                 android:layout_gravity="center"
                 android:background="@drawable/circle_shape"
                 android:src="@drawable/ic_avatar" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_avatar"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="60dp"
+                android:text="@string/alexey_ivanovich"
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/img_edit"
+                android:id="@+id/img_edit_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:src="@drawable/edit" />
+                android:layout_gravity="center|end"
+                android:layout_marginStart="114dp"
+                android:src="@drawable/pen"
+                tools:ignore="ContentDescription" />
         </FrameLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="9dp"
+            android:background="@android:color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,15 +104,32 @@
             android:text="@string/full_name"
             android:textColor="@color/white"
             android:textSize="21sp" />
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/phone_number"
+            android:textColor="@color/light_gray" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_margin="8dp"
             android:background="@drawable/background_style">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:ignore="UseCompoundDrawables">
 
             <TextView
                 android:id="@+id/tv_full_name"
+                android:id="@+id/tv_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="+996 999 033 330" />
+
+            <ImageView
+                android:id="@+id/img_edit_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
@@ -59,8 +137,21 @@
                 android:text="Аяна Абдыганыева"
                 android:textColor="@color/white"
                 android:textSize="21sp" />
+                android:layout_marginEnd="11.87dp"
+                android:layout_gravity="end"
+                android:src="@drawable/pen"
+                tools:ignore="ContentDescription" />
 
         </FrameLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11.5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="9dp"
+            android:background="@android:color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,6 +167,9 @@
             android:layout_height="46dp"
             android:layout_margin="8dp"
             android:background="@drawable/background_style">
+            android:layout_marginTop="12dp"
+            android:text="@string/email"
+            android:textColor="@color/light_gray" />
 
             <TextView
                 android:id="@+id/tv_email"
@@ -87,6 +181,22 @@
                 android:textColor="@color/white"
                 android:textSize="21sp" />
         </FrameLayout>
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textSize="16sp"
+            tools:text="curtis.weaver@example.com" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11.5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="9dp"
+            android:background="@android:color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,6 +212,9 @@
             android:layout_height="46dp"
             android:layout_margin="8dp"
             android:background="@drawable/background_style">
+            android:layout_marginTop="12dp"
+            android:text="@string/address"
+            android:textColor="@color/light_gray" />
 
             <TextView
                 android:id="@+id/tv_password"
@@ -113,6 +226,22 @@
                 android:textColor="@color/white"
                 android:textSize="21sp" />
         </FrameLayout>
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textSize="16sp"
+            tools:text="Восток-5" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11.5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="9dp"
+            android:background="@android:color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -128,6 +257,9 @@
             android:layout_height="46dp"
             android:layout_margin="8dp"
             android:background="@drawable/background_style">
+            android:layout_marginTop="12dp"
+            android:text="@string/House"
+            android:textColor="@color/light_gray" />
 
             <TextView
                 android:id="@+id/tv_phone_number"
@@ -138,6 +270,13 @@
                 android:text="+996 999-899-000"
                 android:textColor="@color/white"
                 android:textSize="21sp" />
+        <TextView
+            android:id="@+id/tv_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textSize="16sp"
+            tools:text="13" />
 
             <ImageView
                 android:id="@+id/edit_phone_number"
@@ -155,6 +294,22 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/background_style">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11.5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="9dp"
+            android:background="@android:color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/Flat"
+            android:textColor="@color/light_gray" />
 
             <TextView
                 android:id="@+id/tv_history"
@@ -165,6 +320,13 @@
                 android:text="@string/order_history"
                 android:textColor="@color/white"
                 android:textSize="21sp" />
+        <TextView
+            android:id="@+id/tv_flat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textSize="16sp"
+            tools:text="21" />
 
             <ImageView
                 android:id="@+id/img_history"
@@ -174,6 +336,24 @@
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/arrow_right" />
         </FrameLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11.5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="9dp"
+            android:background="@android:color/black" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="26dp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_style"
+            android:text="@string/save" />
+
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

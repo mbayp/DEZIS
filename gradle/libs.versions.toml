@@ -28,6 +28,7 @@ hiltVersionNavigation = "1.2.0"
 safeargs = "2.8.2"
 okhttppClient = "4.12.0"
 loggingInterceptor = "4.12.0"
+viewbindingpropertydelegateFull = "<version>"
 
 [libraries]
 
@@ -71,6 +72,8 @@ circelIndicator = {module ="me.relex:circleindicator", version.ref = "circleIndi
 
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 okHttpClient = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttppClient"}
+binding = { module = "com.github.kirich1409:viewbindingpropertydelegate-full", version = "1.5.6" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
