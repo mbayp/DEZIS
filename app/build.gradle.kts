@@ -78,4 +78,8 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     implementation(libs.glide)
+
+    implementation(libs.binding)
+
+    implementation (libs.material.v190)
 }

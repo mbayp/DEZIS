@@ -17,4 +17,19 @@
     <color name="gray">#1B2228</color>
     <color name="gray_2">#2B373E</color>
     <color name="blue_2">#087FB2</color>
+    <color name="dark_white">#c8cacb</color>
+    <color name="blue">#0a84ff</color>
+    <color name="dark_blue">#1b2228</color>
+
+    <color name="teal">#009688</color>
+
+    <!-- Цвет фона для приложения -->
+    <color name="background_color">#FFFFFF</color>
+
+    <!-- Пример для других цветов -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryVariant">#1976D2</color>
+    <color name="colorSecondary">#009688</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
 </resources>

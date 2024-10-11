@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
@@ -10,7 +11,13 @@
         <item name="errorIconDrawable">@null</item>
         <item name="android:textColorHint">@color/dark_grey</item>
         <item name="errorTextColor">@color/red</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/teal</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="android:windowBackground">@color/background_color</item>
+        <item name="fontFamily" />
     </style>
-
 
 </resources>

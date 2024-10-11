@@ -96,4 +96,13 @@
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
         android:label="fragment_successful_verification"
         tools:layout="@layout/fragment_successful_verification" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/serviceScreenFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.ServiceScreenFragment"
+        android:label="ServiceScreenFragment" />
 </navigation>

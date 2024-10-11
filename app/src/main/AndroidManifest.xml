@@ -2,13 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".Dezis"
@@ -22,7 +20,13 @@
         android:theme="@style/Theme.GEEKS_DEZIS"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.activity.calendar.CalendarActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.servise_sereen_activity.ServiceScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
