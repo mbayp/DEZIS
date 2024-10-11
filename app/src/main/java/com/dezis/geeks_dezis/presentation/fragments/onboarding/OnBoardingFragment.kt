@@ -39,7 +39,7 @@ class OnBoardingFragment : Fragment() {
         binding.springDotsIndicator.setViewPager(binding.viewPager)
         binding.btnNext.setOnClickListener {
             if (binding.viewPager.currentItem < fragmentList.size - 1) {
-                binding.viewPager.currentItem = binding.viewPager.currentItem + 1
+                binding.viewPager.currentItem += 1
             } else {
                 findNavController().navigate(R.id.action_onBoardingFragment_to_authorizationFragment)
             }

@@ -79,7 +79,6 @@ dependencies {
 
     implementation(libs.glide)
 
-    implementation(libs.binding)
+    implementation(libs.google.material.v190)
 
-    implementation (libs.material.v190)
 }
