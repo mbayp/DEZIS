@@ -2,10 +2,7 @@ package com.dezis.geeks_dezis.presentation.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.dezis.geeks_dezis.R
@@ -38,9 +35,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.secondAuthorizationFragment,
                 R.id.signInFragment,
                 R.id.codeVerificationFragment,
-                R.id.successfulVerificationFragment-> {
+                R.id.successfulVerificationFragment,
+                -> {
                     binding.bottomNav.visibility = View.GONE
                 }
+
                 else -> {
                     binding.bottomNav.visibility = View.VISIBLE
                 }

@@ -105,4 +105,18 @@
         android:id="@+id/serviceScreenFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.ServiceScreenFragment"
         android:label="ServiceScreenFragment" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_history"
+            app:destination="@id/history" />
+    </fragment>
+    <fragment
+        android:id="@+id/history"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.history.OrderHistory"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_order_history" />
 </navigation>
