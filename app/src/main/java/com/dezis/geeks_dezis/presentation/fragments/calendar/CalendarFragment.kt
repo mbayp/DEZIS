@@ -25,8 +25,7 @@ class CalendarFragment() : BaseFragment<FragmentCalendarBinding, CalendarViewMod
 ) {
 
     override val binding: FragmentCalendarBinding by viewBinding(FragmentCalendarBinding::bind)
-    override val viewModel: CalendarViewModel by viewModels() // Стандартное использование viewModels
-
+    override val viewModel: CalendarViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCalendar()

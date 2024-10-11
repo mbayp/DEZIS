@@ -11,7 +11,7 @@ class CalendarViewModel : BaseViewModel() {
     val selectedTime = MutableLiveData<String?>()
     val bookingMessage = MutableLiveData<String?>()
 
-    private val bookedServices = mutableMapOf<String, Pair<String, String>>() // serviceName -> Pair<date, time>
+    private val bookedServices = mutableMapOf<String, Pair<String, String>>()
 
     fun updateSelectedService(serviceName: String, isChecked: Boolean) {
         if (isChecked) {
