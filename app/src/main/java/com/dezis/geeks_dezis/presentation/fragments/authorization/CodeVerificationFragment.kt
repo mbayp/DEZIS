@@ -13,10 +13,10 @@ import com.dezis.geeks_dezis.databinding.FragmentCodeVerificationBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,CodeVerificationViewModel>(R.layout.fragment_code_verification) {
+
     override val binding: FragmentCodeVerificationBinding by viewBinding(FragmentCodeVerificationBinding::bind)
+
     override val viewModel: CodeVerificationViewModel by viewModels()
-
-
 
     override fun constructorListeners() {
         val editTexts = listOf(binding.etDigit1, binding.etDigit2, binding.etDigit3, binding.etDigit4)
@@ -51,7 +51,6 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
                 showError()
             }
         }
-
     }
 
     private fun checkIfCodeEntered() {
@@ -76,4 +75,5 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
         binding.etDigit3.background = ContextCompat.getDrawable(requireContext(), R.drawable.otp_edittext_error_background)
         binding.etDigit4.background = ContextCompat.getDrawable(requireContext(), R.drawable.otp_edittext_error_background)
     }
+
 }

@@ -36,7 +36,6 @@ class OnBoardingFragment : Fragment() {
             OnBoardFifthFragment(),
         )
         binding.viewPager.adapter = OnBoardingAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
-        binding.springDotsIndicator.setViewPager(binding.viewPager)
         binding.btnNext.setOnClickListener {
             if (binding.viewPager.currentItem < fragmentList.size - 1) {
                 binding.viewPager.currentItem += 1

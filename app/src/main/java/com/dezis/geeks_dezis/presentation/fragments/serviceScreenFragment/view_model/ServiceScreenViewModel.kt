@@ -6,7 +6,13 @@ class ServiceScreenViewModel : BaseViewModel() {
 
     private val serviceSchedule = mutableMapOf<String, MutableList<Pair<String, String>>>()
 
-    fun handleTimeSelection(serviceName: String, selectedDate: String, selectedTime: String, onBookingSuccess: (String) -> Unit, onBookingFailure: (String) -> Unit) {
+    fun handleTimeSelection(
+        serviceName: String,
+        selectedDate: String,
+        selectedTime: String,
+        onBookingSuccess: (String) -> Unit,
+        onBookingFailure: (String) -> Unit,
+    ) {
         val isTimeTaken = serviceSchedule.values.any {
             it.any { it.first == selectedDate && it.second == selectedTime }
         }
@@ -26,7 +32,9 @@ class ServiceScreenViewModel : BaseViewModel() {
         }
         serviceSchedule[serviceName]?.add(Pair(selectedDate, selectedTime))
 
-        val message = "Вы забронировали услугу \"$serviceName\" на $selectedDate в $selectedTime. С вами вскоре свяжется менеджер."
+        val message =
+            "Вы забронировали услугу \"$serviceName\" на $selectedDate в $selectedTime. С вами вскоре свяжется менеджер."
         onBookingSuccess(message)
     }
+
 }

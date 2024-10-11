@@ -14,6 +14,7 @@ import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
 class Profile : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
 
     override val binding by lazy { FragmentProfileBinding.bind(requireView()) }
+
     override val viewModel: ProfileViewModel by lazy { ProfileViewModel() }
 
     private var isDataChangedByUser: Boolean = false
@@ -33,9 +34,9 @@ class Profile : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.
             findNavController().navigate(R.id.action_profile_to_history)
         }
 
-        binding.imgEdit.setOnClickListener {
-            pickImageLauncher.launch("image/*")
-        }
+//        binding.imgEdit.setOnClickListener {
+//            pickImageLauncher.launch("image/*")
+//        }
 
         binding.editPhoneNumber.setOnClickListener {
             showPhoneNumberDialog()
@@ -102,4 +103,5 @@ class Profile : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
+
 }

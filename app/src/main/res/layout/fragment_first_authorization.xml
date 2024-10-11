@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.fragments.authorization.FirstAuthorizationFragment">
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ic_dezis"
         android:layout_width="wrap_content"
@@ -14,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_registration"
         android:layout_width="wrap_content"
@@ -26,6 +28,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ic_dezis" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_name"
         style="@style/CustomTextInputLayout"
@@ -40,11 +43,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_registration">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_num"
         style="@style/CustomTextInputLayout"
@@ -59,11 +64,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_name">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_num"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_email"
         style="@style/CustomTextInputLayout"
@@ -83,7 +91,9 @@
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
         android:layout_width="match_parent"
@@ -99,6 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_email" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_1"
         android:layout_width="wrap_content"
@@ -110,6 +121,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_continue" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_sign_in"
         android:layout_width="wrap_content"
@@ -121,5 +133,5 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/txt_1"
         app:layout_constraintTop_toBottomOf="@id/btn_continue" />
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.constraintlayout.widget.ConstraintLayout>

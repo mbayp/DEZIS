@@ -1,12 +1,11 @@
 package com.dezis.geeks_dezis.presentation.fragments.calendar.view_model
 
-import android.app.Application
-import com.dezis.geeks_dezis.core.base.BaseViewModel
 import androidx.lifecycle.MutableLiveData
+import com.dezis.geeks_dezis.core.base.BaseViewModel
 
 class CalendarViewModel : BaseViewModel() {
 
-    val selectedService = MutableLiveData<String?>()
+    private val selectedService = MutableLiveData<String?>()
     val selectedDate = MutableLiveData<String?>()
     val selectedTime = MutableLiveData<String?>()
     val bookingMessage = MutableLiveData<String?>()
@@ -40,4 +39,5 @@ class CalendarViewModel : BaseViewModel() {
         }
         return false
     }
+
 }

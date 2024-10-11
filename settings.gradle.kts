@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "GEEKS_DEZIS"
 include(":app")
- 

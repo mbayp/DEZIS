@@ -10,6 +10,7 @@ import com.dezis.geeks_dezis.databinding.FragmentFirstAuthorizationBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
+
     override val binding: FragmentFirstAuthorizationBinding by viewBinding(
         FragmentFirstAuthorizationBinding::bind
     )
@@ -84,8 +85,9 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
     }
 
     private fun resetBorderColor() {
-        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent) // Укажите цвет по умолчанию
+        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
         binding.tilNum.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
         binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
+
 }

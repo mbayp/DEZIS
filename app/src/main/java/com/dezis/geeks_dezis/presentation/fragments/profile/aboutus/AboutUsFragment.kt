@@ -2,17 +2,12 @@ package com.dezis.geeks_dezis.presentation.fragments.profile.aboutus
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentAboutUsBinding
+import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class AboutUsFragment : BaseFragment<FragmentAboutUsBinding, AboutUsViewModel>(
     R.layout.fragment_about_us
@@ -50,4 +45,5 @@ class AboutUsFragment : BaseFragment<FragmentAboutUsBinding, AboutUsViewModel>(
             openUrl("https://telegram.org")
         }
     }
+
 }

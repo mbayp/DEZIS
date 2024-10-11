@@ -5,6 +5,7 @@ import com.dezis.geeks_dezis.core.common.UiState
 import kotlinx.coroutines.flow.StateFlow
 
 class ProfileViewModel : BaseViewModel() {
+
     private val _phoneNumber = mutableStateFlow<String>()
     val phoneNumber: StateFlow<UiState<String>> get() = _phoneNumber
 
@@ -20,4 +21,5 @@ class ProfileViewModel : BaseViewModel() {
         _avatar.value = UiState.Loading()
         _avatar.value = UiState.Success(newAvatarUri)
     }
+
 }

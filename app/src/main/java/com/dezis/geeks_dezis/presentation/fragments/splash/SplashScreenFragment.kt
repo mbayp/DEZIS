@@ -1,4 +1,5 @@
 package com.dezis.geeks_dezis.presentation.fragments.splash
+
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,15 +12,15 @@ import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.FragmentSplashScreenBinding
 
-class SplashScreenFragment :Fragment() {
+class SplashScreenFragment : Fragment() {
+
     private val binding by lazy {
         FragmentSplashScreenBinding.inflate(layoutInflater)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         return binding.root
     }

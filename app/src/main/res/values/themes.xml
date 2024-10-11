@@ -1,8 +1,7 @@
 <resources>
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.GEEKS_DEZIS" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
     </style>
 
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Dialog">

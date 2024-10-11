@@ -1,149 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.fragments.authorization.CodeVerificationFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/code_txt"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="140dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/inst_txt"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="@id/tv_code"
-        app:layout_constraintTop_toBottomOf="@id/tv_code"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tv_code" />
+
     <LinearLayout
         android:id="@+id/codeInputContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_message"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tv_message">
 
         <EditText
             android:id="@+id/etDigit1"
             android:layout_width="38dp"
             android:layout_height="46dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
             android:inputType="number"
             android:maxLength="1"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:background="@drawable/otp_edittext_background"/>
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/etDigit2"
             android:layout_width="38dp"
             android:layout_height="46dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
             android:inputType="number"
             android:maxLength="1"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/otp_edittext_background"/>
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/etDigit3"
             android:layout_width="38dp"
             android:layout_height="46dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
             android:inputType="number"
             android:maxLength="1"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/otp_edittext_background"/>
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/etDigit4"
             android:layout_width="38dp"
             android:layout_height="46dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/otp_edittext_background"
+            android:gravity="center"
             android:inputType="number"
             android:maxLength="1"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/otp_edittext_background"/>
+            android:textSize="24sp" />
     </LinearLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/error_code_txt"
         android:textColor="@color/red"
-        android:fontFamily="sans-serif-medium"
         android:textSize="14sp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/codeInputContainer"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/codeInputContainer" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/btn_try_again"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="46dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/send_again_txt"
         android:textColor="@color/blue"
         android:textSize="14sp"
-        android:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/codeInputContainer"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="46dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/codeInputContainer" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_after_minute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/after_second_txt"
         android:textColor="@color/black"
         android:textSize="14sp"
-        android:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_try_again"
-        android:layout_marginHorizontal="16dp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_try_again" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="12dp"
+        android:padding="16dp"
         android:text="@string/further_txt"
         android:textColor="@color/white"
-        android:padding="16dp"
         android:textSize="16sp"
-        app:cornerRadius="8dp"
         app:backgroundTint="@color/grey"
+        app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/tv_after_minute" />
-
-
-
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,30 +2,30 @@ package com.dezis.geeks_dezis.presentation.fragments.calendar
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentCalendarBinding
-import com.dezis.geeks_dezis.databinding.FragmentServiceScreenBinding
 import com.dezis.geeks_dezis.presentation.fragments.calendar.view_model.CalendarViewModel
-import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceScreenViewModel
-import java.util.*
+import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import java.util.Calendar
 
-class CalendarFragment() : BaseFragment<FragmentCalendarBinding, CalendarViewModel>(
+class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel>(
     R.layout.fragment_calendar
 ) {
 
     override val binding: FragmentCalendarBinding by viewBinding(FragmentCalendarBinding::bind)
+
     override val viewModel: CalendarViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupCalendar()
@@ -61,7 +61,8 @@ class CalendarFragment() : BaseFragment<FragmentCalendarBinding, CalendarViewMod
     }
 
     private fun showTimePickerDialog() {
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.custom_time_picker, null)
+        val dialogView =
+            LayoutInflater.from(requireContext()).inflate(R.layout.custom_time_picker, null)
         val timePicker: TimePicker = dialogView.findViewById(R.id.datePicker1)
         val resetButton: Button = dialogView.findViewById(R.id.reset_button)
         val doneButton: Button = dialogView.findViewById(R.id.done_button)
@@ -76,7 +77,8 @@ class CalendarFragment() : BaseFragment<FragmentCalendarBinding, CalendarViewMod
         timePicker.minute = calendar.get(Calendar.MINUTE)
 
         doneButton.setOnClickListener {
-            viewModel.selectedTime.value = String.format("%02d:%02d", timePicker.hour, timePicker.minute)
+            viewModel.selectedTime.value =
+                String.format("%02d:%02d", timePicker.hour, timePicker.minute)
             timePickerDialog.dismiss()
         }
 

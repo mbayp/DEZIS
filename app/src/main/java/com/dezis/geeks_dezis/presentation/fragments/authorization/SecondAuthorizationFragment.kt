@@ -10,7 +10,9 @@ import com.dezis.geeks_dezis.databinding.FragmentSecondAuthorizationBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class SecondAuthorizationFragment:BaseFragment<FragmentSecondAuthorizationBinding,SecondAuthorizationViewModel>(R.layout.fragment_second_authorization){
+
     override val binding: FragmentSecondAuthorizationBinding by viewBinding(FragmentSecondAuthorizationBinding::bind)
+
     override val viewModel: SecondAuthorizationViewModel by viewModels()
 
     override fun constructorListeners() {
@@ -23,9 +25,12 @@ class SecondAuthorizationFragment:BaseFragment<FragmentSecondAuthorizationBindin
                 findNavController().navigate(R.id.action_secondAuthorizationFragment_to_codeVerificationFragment)
             }
         }
+
         binding.tvContactSupport.setOnClickListener {
+
         }
     }
+
     private fun validateFields() {
         val isAllFieldsValid =
             binding.etAddress.text.toString().isNotEmpty() &&
@@ -61,14 +66,17 @@ class SecondAuthorizationFragment:BaseFragment<FragmentSecondAuthorizationBindin
         }
         return isValid
     }
+
     private fun setErrorBorderColor() {
         binding.tilNumOrd.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
         binding.tilAddress.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
         binding.tilNumFlat.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
     }
+
     private fun resetBorderColor() {
         binding.tilAddress.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
         binding.tilNumOrd.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
         binding.tilNumFlat.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
+
 }

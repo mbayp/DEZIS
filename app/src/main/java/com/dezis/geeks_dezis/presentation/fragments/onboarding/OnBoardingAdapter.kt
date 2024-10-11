@@ -11,10 +11,10 @@ class OnBoardingAdapter(list: ArrayList<Fragment>, fm:FragmentManager, lifecycle
     private val fragmentList = list
     override fun getItemCount(): Int {
         return fragmentList.size
-
     }
 
     override fun createFragment(position: Int): Fragment {
         return fragmentList[position]
     }
+
 }

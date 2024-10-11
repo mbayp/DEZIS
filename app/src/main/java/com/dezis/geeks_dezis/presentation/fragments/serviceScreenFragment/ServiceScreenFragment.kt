@@ -2,19 +2,17 @@ package com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentServiceScreenBinding
 import com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment
 import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceScreenViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
-class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, ServiceScreenViewModel>(R.layout.fragment_service_screen) {
+class ServiceScreenFragment :
+    BaseFragment<FragmentServiceScreenBinding, ServiceScreenViewModel>(R.layout.fragment_service_screen) {
 
     override val binding: FragmentServiceScreenBinding by viewBinding(FragmentServiceScreenBinding::bind)
     override val viewModel: ServiceScreenViewModel by viewModels()
@@ -47,18 +45,10 @@ class ServiceScreenFragment : BaseFragment<FragmentServiceScreenBinding, Service
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(serviceName)
             .setMessage(message)
-            .setPositiveButton("Открыть календарь") { dialog, _ -> openCalendarFragment() }
+            .setPositiveButton("Открыть календарь") { dialog, _ ->  }
             .setNegativeButton("Назад") { dialog, _ -> dialog.dismiss() }
             .create()
             .show()
     }
 
-    private fun openCalendarFragment() {
-        val calendarFragment = CalendarFragment()
-
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, calendarFragment)
-            .addToBackStack(null)
-            .commit()
-    }
 }

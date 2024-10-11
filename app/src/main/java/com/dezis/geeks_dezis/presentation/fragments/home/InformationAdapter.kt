@@ -37,4 +37,5 @@ class InformationAdapter : ListAdapter<InformationModel, InformationAdapter.Serv
             return oldItem == newItem
         }
     }
+
 }

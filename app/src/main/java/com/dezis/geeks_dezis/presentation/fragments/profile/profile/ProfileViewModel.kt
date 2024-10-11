@@ -13,4 +13,5 @@ class ProfileViewModel(context: Context) : BaseViewModel() {
         editor.putString("user_phone", phone)
         editor.apply()
     }
+
 }

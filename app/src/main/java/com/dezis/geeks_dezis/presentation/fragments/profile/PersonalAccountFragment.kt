@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.FragmentPersonalAccountBinding
 
-
 class PersonalAccountFragment : Fragment() {
 
     private val binding by lazy {
@@ -42,4 +41,5 @@ class PersonalAccountFragment : Fragment() {
             findNavController().navigate(R.id.action_personalAccountFragment_to_settingsFragment)
         }
     }
+
 }

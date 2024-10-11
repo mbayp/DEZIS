@@ -11,7 +11,9 @@ import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 
 class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.layout.fragment_sign_in){
+
     override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
+
     override val viewModel: SignInViewModel by viewModels()
 
     override fun constructorListeners() {
@@ -26,11 +28,9 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
         binding.tvRegistration.setOnClickListener{
             findNavController().navigateUp()
         }
+
         binding.btnContactSupport.setOnClickListener{
-
         }
-
-
     }
     private fun validateFields() {
         val isAllFieldsValid =
@@ -43,8 +43,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
             binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
     }
-
-
 
     private fun validateInputs():Boolean{
         var isValid = true

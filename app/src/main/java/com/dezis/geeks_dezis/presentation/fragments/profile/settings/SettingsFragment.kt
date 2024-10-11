@@ -1,22 +1,17 @@
 package com.dezis.geeks_dezis.presentation.fragments.profile.settings
 
 import android.content.Context
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSettingsBinding
+import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel>(
     R.layout.fragment_settings
@@ -40,7 +35,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
-                    id: Long
+                    id: Long,
                 ) {
                     val selectedLanguage = parent?.getItemAtPosition(position).toString()
                     showLanguageSelectionToast(selectedLanguage)
@@ -97,4 +92,5 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel
     private fun deleteAccount() {
         Toast.makeText(requireContext(), "Аккаунт удален", Toast.LENGTH_SHORT).show()
     }
+
 }

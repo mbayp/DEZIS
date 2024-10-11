@@ -144,7 +144,9 @@
                         android:textSize="16sp" />
 
                 </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
 
         <TextView
@@ -175,4 +177,5 @@
         android:background="@color/dark_blue"
         app:itemIconTint="@color/white"
         app:menu="@menu/bottom_nav_menu" />
+
 </FrameLayout>

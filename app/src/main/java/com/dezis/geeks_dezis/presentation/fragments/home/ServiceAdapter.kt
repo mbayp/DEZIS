@@ -37,4 +37,5 @@ class ServiceAdapter : ListAdapter<ServiceModel, ServiceAdapter.ServiceViewHolde
             return oldItem == newItem
         }
     }
+
 }
