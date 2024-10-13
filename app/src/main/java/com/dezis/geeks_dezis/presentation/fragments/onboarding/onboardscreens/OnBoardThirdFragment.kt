@@ -12,7 +12,12 @@ class OnBoardThirdFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+<<<<<<< HEAD
     ): View {
+=======
+    ): View? {
+        // Inflate the layout for this fragment
+>>>>>>> log_in_screen_remasted-changes
         return inflater.inflate(R.layout.fragment_on_board_third, container, false)
     }
 

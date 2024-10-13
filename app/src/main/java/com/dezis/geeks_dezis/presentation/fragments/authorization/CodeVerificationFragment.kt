@@ -1,79 +1,112 @@
 package com.dezis.geeks_dezis.presentation.fragments.authorization
-
-import android.text.Editable
-import android.text.TextWatcher
+import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentCodeVerificationBinding
-import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,CodeVerificationViewModel>(R.layout.fragment_code_verification) {
-
     override val binding: FragmentCodeVerificationBinding by viewBinding(FragmentCodeVerificationBinding::bind)
-
     override val viewModel: CodeVerificationViewModel by viewModels()
 
     override fun constructorListeners() {
-        val editTexts = listOf(binding.etDigit1, binding.etDigit2, binding.etDigit3, binding.etDigit4)
+        binding.etCode.addTextChangedListener { validateFields() }
 
-        editTexts.forEachIndexed { index, editText ->
-            editText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if (s?.length == 1 && index < editTexts.size - 1) {
-                        editTexts[index + 1].requestFocus()
-                    }
-                    else if (s.isNullOrEmpty() && index > 0) {
-                        editTexts[index - 1].requestFocus()
-                    }
-
-                    checkIfCodeEntered()
-                }
-
-                override fun afterTextChanged(s: Editable?) {}
-            })
-        }
-
-        binding.btnContinue.setOnClickListener {
-            val enteredCode = editTexts.joinToString("") { it.text.toString() }
+        binding.btnContinue.setOnClickListener{
+            val enteredCode = binding.etCode.text.toString()
             val correctCode = "1234"
 
-            if (enteredCode == correctCode) {
-                Toast.makeText(requireContext(), "Правильный код", Toast.LENGTH_SHORT).show()
+            if (validateInputs()&&enteredCode == correctCode){
                 findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
-            } else {
-                showError()
+
+            }else {
+                binding.tilCode.error = "Код введен неверно"
             }
         }
+        setupClickableText()
+
     }
-
-    private fun checkIfCodeEntered() {
-        val isCodeComplete =
-            binding.etDigit1.text.isNotEmpty() &&
-            binding.etDigit2.text.isNotEmpty() &&
-            binding.etDigit3.text.isNotEmpty() &&
-            binding.etDigit4.text.isNotEmpty()
-
-        binding.btnContinue.isEnabled = isCodeComplete
-        binding.btnContinue.backgroundTintList = if (isCodeComplete) {
-            ContextCompat.getColorStateList(requireContext(), R.color.blue)
+    private fun validateFields() {
+        val isAllFieldsValid =
+            binding.etCode.text.toString().isNotEmpty()
+        if (isAllFieldsValid) {
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
         } else {
-            ContextCompat.getColorStateList(requireContext(), R.color.grey)
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
     }
-
-    private fun showError() {
-        binding.tvError.visibility = View.VISIBLE
-        binding.etDigit1.background = ContextCompat.getDrawable(requireContext(), R.drawable.otp_edittext_error_background)
-        binding.etDigit2.background = ContextCompat.getDrawable(requireContext(), R.drawable.otp_edittext_error_background)
-        binding.etDigit3.background = ContextCompat.getDrawable(requireContext(), R.drawable.otp_edittext_error_background)
-        binding.etDigit4.background = ContextCompat.getDrawable(requireContext(), R.drawable.otp_edittext_error_background)
+    private fun validateInputs():Boolean{
+        var isValid = true
+        if (binding.etCode.text.toString().isEmpty()){
+            binding.tilCode.error = "Код введен неверно"
+            isValid = false
+        }else{
+            binding.tilCode.error = null
+        }
+        if (!isValid) {
+            setErrorBorderColor()
+        } else {
+            resetBorderColor()
+        }
+        return isValid
     }
+    private fun setupClickableText() {
+        val termsTextView = binding.termsOfSale
+        val spannableString = SpannableString(
+            getString(R.string.policy_txt)
+        )
+
+        val salesTermsClickable = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val salesTerms = "https://youtu.be/Ca8YSrtxI3s?si=7k_pwqneUTWDR-cD"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(salesTerms))
+                startActivity(intent)
+            }
+        }
+
+        val privacyPolicyClickable = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val privacyPolicy = "https://youtu.be/Ca8YSrtxI3s?si=7k_pwqneUTWDR-cD"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(privacyPolicy))
+                startActivity(intent)
+            }
+        }
+
+        spannableString.setSpan(salesTermsClickable, 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        spannableString.setSpan(privacyPolicyClickable, 100,spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        termsTextView.text = spannableString
+        termsTextView.movementMethod = LinkMovementMethod.getInstance()
+        termsTextView.highlightColor = Color.TRANSPARENT
+    }
+
+
+    private fun setErrorBorderColor() {
+        binding.tilCode.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+    }
+
+    private fun resetBorderColor() {
+        binding.tilCode.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+    }
+
+
+
+
+
 
 }

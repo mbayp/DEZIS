@@ -18,18 +18,15 @@ class RequestActivity : AppCompatActivity() {
         binding = ActivityRequestBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Устанавливаем обработку для отступов
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Проверяем, был ли ранее добавлен фрагмент
         if (savedInstanceState == null) {
-            // Добавляем RequestFragment в контейнер активности
             supportFragmentManager.beginTransaction()
-                .replace(binding.main.id, RequestFragment()) // Используйте ID контейнера для замены
+                .replace(binding.main.id, RequestFragment())
                 .commit()
         }
     }

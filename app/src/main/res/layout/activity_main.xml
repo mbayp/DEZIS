@@ -6,6 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.activity.MainActivity">
+    <TextView
+        android:id="@+id/networkWarning"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/dark_blue"
+        android:elevation="1dp"
+        android:text="Нет соединения с интернетом,Проверьте подключение к интернету"
+        android:gravity="center"
+        android:paddingHorizontal="48dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <fragment
         android:id="@+id/nav_controller"
@@ -24,6 +38,6 @@
         android:background="@drawable/btn_background"
         app:backgroundTint="@color/sapphire"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

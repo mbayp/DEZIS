@@ -1,21 +1,18 @@
 <resources>
     <string name="app_name">GEEKS_DEZIS</string>
-
     <string name="reg_txt">Регистрация</string>
-    <string name="email_txt">Email*</string>
-    <string name="name_txt">Имя/Фамилия*</string>
-    <string name="num_txt">Номер телефона*</string>
-    <string name="num_ord_txt">Номер заказа*</string>
-    <string name="address_txt">Адрес*</string>
-    <string name="num_house_txt">Номер дома*</string>
-    <string name="num_flat_txt">Номер квартиры*</string>
+    <string name="email_txt">example@gmail.com</string>
+    <string name="name_txt">ФИО</string>
+    <string name="num_txt">Номер телефона</string>
+    <string name="num_ord_txt">Номер заказа</string>
+    <string name="address_txt">Адрес</string>
+    <string name="num_flat_txt">Номер дома/квартиры</string>
     <string name="register_txt">Зарегистрироваться</string>
     <string name="error_in_reg_txt">Не удалось зарегистрироваться?</string>
     <string name="connect_txt">Связаться</string>
-    <string name="accept_on_dez">Согласен(а) на обработку персональных данных</string>
-    <string name="accept_policy_txt">Я принимаю политику конфиденциальности</string>
     <string name="txt_1">Уже есть аккаунт?</string>
     <string name="sign_in_txt">Войти</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_txt">С возвращением!</string>
     <string name="error_in_sign_in_txt">Не удалось войти?</string>
     <string name="skip_txt">Пропустить</string>
@@ -23,11 +20,12 @@
     <string name="ready_txt">Готовы к чистым переменам?</string>
     <string name="txt_know">Мы знаем, как эффективно избавиться от вредителей и бактерий. Мы-ваш щит от грязи!</string>
     <string name="txt_tracking">Отслеживайте обработки. Следите за датами первой и последней обработки.</string>
+    <string name="txt_show">Вы указываете проблему-мы создаем чистоту быстро и профессионально.</string>
     <string name="txt_support">Поддержка всегда рядом! Общайтесь с менеджером через встроенный чат.</string>
     <string name="txt_ready">Готовы к действиям? Оставьте заявку и вперед к чистоте!</string>
     <string name="continue_txt">Продолжить</string>
-    <string name="code_txt">Код</string>
-    <string name="inst_txt">Вам отправили код на электронную почту</string>
+    <string name="code_txt">Введите код из СМС</string>
+    <string name="inst_txt">Мы отправили вам код на почту</string>
     <string name="error_code_txt">Вы ввели неверный код.</string>
     <string name="send_again_txt">Отправить снова</string>
     <string name="after_second_txt">через 1 минуту</string>
@@ -42,8 +40,6 @@
     <string name="information3">Изменение или отмена бронирования возможны не позднее, чем за 24 часа до назначенного времени.</string>
     <string name="disinsection">Дезинсекция</string>
     <string name="disinsection_info">Основные проблемы с паразитами — это клопы, тараканы и блохи, а также летающие насекомые, которые кусают и нарушают комфорт человека.</string>
-    <string name="disinfection">Дезинфекция</string>
-    <string name="deratization">Дератизация</string>
     <string name="deratization_info">Избавление от грызунов для защиты вашего пространства и здоровья.</string>
     <string name="disinfection_info">Уничтожение микроорганизмов, плесени, патогенов, устранение запахов и высолов для безопасной среды.</string>
     <string name="detailed">Подробнее</string>
@@ -51,7 +47,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="full_name">Ф.И.О</string>
     <string name="e_mail">E-mail</string>
     <string name="password">Пароль</string>
@@ -62,10 +57,10 @@
     <string name="all_treatments">Все обработки:</string>
     <string name="date">Дата:</string>
     <string name="alexey_ivanovich" translatable="false">Alexey Ivanovich</string>
-    <string name="profile" translatable="false">Профиль</string>
-    <string name="about_us" translatable="false">О нас</string>
-    <string name="settings" translatable="false">Настройки</string>
-    <string name="exit" translatable="false">Выйти</string>
+    <string name="profile">Профиль</string>
+    <string name="about_us">О нас</string>
+    <string name="settings">Настройки</string>
+    <string name="exit">Выйти</string>
     <string name="dark_theme" translatable="false">Тёмная тема</string>
     <string name="delete_account" translatable="false">Удалить аккаунт</string>
     <string name="apartments_720" translatable="false">720 квартир</string>
@@ -80,8 +75,18 @@
     <string name="language" translatable="false">Язык:</string>
     <string name="russian" translatable="false">Русский</string>
     <string name="_10_years" translatable="false">10 лет</string>
-    <string name="address_" translatable="false">Адрес:</string>
-    <string name="operating_mode" translatable="false">Режим работы:</string>
-    <string name="telephone" translatable="false">Телефон:</string>
-
+    <string name="operating_mode">Режим работы:</string>
+    <string name="telephone">Телефон:</string>
+    <string name="user_txt">Пользователь</string>
+    <string name="admin_txt">Администратор</string>
+    <string name="password_txt">Пароль</string>
+    <string name="policy_txt">Выбирая «Зарегистрироваться», вы подтверждаете свое согласие с Условием продажи и принимаете условия Положения о конфиденциальности.</string>
+    <string name="for_order_txt">Для оформления заказов</string>
+    <string name="for_managment_system_txt">Для управления системой</string>
+    <string name="signin_txt">Вход</string>
+    <string name="forgot_password_txt">Забыли пароль?</string>
+    <string name="txt_code">Код:</string>
+    <string name="txt_waiting">Пожалуйста, подождите пока администратор даст вам разрешение на вход в приложение!</string>
+    <string name="denied_txt">К сожалению администратор не дал вам разрешение на вход в приложение! Попробуйте зайти с другого аккаунта.</string>
+    <string name="return_to_entrance_txt">Вернуться ко входу</string>
 </resources>

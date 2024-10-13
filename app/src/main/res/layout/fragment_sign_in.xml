@@ -4,30 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.fragments.authorization.sign_in.SignInFragment">
+    android:background="@color/grey_dark"
+    tools:context=".presentation.fragments.authorization.sign_in.SignInFragment"
+    >
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ic_dezis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="122dp"
-        android:src="@drawable/ic_dezis"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/welcome_txt"
+        android:layout_marginTop="158dp"
+        android:text="@string/signin_txt"
+        android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
+        app:fontFamily="@font/roboto_reg"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ic_dezis" />
+        app:layout_constraintTop_toTopOf="parent"
+
+
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_name"
@@ -37,7 +33,6 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="30dp"
         android:hint="@string/name_txt"
-        app:cursorColor="@color/dark_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_welcome">
@@ -46,7 +41,6 @@
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,7 +51,6 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
         android:hint="@string/email_txt"
-        app:cursorColor="@color/dark_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_name">
@@ -66,26 +59,25 @@
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_registration"
+        android:id="@+id/btn_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/reg_txt"
-        android:textColor="@color/blue"
+        android:layout_marginTop="10dp"
+        android:text="@string/forgot_password_txt"
+        android:textColor="@color/white"
+        app:fontFamily="@font/roboto_reg"
         app:layout_constraintStart_toStartOf="@id/til_email"
         app:layout_constraintTop_toBottomOf="@id/til_email" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/grey"
         android:padding="16dp"
         android:text="@string/sign_in_txt"
@@ -94,32 +86,23 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_registration" />
+        app:layout_constraintTop_toBottomOf="@id/btn_forgot_password" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_contact_support"
-        android:layout_width="wrap_content"
+        android:id="@+id/terms_of_sale"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/error_in_sign_in_txt"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_register" />
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginBottom="96dp"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/policy_txt"
+        android:linksClickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/btn_contact_support"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="24dp"
-        android:background="@android:color/transparent"
-        android:text="@string/connect_txt"
-        android:textColor="@color/blue"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/tv_contact_support"
-        app:layout_constraintTop_toBottomOf="@id/btn_register" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

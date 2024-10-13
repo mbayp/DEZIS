@@ -1,4 +1,4 @@
-package com.dezis.geeks_dezis.presentation.fragments.authorization.sign_in
+package com.dezis.geeks_dezis.presentation.fragments.authorization.admin
 
 import android.content.Intent
 import android.graphics.Color
@@ -16,18 +16,18 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.databinding.FragmentSignInBinding
+import com.dezis.geeks_dezis.databinding.FragmentAdminSignInBinding
 
 
-class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.layout.fragment_sign_in){
-    override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
-    override val viewModel: SignInViewModel by viewModels()
+class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInViewModel>(R.layout.fragment_admin_sign_in) {
+    override val binding: FragmentAdminSignInBinding by viewBinding()
+    override val viewModel: AdminSignInViewModel by viewModels()
 
     override fun constructorListeners() {
         binding.etName.addTextChangedListener { validateFields() }
-        binding.etEmail.addTextChangedListener { validateFields() }
+        binding.etName.addTextChangedListener { validateFields() }
 
-        binding.btnContinue.setOnClickListener{
+        binding.btnRegister.setOnClickListener{
             if (validateInputs()){
                 findNavController().navigate(R.id.action_signInFragment_to_codeVerificationFragment)
             }
@@ -39,10 +39,11 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
         val isAllFieldsValid =
             binding.etName.text.toString().isNotEmpty() &&
                     binding.etEmail.text.toString().isNotEmpty()
+
         if (isAllFieldsValid) {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_blue))
+            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
     }
     private fun setupClickableText() {
@@ -111,5 +112,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
         binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
         binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
+
+
 
 }

@@ -77,8 +77,17 @@ dependencies {
     implementation(libs.okHttpClient)
     implementation(libs.logging.interceptor)
 
+    implementation(libs.google.material.v190)
+
     implementation(libs.glide)
 
-    implementation(libs.google.material.v190)
+    implementation(libs.splash.screen)
+
+    implementation(libs.binding)
+
+    implementation(libs.view.pager)
+
+    implementation(libs.onboarding)
+
 
 }
