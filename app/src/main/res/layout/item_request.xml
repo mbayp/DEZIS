@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:background="@color/blue_grey">
+
+    <!-- Дата -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дата: "
+            android:textSize="16sp"
+            android:textColor="@color/blue"/> <!-- Статичная часть -->
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17.11.2024"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+    </LinearLayout>
+
+    <!-- ФИО -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ФИО: "
+            android:textSize="16sp"
+            android:textColor="@color/blue"/> <!-- Статичная часть -->
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abduganueva Ayana"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+    </LinearLayout>
+
+    <!-- Почта -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Почта: "
+            android:textSize="16sp"
+            android:textColor="@color/blue"/> <!-- Статичная часть -->
+
+        <TextView
+            android:id="@+id/text_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ayanaabdgna1@gmail.com"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+    </LinearLayout>
+
+    <!-- Телефон -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Телефон: "
+            android:textSize="16sp"
+            android:textColor="@color/blue"/> <!-- Статичная часть -->
+
+        <TextView
+            android:id="@+id/text_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+996 500 848 484"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+    </LinearLayout>
+
+    <!-- Адрес -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Адрес: "
+            android:textSize="16sp"
+            android:textColor="@color/blue"/> <!-- Статичная часть -->
+
+        <TextView
+            android:id="@+id/text_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Восток-5"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+    </LinearLayout>
+
+    <!-- Номер квартиры/дома -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Номер квартиры/дома: "
+            android:textSize="16sp"
+            android:textColor="@color/blue"/> <!-- Статичная часть -->
+
+        <TextView
+            android:id="@+id/text_apartment_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="51/12"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+    </LinearLayout>
+
+    <!-- Кнопки -->
+    <Button
+        android:id="@+id/button_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Подтвердить"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/rounded_button" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Отказать"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button_grey" />
+</LinearLayout>
