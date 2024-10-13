@@ -28,10 +28,10 @@
     <color name="light_gray">#D2D2D2</color>
     <color name="blue_grey">#252f35</color>
     <color name="blue">#55AFF0</color>
-    <color name="grey_dark">#1b2228</color>
-    <color name="dark_blue">#0A84FF</color>
     <color name="bg_edit_txt">#2b373e</color>
     <color name="edit_text_grey">#2b373e</color>
+    <color name="grey_dark">#1b2228</color>
+    <color name="dark_blue">#0A84FF</color>
 
 
 

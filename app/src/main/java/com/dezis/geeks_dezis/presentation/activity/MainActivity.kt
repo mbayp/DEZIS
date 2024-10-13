@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+
     private val navController: NavController by lazy {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_controller) as NavHostFragment
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun initBottom() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -54,18 +56,23 @@ class MainActivity : AppCompatActivity() {
                 R.id.onBoardingFragment,
                 R.id.authorizationFragment,
                 R.id.secondAuthorizationFragment,
-                R.id.signInFragment,
                 R.id.codeVerificationFragment,
                 R.id.successfulVerificationFragment,
+                R.id.signInFragment,
+                R.id.adminOrUserFragment,
+                R.id.adminSignInFragment,
+                R.id.logInOrSignInFragment,
                 -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-
                 else -> {
                     binding.bottomNav.visibility = View.VISIBLE
                 }
-
             }
         }
+
     }
+
+
+
 }

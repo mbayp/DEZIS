@@ -38,7 +38,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
     private fun validateFields() {
         val isAllFieldsValid =
             binding.etName.text.toString().isNotEmpty() &&
-                    binding.etEmail.text.toString().isNotEmpty()
+            binding.etEmail.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
             binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_blue))
         } else {

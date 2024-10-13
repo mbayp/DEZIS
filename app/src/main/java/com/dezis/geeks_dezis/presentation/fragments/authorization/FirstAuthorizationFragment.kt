@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.dezis.geeks_dezis.core.extensions.Extensions
 import com.dezis.geeks_dezis.databinding.FragmentFirstAuthorizationBinding
 
 class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
@@ -42,8 +43,8 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
     private fun validateFields() {
         val isAllFieldsValid =
             binding.etName.text.toString().isNotEmpty() &&
-                    binding.etPassword.text.toString().isNotEmpty() &&
-                    binding.etEmail.text.toString().isNotEmpty()
+            binding.etPassword.text.toString().isNotEmpty() &&
+            binding.etEmail.text.toString().isNotEmpty()
 
         if (isAllFieldsValid) {
             binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))

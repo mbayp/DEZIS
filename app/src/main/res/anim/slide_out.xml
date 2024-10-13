@@ -2,14 +2,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:interpolator="@android:interpolator/fast_out_slow_in">
     <translate
-<<<<<<< HEAD
-        android:duration="300"
-        android:fromXDelta="0%"
-        android:toXDelta="-100%" />
-</set>
-=======
         android:fromXDelta="0%"
         android:toXDelta="-100%"
         android:duration="300"/>
 </set>
->>>>>>> log_in_screen_remasted-changes

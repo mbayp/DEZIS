@@ -70,7 +70,7 @@ class SecondAuthorizationFragment:BaseFragment<FragmentSecondAuthorizationBindin
     private fun validateFields() {
         val isAllFieldsValid =
             binding.etAddress.text.toString().isNotEmpty() &&
-                    binding.etNumFlat.text.toString().isNotEmpty()
+            binding.etNumFlat.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
             binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
         } else {
