@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.FragmentOnBoardingBinding
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFifthFragment
@@ -37,14 +38,26 @@ class OnBoardingFragment : Fragment() {
             OnBoardFifthFragment(),
         )
         binding.viewPager.adapter = OnBoardingAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
-        binding.springDotsIndicator.setViewPager2(binding.viewPager)
-        binding.btnNext.setOnClickListener {
+        binding.btnContinue.setOnClickListener {
             if (binding.viewPager.currentItem < fragmentList.size - 1) {
                 binding.viewPager.currentItem = binding.viewPager.currentItem + 1
             } else {
-                findNavController().navigate(R.id.action_onBoardingFragment_to_authorizationFragment)
+                findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
             }
         }
+        binding.btnSkip.setOnClickListener{
+            findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
+        }
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == fragmentList.size - 1) {
+                    binding.btnSkip.visibility = View.GONE
+                } else {
+                    binding.btnSkip.visibility = View.VISIBLE
+                }
+            }
+        })
 
     }
 

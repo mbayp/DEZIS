@@ -4,49 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/img_eclipse_right"
-
+    android:background="@color/grey_dark"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardSecondFragment">
 
-<!--
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="476dp"
-        android:layout_height="949dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_eclipse_right"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-29dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ellipse_img"
+        android:src="@drawable/ellipse_img"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="66dp"/>
--->
+        android:layout_marginBottom="220dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_human"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/img_on_board3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/ellipse_img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="52dp"
         />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="0dp"
+
+
+   <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="230dp"
         android:text="@string/txt_know"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold"
+        app:fontFamily="@font/roboto_reg"
+        android:layout_marginBottom="24dp"
+        android:layout_marginHorizontal="44dp"
         app:layout_constraintBottom_toTopOf="@id/img_human"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />

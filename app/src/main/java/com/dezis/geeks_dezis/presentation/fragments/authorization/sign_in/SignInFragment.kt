@@ -1,5 +1,14 @@
 package com.dezis.geeks_dezis.presentation.fragments.authorization.sign_in
 
+import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
@@ -16,32 +25,57 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
 
     override fun constructorListeners() {
         binding.etName.addTextChangedListener { validateFields() }
-        binding.etName.addTextChangedListener { validateFields() }
+        binding.etEmail.addTextChangedListener { validateFields() }
 
-        binding.btnRegister.setOnClickListener{
+        binding.btnContinue.setOnClickListener{
             if (validateInputs()){
                 findNavController().navigate(R.id.action_signInFragment_to_codeVerificationFragment)
             }
         }
-        binding.tvRegistration.setOnClickListener{
-            findNavController().navigateUp()
-        }
-        binding.btnContactSupport.setOnClickListener{
-
-        }
-
+        setupClickableText()
 
     }
     private fun validateFields() {
         val isAllFieldsValid =
             binding.etName.text.toString().isNotEmpty() &&
             binding.etEmail.text.toString().isNotEmpty()
-
         if (isAllFieldsValid) {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_blue))
         } else {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
+    }
+    private fun setupClickableText() {
+        val termsTextView = binding.termsOfSale
+        val spannableString = SpannableString(
+            getString(R.string.policy_txt)
+        )
+
+        val salesTermsClickable = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val salesTerms = "https://youtu.be/Ca8YSrtxI3s?si=7k_pwqneUTWDR-cD"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(salesTerms))
+                startActivity(intent)
+            }
+        }
+
+        val privacyPolicyClickable = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val privacyPolicy = "https://youtu.be/Ca8YSrtxI3s?si=7k_pwqneUTWDR-cD"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(privacyPolicy))
+                startActivity(intent)
+            }
+        }
+
+        spannableString.setSpan(salesTermsClickable, 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        spannableString.setSpan(privacyPolicyClickable, 100,spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        termsTextView.text = spannableString
+        termsTextView.movementMethod = LinkMovementMethod.getInstance()
+        termsTextView.highlightColor = Color.TRANSPARENT
     }
 
 
@@ -49,13 +83,13 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
     private fun validateInputs():Boolean{
         var isValid = true
         if (binding.etName.text.toString().isEmpty()){
-            binding.tilName.error = "Неверное имя/фамилия"
+            binding.tilName.error = " "
             isValid = false
         }else{
             binding.tilEmail.error = null
         }
         if (binding.etEmail.text.toString().isEmpty()){
-            binding.tilEmail.error = "Неверный email"
+            binding.tilEmail.error = " "
             isValid = false
         }else{
             binding.tilEmail.error = null

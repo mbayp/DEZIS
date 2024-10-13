@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/img_eclipse_left"
+    android:background="@color/grey_dark"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardThirdFragment">
 <!--
     <com.google.android.material.imageview.ShapeableImageView
@@ -28,21 +28,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
-        android:layout_marginTop="140dp"/>
+        android:layout_marginTop="106dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_tracking"
+        android:text="@string/txt_show"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="20sp"
+        android:textSize="24sp"
+        app:fontFamily="@font/roboto_reg"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginHorizontal="28dp"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/img_hands"
-        android:layout_marginTop="74dp"
-        android:textStyle="bold"/>
+        android:layout_marginTop="50dp"
+        />
 
 
 

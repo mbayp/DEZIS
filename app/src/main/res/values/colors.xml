@@ -11,5 +11,10 @@
     <color name="default_button_color">#B0BEC5</color>
     <color name="transparent">#00000000</color>
     <color name="sapphire">#5191ba</color>
+    <color name="grey_dark">#1b2228</color>
+    <color name="dark_blue">#0A84FF</color>
+    <color name="bg_edit_txt">#2b373e</color>
+    <color name="edit_text_grey">#2b373e</color>
+
 
 </resources>

@@ -4,21 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/grey_dark"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardFifthFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="match_parent"
-        android:layout_height="460dp"
-        android:src="@drawable/img_rectangle_bottom"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ic_dezis"
         android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:src="@drawable/ic_dezis_on_board"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_dezis_and_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -31,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ic_dezis"
-        android:layout_marginTop="28dp"/>
+        android:layout_marginTop="80dp"/>
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

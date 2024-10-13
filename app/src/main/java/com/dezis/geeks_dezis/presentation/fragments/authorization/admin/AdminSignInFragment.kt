@@ -1,44 +1,35 @@
-package com.dezis.geeks_dezis.presentation.fragments.authorization
+package com.dezis.geeks_dezis.presentation.fragments.authorization.admin
 
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
-import android.os.Bundle
-import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
-import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.databinding.FragmentCodeVerificationBinding
+import com.dezis.geeks_dezis.databinding.FragmentAdminSignInBinding
 
-class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,CodeVerificationViewModel>(R.layout.fragment_code_verification) {
-    override val binding: FragmentCodeVerificationBinding by viewBinding(FragmentCodeVerificationBinding::bind)
-    override val viewModel: CodeVerificationViewModel by viewModels()
+
+class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInViewModel>(R.layout.fragment_admin_sign_in) {
+    override val binding: FragmentAdminSignInBinding by viewBinding()
+    override val viewModel: AdminSignInViewModel by viewModels()
 
     override fun constructorListeners() {
-        binding.etCode.addTextChangedListener { validateFields() }
+        binding.etName.addTextChangedListener { validateFields() }
+        binding.etName.addTextChangedListener { validateFields() }
 
-        binding.btnContinue.setOnClickListener{
-            val enteredCode = binding.etCode.text.toString()
-            val correctCode = "1234"
-
-            if (validateInputs()&&enteredCode == correctCode){
-                findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
-
-            }else {
-                binding.tilCode.error = "Код введен неверно"
+        binding.btnRegister.setOnClickListener{
+            if (validateInputs()){
+                findNavController().navigate(R.id.action_signInFragment_to_codeVerificationFragment)
             }
         }
         setupClickableText()
@@ -46,27 +37,14 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
     }
     private fun validateFields() {
         val isAllFieldsValid =
-            binding.etCode.text.toString().isNotEmpty()
+            binding.etName.text.toString().isNotEmpty() &&
+                    binding.etEmail.text.toString().isNotEmpty()
+
         if (isAllFieldsValid) {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
-    }
-    private fun validateInputs():Boolean{
-        var isValid = true
-        if (binding.etCode.text.toString().isEmpty()){
-            binding.tilCode.error = "Код введен неверно"
-            isValid = false
-        }else{
-            binding.tilCode.error = null
-        }
-        if (!isValid) {
-            setErrorBorderColor()
-        } else {
-            resetBorderColor()
-        }
-        return isValid
     }
     private fun setupClickableText() {
         val termsTextView = binding.termsOfSale
@@ -102,16 +80,38 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
     }
 
 
+
+    private fun validateInputs():Boolean{
+        var isValid = true
+        if (binding.etName.text.toString().isEmpty()){
+            binding.tilName.error = " "
+            isValid = false
+        }else{
+            binding.tilEmail.error = null
+        }
+        if (binding.etEmail.text.toString().isEmpty()){
+            binding.tilEmail.error = " "
+            isValid = false
+        }else{
+            binding.tilEmail.error = null
+        }
+        if (!isValid) {
+            setErrorBorderColor()
+        } else {
+            resetBorderColor()
+        }
+        return isValid
+
+    }
     private fun setErrorBorderColor() {
-        binding.tilCode.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+        binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
     }
 
     private fun resetBorderColor() {
-        binding.tilCode.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
-
-
-
 
 
 
