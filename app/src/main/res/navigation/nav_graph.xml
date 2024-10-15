@@ -153,7 +153,11 @@
         android:id="@+id/successfulVerificationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
         android:label="fragment_successful_verification"
-        tools:layout="@layout/fragment_successful_verification" />
+        tools:layout="@layout/fragment_successful_verification" >
+        <action
+            android:id="@+id/action_successfulVerificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adminOrUserFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.AdminOrUserFragment"
@@ -199,4 +203,9 @@
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.admin.AdminSignInFragment"
         android:label="AdminSignInFragment"
         tools:layout="@layout/fragment_admin_sign_in"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

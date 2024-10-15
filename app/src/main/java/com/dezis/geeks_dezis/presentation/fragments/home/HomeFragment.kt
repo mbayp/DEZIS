@@ -51,9 +51,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                     btn = getString(R.string.disinfection)
                 ),
                 ServiceModel(
-                    service = getString(R.string.disinsection),
+                    service = getString(R.string.disinsection_txt),
                     info = getString(R.string.disinsection_info),
-                    btn = getString(R.string.disinsection)
+                    btn = getString(R.string.disinsection_txt)
                 ),
             )
         )

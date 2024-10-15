@@ -35,10 +35,12 @@
     <string name="_1">1</string>
     <string name="_2">2</string>
     <string name="_3">3</string>
+    <string name="deratization">Дератизация</string>
     <string name="information1">Запись ведется не менее чем за один день до даты услуги.</string>
     <string name="information2">После бронирования услуги, наш менеджер свяжется с вами для подтверждения заявки и уточнения деталей.</string>
     <string name="information3">Изменение или отмена бронирования возможны не позднее, чем за 24 часа до назначенного времени.</string>
-    <string name="disinsection">Дезинсекция</string>
+    <string name="disinsection_txt">Дезинсекция</string>
+    <string name="disinfection">Дезинфекция</string>
     <string name="disinsection_info">Основные проблемы с паразитами — это клопы, тараканы и блохи, а также летающие насекомые, которые кусают и нарушают комфорт человека.</string>
     <string name="deratization_info">Избавление от грызунов для защиты вашего пространства и здоровья.</string>
     <string name="disinfection_info">Уничтожение микроорганизмов, плесени, патогенов, устранение запахов и высолов для безопасной среды.</string>
@@ -89,4 +91,5 @@
     <string name="txt_waiting">Пожалуйста, подождите пока администратор даст вам разрешение на вход в приложение!</string>
     <string name="denied_txt">К сожалению администратор не дал вам разрешение на вход в приложение! Попробуйте зайти с другого аккаунта.</string>
     <string name="return_to_entrance_txt">Вернуться ко входу</string>
+    <string name="login_txt">Логин</string>
 </resources>

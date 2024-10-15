@@ -24,12 +24,12 @@ class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInVie
     override val viewModel: AdminSignInViewModel by viewModels()
 
     override fun constructorListeners() {
-        binding.etName.addTextChangedListener { validateFields() }
-        binding.etName.addTextChangedListener { validateFields() }
+        binding.etLogIn.addTextChangedListener { validateFields() }
+        binding.etPasswordl.addTextChangedListener { validateFields() }
 
-        binding.btnRegister.setOnClickListener{
+        binding.btnContinue.setOnClickListener{
             if (validateInputs()){
-                findNavController().navigate(R.id.action_signInFragment_to_codeVerificationFragment)
+                findNavController().navigate(R.id)
             }
         }
         setupClickableText()
@@ -37,13 +37,13 @@ class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInVie
     }
     private fun validateFields() {
         val isAllFieldsValid =
-            binding.etName.text.toString().isNotEmpty() &&
-                    binding.etEmail.text.toString().isNotEmpty()
+            binding.etLogIn.text.toString().isNotEmpty() &&
+            binding.etPasswordl.text.toString().isNotEmpty()
 
         if (isAllFieldsValid) {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
         } else {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
     }
     private fun setupClickableText() {
