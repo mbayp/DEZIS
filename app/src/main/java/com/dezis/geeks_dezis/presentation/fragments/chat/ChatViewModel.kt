@@ -2,7 +2,6 @@ package com.dezis.geeks_dezis.presentation.fragments.chat
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import com.afollestad.materialdialogs.BuildConfig
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import com.dezis.geeks_dezis.data.remote.apiservice.ChatService
 import com.tinder.scarlet.Scarlet

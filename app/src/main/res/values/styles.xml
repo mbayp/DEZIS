@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="boxStrokeColor">@color/grey_dark</item>
+        <item name="boxStrokeErrorColor">@color/red</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="cursorColor">@color/white</item>
+        <item name="cursorErrorColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="boxBackgroundColor">@color/edit_text_grey</item>
+        <item name="errorIconDrawable">@null</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="errorTextColor">@color/white</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+    </style>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+</resources>

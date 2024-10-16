@@ -77,6 +77,8 @@ dependencies {
     implementation(libs.okHttpClient)
     implementation(libs.logging.interceptor)
 
+    implementation(libs.google.material.v190)
+
     implementation(libs.glide)
     implementation(libs.circleimageview)
 
@@ -91,5 +93,13 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
 
     implementation ("com.makeramen:roundedimageview:2.3.0")
+
+    implementation(libs.splash.screen)
+
+    implementation(libs.binding)
+
+    implementation(libs.view.pager)
+
+    implementation(libs.onboarding)
 
 }
