@@ -29,7 +29,7 @@ class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInVie
 
         binding.btnContinue.setOnClickListener{
             if (validateInputs()){
-                findNavController().navigate(R.id)
+                findNavController()
             }
         }
         setupClickableText()
@@ -83,17 +83,17 @@ class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInVie
 
     private fun validateInputs():Boolean{
         var isValid = true
-        if (binding.etName.text.toString().isEmpty()){
-            binding.tilName.error = " "
+        if (binding.etLogIn.text.toString().isEmpty()){
+            binding.tilLogIn.error = " "
             isValid = false
         }else{
-            binding.tilEmail.error = null
+            binding.tilLogIn.error = null
         }
-        if (binding.etEmail.text.toString().isEmpty()){
-            binding.tilEmail.error = " "
+        if (binding.etPasswordl.text.toString().isEmpty()){
+            binding.tilPassword.error = " "
             isValid = false
         }else{
-            binding.tilEmail.error = null
+            binding.tilPassword.error = null
         }
         if (!isValid) {
             setErrorBorderColor()
@@ -104,13 +104,13 @@ class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInVie
 
     }
     private fun setErrorBorderColor() {
-        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
-        binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+        binding.tilLogIn.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+        binding.tilPassword.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
     }
 
     private fun resetBorderColor() {
-        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
-        binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilLogIn.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilPassword.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
 
 
