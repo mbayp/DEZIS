@@ -105,7 +105,7 @@ class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInVie
     }
     private fun setErrorBorderColor() {
         binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
-        binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+        binding.ilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
     }
 
     private fun resetBorderColor() {
