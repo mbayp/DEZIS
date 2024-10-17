@@ -19,7 +19,6 @@ import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class ServiceScreenFragment : Fragment() {
 
-    private val viewModel: ServiceScreenViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
