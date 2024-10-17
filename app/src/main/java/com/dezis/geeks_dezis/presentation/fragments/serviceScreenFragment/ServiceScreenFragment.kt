@@ -14,7 +14,6 @@ import com.dezis.geeks_dezis.databinding.FragmentServiceScreenBinding
 import com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment
 import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceModel
 import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServicePagerAdapter
-import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceScreenViewModel
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 
 class ServiceScreenFragment : Fragment() {
