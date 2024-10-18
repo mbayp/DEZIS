@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.ActivityRequestBinding
 import com.dezis.geeks_dezis.admin.presentation.fragment.RequestFragment
+import com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment
 
 class RequestActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRequestBinding
@@ -26,7 +27,7 @@ class RequestActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(binding.main.id, RequestFragment())
+                .replace(binding.main.id, CalendarFragment())
                 .commit()
         }
     }

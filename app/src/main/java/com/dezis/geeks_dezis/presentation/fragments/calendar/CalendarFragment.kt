@@ -43,7 +43,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         binding.calendarView.minDate = calendar.timeInMillis
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            viewModel.selectedDate.value = "$dayOfMonth/${month + 1}/$year"
+            viewModel.selectedDate.value = "$year-${month + 1}-$dayOfMonth"
             showTimePickerDialog()
         }
     }
@@ -92,11 +92,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupOrderButton() {
         binding.orderServiceButton.setOnClickListener {
-            val isBooked = viewModel.bookService()
-
-            if (!isBooked) {
-                showToast("Услуга уже забронирована на эту дату и время.")
-            }
+            viewModel.bookService(userId = 7)  // Укажите реальный ID пользователя
         }
     }
 
@@ -113,5 +109,4 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()
     }
-
 }

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dezis.geeks_dezis.admin.data.Booking
-import com.dezis.geeks_dezis.api.RetrofitClient
+import com.dezis.geeks_dezis.api.apis.RetrofitClient
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
 import retrofit2.Call
 import retrofit2.Callback
