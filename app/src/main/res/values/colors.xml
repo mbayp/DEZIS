@@ -32,4 +32,6 @@
     <color name="edit_text_grey">#2b373e</color>
     <color name="grey_dark">#1b2228</color>
     <color name="dark_blue">#0A84FF</color>
+    <color name="gray3">#888D91</color>
+
 </resources>

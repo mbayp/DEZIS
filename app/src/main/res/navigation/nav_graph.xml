@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/chatFragment">
+
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.chat.ChatFragment"
@@ -85,7 +86,7 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/authorizationFragment"
@@ -98,65 +99,66 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.sign_in.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in">
+        tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_codeVerificationFragment"
             app:destination="@id/codeVerificationFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding">
+        tools:layout="@layout/fragment_on_boarding" >
         <action
             android:id="@+id/action_onBoardingFragment_to_adminOrUserFragment"
             app:destination="@id/adminOrUserFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/secondAuthorizationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SecondAuthorizationFragment"
         android:label="fragment_second_authorization"
-        tools:layout="@layout/fragment_second_authorization">
+        tools:layout="@layout/fragment_second_authorization" >
         <action
             android:id="@+id/action_secondAuthorizationFragment_to_codeVerificationFragment"
             app:destination="@id/codeVerificationFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"
+            />
     </fragment>
     <fragment
         android:id="@+id/codeVerificationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.CodeVerificationFragment"
         android:label="fragment_code_verification"
-        tools:layout="@layout/fragment_code_verification">
+        tools:layout="@layout/fragment_code_verification" >
         <action
             android:id="@+id/action_codeVerificationFragment_to_successfulVerificationFragment"
             app:destination="@id/successfulVerificationFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/successfulVerificationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
         android:label="fragment_successful_verification"
-        tools:layout="@layout/fragment_successful_verification">
+        tools:layout="@layout/fragment_successful_verification" >
         <action
             android:id="@+id/action_successfulVerificationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -172,14 +174,14 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_adminOrUserFragment_to_adminSignInFragment"
             app:destination="@id/adminSignInFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/logInOrSignInFragment"
@@ -192,20 +194,20 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_logInOrSignInFragment_to_signInFragment"
             app:destination="@id/signInFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/adminSignInFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.admin.AdminSignInFragment"
         android:label="AdminSignInFragment"
-        tools:layout="@layout/fragment_admin_sign_in" />
+        tools:layout="@layout/fragment_admin_sign_in"/>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.home.HomeFragment"

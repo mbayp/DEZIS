@@ -84,16 +84,16 @@ dependencies {
     implementation(libs.circleimageview)
 
     // Scarlet
-    implementation("com.tinder.scarlet:scarlet:0.1.12")
-    implementation("com.tinder.scarlet:websocket-okhttp:0.1.12")
-    implementation("com.tinder.scarlet:stream-adapter-rxjava2:0.1.12")
+    implementation(libs.scarlet)
+    implementation(libs.websocket.okhttp)
+    implementation(libs.stream.adapter.rxjava2)
 
     //RX
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.rxkotlin)
 
-    implementation ("com.makeramen:roundedimageview:2.3.0")
+    implementation (libs.roundedimageview)
 
     implementation(libs.splash.screen)
 
