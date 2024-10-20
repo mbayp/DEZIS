@@ -8,10 +8,16 @@ import com.tinder.scarlet.Scarlet
 import com.tinder.scarlet.WebSocket
 import com.tinder.scarlet.streamadapter.rxjava2.RxJava2StreamAdapterFactory
 import com.tinder.scarlet.websocket.okhttp.newWebSocketFactory
+import dagger.hilt.android.lifecycle.HiltViewModel
 import okhttp3.OkHttpClient
+import javax.inject.Inject
 
-class ChatViewModel : BaseViewModel() {
-    private var chatService: ChatService = Scarlet.Builder()
+@HiltViewModel
+class ChatViewModel@Inject constructor(
+    private val okHttpClient: OkHttpClient,  // Inject OkHttpClient или другие зависимости
+    private val chatService: ChatService) : BaseViewModel() {
+
+    private var chatService1: ChatService = Scarlet.Builder()
         .webSocketFactory(
             OkHttpClient.Builder().build()
                 .newWebSocketFactory(""

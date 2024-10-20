@@ -6,24 +6,13 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-    }
 
     private val viewModel: MainViewModel by viewModels()
     private val binding: ActivityMainBinding by lazy {
@@ -77,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.adminOrUserFragment,
                 R.id.adminSignInFragment,
                 R.id.logInOrSignInFragment,
+                R.id.chatFragment,
                 -> {
                     binding.bottomNav.visibility = View.GONE
                 }
