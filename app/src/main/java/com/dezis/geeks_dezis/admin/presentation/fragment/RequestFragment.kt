@@ -1,13 +1,18 @@
 package com.dezis.geeks_dezis.admin.presentation.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dezis.geeks_dezis.admin.data.Request
+import com.dezis.geeks_dezis.admin.data.Booking
+import com.dezis.geeks_dezis.api.apis.RetrofitClient
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RequestFragment : Fragment() {
 
@@ -15,49 +20,45 @@ class RequestFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var requestAdapter: RequestAdapter
-    private lateinit var requests: List<Request>
+    private val bookings: MutableList<Booking> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRequestBinding.inflate(inflater, container, false)
 
-        // Инициализация списка запросов с тестовыми данными
-        requests = listOf(
-            Request(
-                date = "17.11.2024",
-                fullName = "Abduganueva Ayana",
-                email = "ayanaabdgva1@gmail.com",
-                phone = "+996 500 848 484",
-                address = "Восток-5",
-                apartmentNumber = "51/12"
-            ),
-            Request(
-                date = "18.11.2024",
-                fullName = "Иванов Иван",
-                email = "ivanov@example.com",
-                phone = "+996 500 123 456",
-                address = "Центр-1",
-                apartmentNumber = "10"
-            ),
-            Request(
-                date = "19.11.2024",
-                fullName = "Петрова Анна",
-                email = "petrova@example.com",
-                phone = "+996 500 654 321",
-                address = "Юг-2",
-                apartmentNumber = "15A"
-            )
-        )
-
-        requestAdapter = RequestAdapter(requests)
+        requestAdapter = RequestAdapter(bookings)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = requestAdapter
 
+        fetchBookings()
+
         return binding.root
     }
+
+    private fun fetchBookings() {
+        RetrofitClient.bookApiService.getBookings().enqueue(object : Callback<List<Booking>> {
+            override fun onResponse(call: Call<List<Booking>>, response: Response<List<Booking>>) {
+                if (response.isSuccessful && response.body() != null) {
+                    val bookingsResponse = response.body()!!
+                    Log.d("RequestFragment", "Получены данные: $bookingsResponse")
+
+                    bookings.clear()
+                    bookings.addAll(bookingsResponse)
+                    requestAdapter.notifyDataSetChanged()
+                } else {
+                    Log.e("RequestFragment", "Ошибка ответа: ${response.code()} ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Booking>>, t: Throwable) {
+                Log.e("RequestFragment", "Ошибка вызова API: ${t.message}")
+            }
+        })
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

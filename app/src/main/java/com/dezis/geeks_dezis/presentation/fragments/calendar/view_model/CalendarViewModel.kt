@@ -1,43 +1,64 @@
 package com.dezis.geeks_dezis.presentation.fragments.calendar.view_model
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.dezis.geeks_dezis.admin.data.BookingRequest
+import com.dezis.geeks_dezis.admin.data.BookingResponse
+import com.dezis.geeks_dezis.api.apis.RetrofitClient
 import com.dezis.geeks_dezis.core.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CalendarViewModel : BaseViewModel() {
 
-    private val selectedService = MutableLiveData<String?>()
+    val selectedService = MutableLiveData<String?>()
     val selectedDate = MutableLiveData<String?>()
     val selectedTime = MutableLiveData<String?>()
     val bookingMessage = MutableLiveData<String?>()
 
-    private val bookedServices = mutableMapOf<String, Pair<String, String>>()
-
     fun updateSelectedService(serviceName: String, isChecked: Boolean) {
         if (isChecked) {
-            if (selectedService.value == null) {
-                selectedService.value = serviceName
-            } else {
-                selectedService.value = serviceName
-            }
+            selectedService.value = serviceName
         } else if (selectedService.value == serviceName) {
             selectedService.value = null
         }
     }
 
-    fun bookService(): Boolean {
+    fun bookService(userId: Int) {
         val service = selectedService.value
         val date = selectedDate.value
         val time = selectedTime.value
 
         if (service != null && date != null && time != null) {
-            if (bookedServices.containsKey(service) && bookedServices[service]?.first == date && bookedServices[service]?.second == time) {
-                return false
-            }
-            bookedServices[service] = Pair(date, time)
-            bookingMessage.value = "Услуга: $service\nДата: $date\nВремя: $time"
-            return true
-        }
-        return false
-    }
+            val bookingRequest = BookingRequest(
+                user = userId,
+                service = service,
+                date = date,
+                time = time
+            )
 
+            viewModelScope.launch(Dispatchers.IO) {
+                RetrofitClient.bookApiService.bookService(bookingRequest)
+                    .enqueue(object : Callback<BookingResponse> {
+                        override fun onResponse(
+                            call: Call<BookingResponse>,
+                            response: Response<BookingResponse>
+                        ) {
+                            if (response.isSuccessful) {
+                                bookingMessage.postValue("Бронирование успешно: ${response.body()}")
+                            } else {
+                                bookingMessage.postValue("Ошибка бронирования: ${response.errorBody()}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<BookingResponse>, t: Throwable) {
+                            bookingMessage.postValue("Ошибка соединения: ${t.message}")
+                        }
+                    })
+            }
+        }
+    }
 }

@@ -138,6 +138,26 @@
             android:textSize="16sp"
             android:textColor="@android:color/white"/> <!-- Динамическая часть -->
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Время: "
+            android:textSize="16sp"
+            android:textColor="@color/blue"/> <!-- Статичная часть -->
+
+        <TextView
+            android:id="@+id/textTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12.00"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+    </LinearLayout>
 
     <!-- Кнопки -->
     <Button
