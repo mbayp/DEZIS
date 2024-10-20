@@ -2,13 +2,12 @@ package com.dezis.geeks_dezis.presentation.fragments.admin_booking
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dezis.geeks_dezis.data.remote.model.Booking
-import com.dezis.geeks_dezis.data.remote.retrofit.RetrofitClient
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
@@ -26,7 +25,7 @@ class RequestFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentRequestBinding.inflate(inflater, container, false)
 
@@ -51,7 +50,10 @@ class RequestFragment : Fragment() {
                     bookings.addAll(bookingsResponse)
                     requestAdapter.notifyDataSetChanged()
                 } else {
-                    Log.e("RequestFragment", "Ошибка ответа: ${response.code()} ${response.message()}")
+                    Log.e(
+                        "RequestFragment",
+                        "Ошибка ответа: ${response.code()} ${response.message()}"
+                    )
                 }
             }
 
@@ -61,9 +63,9 @@ class RequestFragment : Fragment() {
         })
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

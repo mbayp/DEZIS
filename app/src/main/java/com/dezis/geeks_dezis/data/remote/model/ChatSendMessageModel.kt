@@ -1,12 +1,13 @@
 package com.dezis.geeks_dezis.data.remote.model
 
+import com.google.gson.annotations.SerializedName
 
 data class ChatSendMessageModel(
-
     val chat: Int,
-    val `file`: String,
+    val file: String,
     val image: String,
-    val is_read: Boolean,
+    @SerializedName("is_read")
+    val isRead: Boolean,
     val sender: Int,
-    val text: String
+    val text: String,
 )

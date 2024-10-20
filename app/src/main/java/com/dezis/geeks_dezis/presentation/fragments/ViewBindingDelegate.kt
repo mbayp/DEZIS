@@ -9,27 +9,42 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
 open class ViewBindingDelegate<T : ViewBinding>(
-    val bindingFactory: (View) -> T,
+    private val bindingFactory: (View) -> T
 ) : ReadOnlyProperty<Fragment, T> {
+
     private var binding: T? = null
-    private val cb: FragmentManager.FragmentLifecycleCallbacks =
-        object : FragmentManager.FragmentLifecycleCallbacks() {
-            override fun onFragmentViewDestroyed(fm: FragmentManager, f: Fragment) {
+    private var isRegistered = false
+
+    private val fragmentLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
+        override fun onFragmentViewDestroyed(fm: FragmentManager, f: Fragment) {
+            if (f == this@ViewBindingDelegate.thisRef) {
                 binding = null
-                super.onFragmentViewDestroyed(fm, f)
+                if (isRegistered) {
+                    this@ViewBindingDelegate.thisRef.parentFragmentManager.unregisterFragmentLifecycleCallbacks(this)
+                    isRegistered = false
+                }
             }
+            super.onFragmentViewDestroyed(fm, f)
         }
+    }
+
+    private lateinit var thisRef: Fragment
 
     override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
-        binding?.let { return it }
-        thisRef.parentFragmentManager.registerFragmentLifecycleCallbacks(cb, true)
+        this.thisRef = thisRef
 
         val lifecycle = thisRef.viewLifecycleOwner.lifecycle
-        if (!lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED)) {
+        if (lifecycle.currentState.isAtLeast(Lifecycle.State.INITIALIZED)) {
+            binding?.let { return it }
+            if (!isRegistered) {
+                thisRef.parentFragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, true)
+                isRegistered = true
+            }
+            binding = bindingFactory(thisRef.requireView())
+            return binding!!
+        } else {
             throw IllegalStateException("Should not attempt to get bindings when Fragment views are destroyed.")
         }
-
-        return bindingFactory(thisRef.requireView()).also { this.binding = it }
     }
 }
 

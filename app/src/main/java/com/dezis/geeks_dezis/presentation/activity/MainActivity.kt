@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.dezis.geeks_dezis.R
@@ -15,10 +16,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
+
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-
 
     private val navController: NavController by lazy {
         val navHostFragment =
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initBottom()
@@ -52,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun initBottom() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -76,6 +77,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
+
 }
