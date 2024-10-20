@@ -24,8 +24,8 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
     override val viewModel: SignInViewModel by viewModels()
 
     override fun constructorListeners() {
-        binding.etName.addTextChangedListener { validateFields() }
-        binding.etEmail.addTextChangedListener { validateFields() }
+        binding.etLogIn.addTextChangedListener { validateFields() }
+        binding.etPasswordl.addTextChangedListener { validateFields() }
 
         binding.btnContinue.setOnClickListener{
             if (validateInputs()){
@@ -37,8 +37,8 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
     }
     private fun validateFields() {
         val isAllFieldsValid =
-            binding.etName.text.toString().isNotEmpty() &&
-            binding.etEmail.text.toString().isNotEmpty()
+            binding.etLogIn.text.toString().isNotEmpty() &&
+            binding.etPasswordl.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
             binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_blue))
         } else {
@@ -82,17 +82,17 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
 
     private fun validateInputs():Boolean{
         var isValid = true
-        if (binding.etName.text.toString().isEmpty()){
-            binding.tilName.error = " "
+        if (binding.etLogIn.text.toString().isEmpty()){
+            binding.tilLogIn.error = " "
             isValid = false
         }else{
-            binding.tilEmail.error = null
+            binding.tilLogIn.error = null
         }
-        if (binding.etEmail.text.toString().isEmpty()){
-            binding.tilEmail.error = " "
+        if (binding.etPasswordl.text.toString().isEmpty()){
+            binding.tilPassword.error = " "
             isValid = false
         }else{
-            binding.tilEmail.error = null
+            binding.tilPassword.error = null
         }
         if (!isValid) {
             setErrorBorderColor()
@@ -103,13 +103,13 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
 
     }
     private fun setErrorBorderColor() {
-        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
-        binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+        binding.tilLogIn.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
+        binding.tilPassword.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.red)
     }
 
     private fun resetBorderColor() {
-        binding.tilName.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
-        binding.tilEmail.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilLogIn.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilPassword.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
 
 }
