@@ -1,4 +1,4 @@
-package com.dezis.geeks_dezis.admin.presentation.fragment
+package com.dezis.geeks_dezis.presentation.fragments.admin_order_history
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewOrderFragment : Fragment() {
 
     private lateinit var orderAdapter: OrderAdapter

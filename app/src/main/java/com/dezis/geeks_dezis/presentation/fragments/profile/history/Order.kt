@@ -1,6 +1,8 @@
 package com.dezis.geeks_dezis.presentation.fragments.profile.history
 
-data class FirstTreatment(
+import javax.inject.Inject
+
+data class FirstTreatment @Inject constructor(
     val clientName: String,
     val service: String,
     val address: String,
@@ -9,7 +11,7 @@ data class FirstTreatment(
     val time: String
 )
 
-data class Treatment(
+data class Treatment @Inject constructor(
     val service: String,
     val address: String,
     val date: String,

@@ -10,9 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
+import javax.inject.Inject
 
-class Profile : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
-
+class Profile @Inject constructor() : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
     override val binding by lazy { FragmentProfileBinding.bind(requireView()) }
 
     override val viewModel: ProfileViewModel by lazy { ProfileViewModel() }

@@ -1,4 +1,4 @@
-package com.dezis.geeks_dezis.admin.presentation.fragment
+package com.dezis.geeks_dezis.presentation.fragments.admin_order_history
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
+import javax.inject.Inject
 
-class OrderAdapter : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
+class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
     private var ordersList = listOf<Order>()
 

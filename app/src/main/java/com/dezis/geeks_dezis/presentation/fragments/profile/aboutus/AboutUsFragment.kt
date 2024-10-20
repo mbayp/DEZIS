@@ -8,7 +8,9 @@ import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentAboutUsBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutUsFragment : BaseFragment<FragmentAboutUsBinding, AboutUsViewModel>(
     R.layout.fragment_about_us
 ) {

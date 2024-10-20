@@ -12,7 +12,9 @@ import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSettingsBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingsFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel>(
     R.layout.fragment_settings
 ) {

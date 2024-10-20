@@ -1,5 +1,6 @@
-package com.dezis.geeks_dezis.api.apis
+package com.dezis.geeks_dezis.data.remote.retrofit
 
+import com.dezis.geeks_dezis.data.remote.apiservice.BookApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

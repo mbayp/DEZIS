@@ -1,12 +1,15 @@
-package com.dezis.geeks_dezis.admin.presentation.fragment
+package com.dezis.geeks_dezis.presentation.fragments.admin_booking
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dezis.geeks_dezis.admin.data.Booking
+import com.dezis.geeks_dezis.data.remote.model.Booking
 import com.dezis.geeks_dezis.databinding.ItemRequestBinding
+import javax.inject.Inject
 
-class RequestAdapter(private val bookings: List<Booking>) : RecyclerView.Adapter<RequestAdapter.RequestViewHolder>() {
+class RequestAdapter @Inject constructor(
+    private val bookings: List<Booking>
+) : RecyclerView.Adapter<RequestAdapter.RequestViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestViewHolder {
         val binding = ItemRequestBinding.inflate(LayoutInflater.from(parent.context), parent, false)

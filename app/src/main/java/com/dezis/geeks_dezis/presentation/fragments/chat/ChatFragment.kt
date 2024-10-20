@@ -1,3 +1,4 @@
+/*
 package com.dezis.geeks_dezis.presentation.fragments.chat
 
 import android.os.Bundle
@@ -32,4 +33,4 @@ class ChatFragment: BaseFragment<FragmentChatBinding, ChatViewModel>(R.layout.fr
             findNavController().navigate(R.id.homeFragment)
         }
     }
-}
+}*/

@@ -1,6 +1,8 @@
 package com.dezis.geeks_dezis.presentation.fragments.authorization
 
 import com.dezis.geeks_dezis.core.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CodeVerificationViewModel:BaseViewModel() {
-}
+@HiltViewModel
+class CodeVerificationViewModel @Inject constructor() : BaseViewModel()

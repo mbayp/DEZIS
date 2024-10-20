@@ -1,8 +1,8 @@
-package com.dezis.geeks_dezis.api.apis
+package com.dezis.geeks_dezis.data.remote.apiservice
 
-import com.dezis.geeks_dezis.admin.data.Booking
-import com.dezis.geeks_dezis.admin.data.BookingRequest
-import com.dezis.geeks_dezis.admin.data.BookingResponse
+import com.dezis.geeks_dezis.data.remote.model.Booking
+import com.dezis.geeks_dezis.data.remote.model.BookingRequest
+import com.dezis.geeks_dezis.data.remote.model.BookingResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

@@ -16,8 +16,10 @@ import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentCalendarBinding
 import com.dezis.geeks_dezis.presentation.fragments.calendar.view_model.CalendarViewModel
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
+@AndroidEntryPoint
 class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel>(
     R.layout.fragment_calendar
 ) {

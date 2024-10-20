@@ -15,7 +15,9 @@ import com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment
 import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceModel
 import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServicePagerAdapter
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ServiceScreenFragment : Fragment() {
 
 

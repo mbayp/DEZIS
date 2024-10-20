@@ -17,8 +17,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentAdminSignInBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AdminSignInFragment:BaseFragment<FragmentAdminSignInBinding,AdminSignInViewModel>(R.layout.fragment_admin_sign_in) {
     override val binding: FragmentAdminSignInBinding by viewBinding()
     override val viewModel: AdminSignInViewModel by viewModels()

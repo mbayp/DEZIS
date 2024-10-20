@@ -1,4 +1,4 @@
-package com.dezis.geeks_dezis.admin.presentation.fragment
+package com.dezis.geeks_dezis.presentation.fragments.admin_booking
 
 import android.os.Bundle
 import android.util.Log
@@ -7,13 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dezis.geeks_dezis.admin.data.Booking
-import com.dezis.geeks_dezis.api.apis.RetrofitClient
+import com.dezis.geeks_dezis.data.remote.model.Booking
+import com.dezis.geeks_dezis.data.remote.retrofit.RetrofitClient
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@AndroidEntryPoint
 class RequestFragment : Fragment() {
 
     private var _binding: FragmentRequestBinding? = null

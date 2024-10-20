@@ -1,3 +1,4 @@
+/*
 package com.dezis.geeks_dezis.presentation.fragments.chat
 
 import android.content.ContentValues.TAG
@@ -65,4 +66,4 @@ class ChatViewModel@Inject constructor(
                 handleOnMessageReceived(response.message)
         }
     }
-}
+}*/

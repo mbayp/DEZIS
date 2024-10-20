@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.FragmentLoginOrSigninBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LogInOrSignInFragment:Fragment() {
     private val binding by lazy {
         FragmentLoginOrSigninBinding.inflate(layoutInflater)

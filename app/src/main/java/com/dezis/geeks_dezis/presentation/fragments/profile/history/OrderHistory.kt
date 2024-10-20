@@ -14,8 +14,9 @@ import com.dezis.geeks_dezis.databinding.FragmentOrderHistoryBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
-class OrderHistory : Fragment(R.layout.fragment_order_history) {
+class OrderHistory @Inject constructor() : Fragment(R.layout.fragment_order_history) {
 
     private var _binding: FragmentOrderHistoryBinding? = null
     private val binding get() = _binding!!

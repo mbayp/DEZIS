@@ -14,7 +14,9 @@ import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.On
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFourthFragment
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardSecondFragment
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardThirdFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OnBoardingFragment : Fragment() {
     private val binding by lazy {
         FragmentOnBoardingBinding.inflate(layoutInflater)

@@ -1,6 +1,8 @@
 package com.dezis.geeks_dezis.presentation.fragments.home
 
-data class ServiceModel(
+import javax.inject.Inject
+
+data class ServiceModel @Inject constructor(
     val service: String,
     val id: Int = 0,
     val info: String,

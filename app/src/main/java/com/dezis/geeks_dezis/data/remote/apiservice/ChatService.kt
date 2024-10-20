@@ -1,3 +1,4 @@
+/*
 package com.dezis.geeks_dezis.data.remote.apiservice
 
 import com.tinder.scarlet.WebSocket
@@ -12,4 +13,4 @@ interface ChatService {
 
     @Send
     fun sendMessage(message: String)
-}
+}*/

@@ -17,8 +17,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSignInBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.layout.fragment_sign_in){
     override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
     override val viewModel: SignInViewModel by viewModels()

@@ -1,6 +1,5 @@
 package com.dezis.geeks_dezis.core.base
 
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dezis.geeks_dezis.core.common.Either

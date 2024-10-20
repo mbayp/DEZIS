@@ -7,7 +7,9 @@ import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentHomeBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
 
     override val binding: FragmentHomeBinding by viewBinding(FragmentHomeBinding::bind)

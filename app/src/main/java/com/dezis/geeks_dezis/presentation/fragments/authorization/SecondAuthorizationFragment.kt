@@ -17,7 +17,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSecondAuthorizationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SecondAuthorizationFragment:BaseFragment<FragmentSecondAuthorizationBinding,SecondAuthorizationViewModel>(R.layout.fragment_second_authorization){
     override val binding: FragmentSecondAuthorizationBinding by viewBinding(FragmentSecondAuthorizationBinding::bind)
     override val viewModel: SecondAuthorizationViewModel by viewModels()

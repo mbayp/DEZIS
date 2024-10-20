@@ -2,8 +2,11 @@ package com.dezis.geeks_dezis.presentation.fragments.profile.profile
 
 import android.content.Context
 import com.dezis.geeks_dezis.core.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProfileViewModel(context: Context) : BaseViewModel() {
+@HiltViewModel
+class ProfileViewModel @Inject constructor(private val context: Context) : BaseViewModel() {
 
     private val sharedPreferences = context.getSharedPreferences("user_data", Context.MODE_PRIVATE)
 
@@ -13,5 +16,4 @@ class ProfileViewModel(context: Context) : BaseViewModel() {
         editor.putString("user_phone", phone)
         editor.apply()
     }
-
 }

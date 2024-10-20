@@ -20,11 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GEEKS_DEZIS"
         tools:targetApi="31">
+
         <activity
             android:name=".presentation.activity.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".admin.presentation.activity.RequestActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
