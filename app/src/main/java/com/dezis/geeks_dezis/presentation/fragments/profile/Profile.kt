@@ -15,7 +15,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class Profile @Inject constructor() : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
+class Profile @Inject constructor() :
+    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
     override val binding by lazy { FragmentProfileBinding.bind(requireView()) }
 
     override val viewModel: ProfileViewModel by viewModels()
