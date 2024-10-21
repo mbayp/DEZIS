@@ -7,4 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class ChatModel(
     val message: String,
     val fromUserId: String,
-): Parcelable
+    val timestamp: String,
+    val id: Int,
+    ): Parcelable
