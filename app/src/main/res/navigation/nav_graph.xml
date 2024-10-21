@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -208,4 +208,9 @@
         android:name="com.dezis.geeks_dezis.presentation.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/chats"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_order_history.chats.Chats"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
 </navigation>

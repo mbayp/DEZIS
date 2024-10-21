@@ -66,17 +66,37 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment,
                 R.id.adminOrUserFragment,
                 R.id.adminSignInFragment,
-                R.id.logInOrSignInFragment,
-                R.id.chatFragment,
-                -> {
+                R.id.logInOrSignInFragment -> {
                     binding.bottomNav.visibility = View.GONE
                 }
-
                 else -> {
                     binding.bottomNav.visibility = View.VISIBLE
                 }
             }
         }
+
+        binding.bottomNav.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.homeFragment -> {
+                    navController.navigate(R.id.homeFragment)
+                    true
+                }
+                R.id.nav_calendar -> {
+                    navController.navigate(R.id.calendarFragment)
+                    true
+                }
+                R.id.chatFragment -> {
+                    navController.navigate(R.id.chatFragment)
+                    true
+                }
+                R.id.nav_profile -> {
+                    navController.navigate(R.id.profileFragment)
+                    true
+                }
+                else -> false
+            }
+        }
     }
+
 
 }
