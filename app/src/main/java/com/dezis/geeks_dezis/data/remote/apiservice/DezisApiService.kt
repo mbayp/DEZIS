@@ -1,5 +1,7 @@
 package com.dezis.geeks_dezis.data.remote.apiservice
 
+import com.dezis.geeks_dezis.core.common.Constants.get_booking
+import com.dezis.geeks_dezis.core.common.Constants.post_booking
 import com.dezis.geeks_dezis.data.remote.model.Booking
 import com.dezis.geeks_dezis.data.remote.model.BookingRequest
 import com.dezis.geeks_dezis.data.remote.model.BookingResponse
@@ -10,11 +12,11 @@ import retrofit2.http.POST
 
 interface DezisApiService {
 
-    @GET("api/v1/contact/booking/")
+    @GET(get_booking)
     fun getBookings(
     ): Call<List<Booking>>
 
-    @POST("api/v1/contact/booking/")
+    @POST(post_booking)
     fun bookService(
         @Body bookingRequest: BookingRequest
     ): Call<BookingResponse>
