@@ -81,14 +81,14 @@ class SecondAuthorizationFragment:BaseFragment<FragmentSecondAuthorizationBindin
     private fun validateInputs(): Boolean {
         var isValid = true
         if (binding.etAddress.text.toString().isEmpty()) {
-            binding.tilAddress.error = "Неверный номер"
+            binding.tilAddress.error = " "
             isValid = false
         } else {
             binding.tilAddress.error = null
         }
 
         if (binding.etNumFlat.text.toString().isEmpty()) {
-            binding.tilNumFlat.error = "Неверный Email"
+            binding.tilNumFlat.error = " "
             isValid = false
         } else {
             binding.tilNumFlat.error = null

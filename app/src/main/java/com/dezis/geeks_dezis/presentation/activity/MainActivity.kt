@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.ActivityMainBinding
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        initBottomNav()
         initBottom()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.decorView.systemUiVisibility = (
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.authorizationFragment,
                 R.id.secondAuthorizationFragment,
                 R.id.codeVerificationFragment,
-                R.id.successfulVerificationFragment,
+                R.id.waitingFragment,
                 R.id.signInFragment,
                 R.id.adminOrUserFragment,
                 R.id.adminSignInFragment,
@@ -71,6 +73,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+    private fun initBottomNav() {
+        binding.bottomNav.apply {
+            setupWithNavController(navController)
+            itemIconTintList = null
+        }
     }
 
 

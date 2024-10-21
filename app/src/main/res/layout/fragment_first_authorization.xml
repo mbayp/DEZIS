@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_dark"
-    tools:context=".presentation.fragments.authorization.FirstAuthorizationFragment">
+    tools:context=".presentation.fragments.authorization.FirstAuthorizationFragment"
+    >
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_registration"

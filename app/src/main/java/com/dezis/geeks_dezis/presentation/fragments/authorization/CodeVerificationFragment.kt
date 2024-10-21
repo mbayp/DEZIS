@@ -35,7 +35,7 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
             val correctCode = "1234"
 
             if (validateInputs()&&enteredCode == correctCode){
-                findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
+                findNavController().navigate(R.id.action_codeVerificationFragment_to_waitingFragment)
 
             }else {
                 binding.tilCode.error = "Код введен неверно"
