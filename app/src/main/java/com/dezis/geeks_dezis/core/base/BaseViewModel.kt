@@ -24,6 +24,7 @@ abstract class BaseViewModel : ViewModel() {
                     is Either.Left -> {
                         state.value = UiState.Error(it.value)
                     }
+
                     is Either.Right -> {
                         state.value = UiState.Success(mappedData(it.value))
                     }
@@ -31,4 +32,5 @@ abstract class BaseViewModel : ViewModel() {
             }
         }
     }
+
 }

@@ -1,8 +1,10 @@
 package com.dezis.geeks_dezis.data.remote.apiservice
 
-import javax.inject.Inject
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-data class ChatModel @Inject constructor(
+@Parcelize
+data class ChatModel(
     val message: String,
-    val fromUserId: String
-)
+    val fromUserId: String,
+): Parcelable

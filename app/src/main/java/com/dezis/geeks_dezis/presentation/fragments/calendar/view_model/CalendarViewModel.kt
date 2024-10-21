@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dezis.geeks_dezis.data.remote.model.BookingRequest
 import com.dezis.geeks_dezis.data.remote.model.BookingResponse
-import com.dezis.geeks_dezis.data.remote.retrofit.RetrofitClient
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CalendarViewModel @Inject constructor(): BaseViewModel() {
 
-    val selectedService = MutableLiveData<String?>()
+    private val selectedService = MutableLiveData<String?>()
     val selectedDate = MutableLiveData<String?>()
     val selectedTime = MutableLiveData<String?>()
     val bookingMessage = MutableLiveData<String?>()

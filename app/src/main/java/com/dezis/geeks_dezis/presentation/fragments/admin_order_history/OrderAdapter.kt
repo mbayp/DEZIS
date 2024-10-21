@@ -45,4 +45,5 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
             completeOrderButton.visibility = if (order.isCompleted) View.GONE else View.VISIBLE
         }
     }
+
 }

@@ -1,6 +1,5 @@
 package com.dezis.geeks_dezis.presentation.activity
 
-import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
@@ -42,4 +41,5 @@ class NetworkLiveData @Inject constructor(@ApplicationContext context: Context) 
         super.onInactive()
         connectivityManager.unregisterNetworkCallback(networkCallback)
     }
+
 }
