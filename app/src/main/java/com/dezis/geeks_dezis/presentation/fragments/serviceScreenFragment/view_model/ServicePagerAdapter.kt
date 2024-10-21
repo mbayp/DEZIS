@@ -21,7 +21,7 @@ class ServicePagerAdapter(private val services: List<ServiceModel>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_service_card, parent, false)
+            .inflate(R.layout.item_service_screen, parent, false)
         return ServiceViewHolder(view)
     }
 

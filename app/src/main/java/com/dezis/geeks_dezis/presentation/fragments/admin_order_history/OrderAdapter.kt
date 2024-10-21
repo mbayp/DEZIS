@@ -7,11 +7,12 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
+import com.dezis.geeks_dezis.data.remote.model.Booking
 import javax.inject.Inject
 
 class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
-    private var ordersList = listOf<Order>()
+    private var ordersList = listOf<Booking>() // Используем список Booking
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
@@ -25,7 +26,7 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
 
     override fun getItemCount(): Int = ordersList.size
 
-    fun setOrders(orders: List<Order>) {
+    fun setOrders(orders: List<Booking>) { // Обновляем список заказов
         ordersList = orders
         notifyDataSetChanged()
     }
@@ -37,13 +38,19 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         private val date: TextView = itemView.findViewById(R.id.date)
         private val completeOrderButton: Button = itemView.findViewById(R.id.completeOrderButton)
 
-        fun bind(order: Order) {
-            clientName.text = order.clientName
+        fun bind(order: Booking) {
+            // Используем реальные данные из объекта Booking
+            clientName.text = "Client: ${order.user}" // Обновите в зависимости от структуры Booking (можно использовать имя пользователя)
             serviceType.text = order.service
-            address.text = order.address
-            date.text = order.date
-            completeOrderButton.visibility = if (order.isCompleted) View.GONE else View.VISIBLE
+            address.text = "Address: ${order.id}" // Если доступен адрес, замените это значение на реальное поле
+            date.text = "${order.date}, ${order.time}"
+
+            // Если заказ завершен, скрываем кнопку, иначе показываем
+            if (order.time.isNotEmpty()) {
+                completeOrderButton.visibility = View.VISIBLE
+            } else {
+                completeOrderButton.visibility = View.GONE
+            }
         }
     }
-
 }
