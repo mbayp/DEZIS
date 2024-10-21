@@ -5,11 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.admin_booking.RequestFragment">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="sdfsdfsf"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

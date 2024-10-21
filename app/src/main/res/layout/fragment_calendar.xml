@@ -31,6 +31,8 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
+        android:textSize="18dp"
+
         android:id="@+id/service_selection_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +40,6 @@
         android:layout_marginTop="16dp"
         android:text="Выберите услугу:"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendar_card_view" />
@@ -56,6 +57,7 @@
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/radio_disinfection"
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Дезинфекция"
@@ -66,6 +68,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Дератизация"
+            android:textSize="18dp"
+
             android:textColor="@android:color/white" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -73,6 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Дезинсекция"
+            android:textSize="18dp"
+
             android:textColor="@android:color/white" />
 
     </RadioGroup>
