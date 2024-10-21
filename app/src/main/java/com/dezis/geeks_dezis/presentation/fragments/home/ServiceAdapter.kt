@@ -2,12 +2,14 @@ package com.dezis.geeks_dezis.presentation.fragments.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.ItemServiceBinding
 
-class ServiceAdapter : ListAdapter<ServiceModel, ServiceAdapter.ServiceViewHolder>(DiffCallback()) {
+class ServiceAdapter(private val navController: NavController) : ListAdapter<ServiceModel, ServiceAdapter.ServiceViewHolder>(DiffCallback()) {
 
     inner class ServiceViewHolder(private val binding: ItemServiceBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -15,6 +17,10 @@ class ServiceAdapter : ListAdapter<ServiceModel, ServiceAdapter.ServiceViewHolde
             tvServiceInfo.text = model.info
             tvService.text = model.service
             btnService.text = model.btn
+
+            btnService.setOnClickListener {
+                navController.navigate(R.id.action_homeFragment_to_serviceScreenFragment)
+            }
         }
     }
 

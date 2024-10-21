@@ -3,6 +3,7 @@ package com.dezis.geeks_dezis.presentation.fragments.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentHomeBinding
@@ -32,14 +33,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 InformationModel(1, getString(R.string.information1)),
                 InformationModel(2, getString(R.string.information2)),
                 InformationModel(3, getString(R.string.information3)),
-
-                )
+            )
         )
         binding.rvInformation.adapter = informationAdapter
     }
 
     private fun addDataService() {
-        serviceAdapter = ServiceAdapter()
+
+        val navController = findNavController()
+
+        serviceAdapter = ServiceAdapter(navController)
         serviceAdapter.submitList(
             listOf(
                 ServiceModel(
@@ -61,5 +64,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         )
         binding.rvService.adapter = serviceAdapter
     }
-
 }
