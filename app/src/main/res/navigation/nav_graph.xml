@@ -34,41 +34,12 @@
         android:label="fragment_history"
         tools:layout="@layout/fragment_order_history" />
 
-    <fragment
-        android:id="@+id/personalAccountFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.PersonalAccountFragment"
-        android:label="PersonalAccountFragment">
-
-        <action
-            android:id="@+id/action_personalAccountFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-
-        <action
-            android:id="@+id/action_personalAccountFragment_to_aboutUsFragment"
-            app:destination="@id/aboutUsFragment" />
-
-        <action
-            android:id="@+id/action_personalAccountFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-
-    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.profile.ProfileFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-
-    <fragment
-        android:id="@+id/aboutUsFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.aboutus.AboutUsFragment"
-        android:label="fragment_about_us"
-        tools:layout="@layout/fragment_about_us" />
-
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.settings.SettingsFragment"
-        android:label="SettingsFragment" />
 
     <fragment
         android:id="@+id/splashScreenFragment"
