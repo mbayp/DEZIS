@@ -1,5 +1,7 @@
 package com.dezis.geeks_dezis.di
 
+import android.app.Application
+import android.content.Context
 import com.dezis.geeks_dezis.core.common.Constants.BASE_URL
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import dagger.Module
@@ -16,6 +18,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideContext(application: Application): Context {
+        return application.applicationContext
+    }
 
     @Provides
     @Singleton

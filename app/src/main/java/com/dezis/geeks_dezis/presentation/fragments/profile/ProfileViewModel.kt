@@ -1,5 +1,7 @@
 package com.dezis.geeks_dezis.presentation.fragments.profile
 
+import android.app.Application
+import android.content.Context
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import com.dezis.geeks_dezis.core.common.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,7 +10,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor() : BaseViewModel() {
+class ProfileViewModel @Inject constructor(
+    application: Application,
+    private val context: Context
+) : BaseViewModel() {
 
     private val _phoneNumber = MutableStateFlow<UiState<String>>(UiState.Idle())
     val phoneNumber: StateFlow<UiState<String>> get() = _phoneNumber

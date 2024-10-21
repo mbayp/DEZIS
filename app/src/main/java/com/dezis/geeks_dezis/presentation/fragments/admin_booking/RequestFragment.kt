@@ -6,19 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.model.Booking
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RequestFragment : Fragment() {
 
     private var _binding: FragmentRequestBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var dezisApiService: DezisApiService
 
     private lateinit var requestAdapter: RequestAdapter
     private val bookings: MutableList<Booking> = mutableListOf()
@@ -40,7 +46,7 @@ class RequestFragment : Fragment() {
     }
 
     private fun fetchBookings() {
-        RetrofitClient.bookApiService.getBookings().enqueue(object : Callback<List<Booking>> {
+        dezisApiService.getBookings().enqueue(object : Callback<List<Booking>> {
             override fun onResponse(call: Call<List<Booking>>, response: Response<List<Booking>>) {
                 if (response.isSuccessful && response.body() != null) {
                     val bookingsResponse = response.body()!!

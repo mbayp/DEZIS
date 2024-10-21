@@ -2,6 +2,7 @@ package com.dezis.geeks_dezis.presentation.fragments.calendar.view_model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.model.BookingRequest
 import com.dezis.geeks_dezis.data.remote.model.BookingResponse
 import com.dezis.geeks_dezis.core.base.BaseViewModel
@@ -14,7 +15,9 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class CalendarViewModel @Inject constructor(): BaseViewModel() {
+class CalendarViewModel @Inject constructor(
+    private val dezisApiService: DezisApiService
+) : BaseViewModel() {
 
     private val selectedService = MutableLiveData<String?>()
     val selectedDate = MutableLiveData<String?>()
@@ -43,7 +46,7 @@ class CalendarViewModel @Inject constructor(): BaseViewModel() {
             )
 
             viewModelScope.launch(Dispatchers.IO) {
-                RetrofitClient.bookApiService.bookService(bookingRequest)
+                dezisApiService.bookService(bookingRequest)
                     .enqueue(object : Callback<BookingResponse> {
                         override fun onResponse(
                             call: Call<BookingResponse>,

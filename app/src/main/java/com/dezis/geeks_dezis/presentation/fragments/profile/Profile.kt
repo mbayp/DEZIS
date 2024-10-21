@@ -6,16 +6,19 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class Profile @Inject constructor() : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
     override val binding by lazy { FragmentProfileBinding.bind(requireView()) }
 
-    override val viewModel: ProfileViewModel by lazy { ProfileViewModel() }
+    override val viewModel: ProfileViewModel by viewModels()
 
     private var isDataChangedByUser: Boolean = false
 
@@ -33,10 +36,6 @@ class Profile @Inject constructor() : BaseFragment<FragmentProfileBinding, Profi
         binding.imgHistory.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_history)
         }
-
-//        binding.imgEdit.setOnClickListener {
-//            pickImageLauncher.launch("image/*")
-//        }
 
         binding.editPhoneNumber.setOnClickListener {
             showPhoneNumberDialog()
@@ -103,5 +102,4 @@ class Profile @Inject constructor() : BaseFragment<FragmentProfileBinding, Profi
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
-
 }
