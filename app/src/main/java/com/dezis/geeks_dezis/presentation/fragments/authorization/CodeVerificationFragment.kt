@@ -41,7 +41,6 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
 
             }else {
                 binding.tilCode.error = "Код введен неверно"
-                //удалишь когда регистрация заработает
                 findNavController().navigate(R.id.homeFragment)
 
             }
@@ -114,10 +113,5 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
     private fun resetBorderColor() {
         binding.tilCode.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
-
-
-
-
-
 
 }
