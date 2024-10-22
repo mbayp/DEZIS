@@ -87,6 +87,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         resetButton.setOnClickListener {
             timePicker.hour = calendar.get(Calendar.HOUR_OF_DAY)
             timePicker.minute = calendar.get(Calendar.MINUTE)
+            timePickerDialog.dismiss()
+
         }
 
         timePickerDialog.show()
