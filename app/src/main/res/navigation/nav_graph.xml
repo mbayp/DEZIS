@@ -94,7 +94,17 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
+            app:popExitAnim="@anim/slide_out">
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -134,6 +144,18 @@
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"
+            />
+        <argument
+            android:name="userName"
+            app:argType="string"
+            />
+        <argument
+            android:name="email"
+            app:argType="string"
+            />
+        <argument
+            android:name="password"
+            app:argType="string"
             />
     </fragment>
     <fragment
