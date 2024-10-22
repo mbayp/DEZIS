@@ -33,5 +33,6 @@
     <color name="dark_blue">#1b2228</color>
     <color name="grey_dark">#0A84FF</color>
     <color name="gray3">#888D91</color>
+    <color name="button_color">#0A84FF</color>
 
 </resources>
