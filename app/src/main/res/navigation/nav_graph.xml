@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_chatFragment2"
+            app:destination="@id/chatFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/serviceScreenFragment"
@@ -201,4 +205,9 @@
         android:id="@+id/newOrderFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.admin_order_history.NewOrderFragment"
         android:label="NewOrderFragment" />
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
 </navigation>
