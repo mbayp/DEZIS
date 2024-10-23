@@ -7,13 +7,21 @@
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.profile.Profile">
 
-    <ImageView
-        android:id="@+id/img_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center|top"
-        android:src="@drawable/ic_profile2" />
+        app:cardCornerRadius="360dp"
+        android:layout_marginTop="32dp">
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:src="@drawable/ic_profile2" />
+
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/edit_avatar"
@@ -77,6 +85,7 @@
             android:background="@drawable/background_style">
 
             <TextView
+                android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"

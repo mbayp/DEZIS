@@ -9,7 +9,11 @@
         android:id="@+id/calendarFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_chatFragment2"
+            app:destination="@id/chatFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/serviceScreenFragment"
@@ -33,13 +37,6 @@
         android:name="com.dezis.geeks_dezis.presentation.fragments.profile.history.OrderHistory"
         android:label="fragment_history"
         tools:layout="@layout/fragment_order_history" />
-
-
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.Profile"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/splashScreenFragment"
