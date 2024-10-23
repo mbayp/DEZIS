@@ -36,6 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="18dp"
         android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="112dp"
         android:textColor="@color/white"
         android:layout_marginTop="22dp"
         android:textStyle="bold"/>

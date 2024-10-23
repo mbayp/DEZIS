@@ -13,8 +13,7 @@ interface UserApiService {
     @POST("token/refresh/")
     suspend fun refreshToken(@Body request: RefreshTokenRequest): Response<TokenResponse>
 
-
-        @POST("user/register-user/")
+    @POST("user/register-user/")
         suspend fun registerUser(@Body userRegisterDto: UserRegisterDto): Response<RegistrationResponse>
 
 }
