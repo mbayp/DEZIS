@@ -200,5 +200,11 @@
     <fragment
         android:id="@+id/newOrderFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.admin_order_history.NewOrderFragment"
-        android:label="NewOrderFragment" />
+        android:label="NewOrderFragment"
+        tools:layout="@layout/fragment_new_order"/>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
 </navigation>

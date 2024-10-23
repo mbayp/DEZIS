@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-
     private val navController: NavController by lazy {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_controller) as NavHostFragment
@@ -34,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initBottom()
+        initAdminBottom()
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.decorView.systemUiVisibility = (
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -41,12 +43,14 @@ class MainActivity : AppCompatActivity() {
                     )
             window.statusBarColor = android.graphics.Color.TRANSPARENT
         }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
             binding.root.setOnApplyWindowInsetsListener { view, insets ->
                 view.setPadding(0, insets.systemWindowInsetTop, 0, 0)
                 insets
             }
         }
+
         viewModel.networkLiveData.observe(this) { isConnected ->
             if (isConnected) {
                 binding.networkWarning.visibility = View.GONE
@@ -55,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
-
     }
 
     private fun initBottom() {
@@ -101,5 +104,38 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun initAdminBottom() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.newOrderFragment, R.id.requestFragment -> {
+                    binding.bottomNav.visibility = View.GONE
+                    binding.adminBottomNav.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.adminBottomNav.visibility = View.GONE
+                }
+            }
+        }
+
+        binding.adminBottomNav.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.requestFragment-> {
+                    navController.navigate(R.id.requestFragment) // Фрагмент "Новые заказы"
+                    true
+                }
+                R.id.chatFragment -> {
+                    navController.navigate(R.id.chatFragment) // Фрагмент "Чаты"
+                    true
+                }
+                R.id.newOrderFragment -> {
+                    navController.navigate(R.id.newOrderFragment) // Фрагмент "Запросы"
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
 
 }
