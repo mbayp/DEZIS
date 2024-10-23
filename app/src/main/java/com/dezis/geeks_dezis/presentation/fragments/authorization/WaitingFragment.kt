@@ -29,7 +29,7 @@ class WaitingFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
             delay(10000)
-            findNavController().navigate(R.id.action_waitingFragment_to_homeFragment)
+            //findNavController().navigate(R.id.action_waitingFragment_to_homeFragment)
         }
 
 

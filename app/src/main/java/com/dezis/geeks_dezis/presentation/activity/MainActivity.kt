@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.authorizationFragment,
                 R.id.secondAuthorizationFragment,
                 R.id.codeVerificationFragment,
-                R.id.waitingFragment,
+                R.id.waitingFragment3,
                 R.id.signInFragment,
                 R.id.adminOrUserFragment,
                 R.id.adminSignInFragment,
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
-                R.id.calendarFragment -> {
+                R.id.calendar -> {
                     navController.navigate(R.id.calendarFragment)
                     true
                 }
@@ -98,8 +98,8 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.chatFragment2)
                     true
                 }
-                R.id.profileFragment -> {
-                    navController.navigate(R.id.profile)
+                R.id.profile -> {
+                    navController.navigate(R.id.profileFragment)
                     true
                 }
                 else -> false
@@ -123,11 +123,11 @@ class MainActivity : AppCompatActivity() {
         binding.adminBottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.requestFragment-> {
-                    navController.navigate(R.id.requestFragment) // Фрагмент "Новые заказы"
+                    navController.navigate(R.id.requestFragment)
                     true
                 }
                 R.id.chatFragment -> {
-                    navController.navigate(R.id.chatFragment) // Фрагмент "Чаты"
+                    navController.navigate(R.id.chatFragment)
                     true
                 }
                 R.id.newOrderFragment -> {

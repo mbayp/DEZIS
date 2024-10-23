@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/requestFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -242,4 +242,9 @@
         android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"
         android:label="fragment_request"
         tools:layout="@layout/fragment_request" />
+    <fragment
+        android:id="@+id/waitingFragment3"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.WaitingFragment"
+        android:label="fragment_waiting_permission"
+        tools:layout="@layout/fragment_waiting_permission" />
 </navigation>
