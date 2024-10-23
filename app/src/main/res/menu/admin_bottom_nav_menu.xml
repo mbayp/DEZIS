@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <item
+        android:id="@+id/requestFragment"
+        android:icon="@drawable/ic_time"
+        android:title="" />
+
+    <item
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/ic_chat"
+        android:title="" />
+
+    <item
+        android:id="@+id/newOrderFragment"
+        android:icon="@drawable/ic_notifications"
+        android:title="" />
 
 </menu>
