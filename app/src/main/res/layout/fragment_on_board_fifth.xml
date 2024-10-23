@@ -11,7 +11,7 @@
         android:id="@+id/ic_dezis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/ic_dezis_and_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,25 +25,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ic_dezis"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="40dp"/>
+
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_ready"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="26sp"
-        app:layout_constraintTop_toBottomOf="@id/img_humans"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="18dp"
         android:layout_marginStart="8dp"
-        android:textColor="@color/white"
         android:layout_marginTop="22dp"
-        android:textStyle="bold"/>
-
-
-
-
-
+        android:layout_marginEnd="18dp"
+        android:text="@string/txt_ready"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_humans" />
 
 
 

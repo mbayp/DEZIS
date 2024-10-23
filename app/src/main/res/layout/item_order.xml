@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@drawable/background_style">
 
         <!-- Имя клиента -->
         <TextView
@@ -20,67 +21,108 @@
             android:layout_height="wrap_content"
             android:text="Alexey Ivanovich"
             android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:textSize="21sp" />
 
-        <!-- Услуга -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-            <TextView
-                android:id="@+id/serviceLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Услуга:"
-                android:textSize="14sp"
-                android:layout_marginEnd="4dp"/>
-            <TextView
-                android:id="@+id/serviceType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Дезинфекция"
-                android:textSize="14sp" />
-        </LinearLayout>
+            android:layout_marginTop="12dp">
 
-        <!-- Адрес -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/addressLabel"
+            <!-- Услуга -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Адрес:"
-                android:textSize="14sp"
-                android:layout_marginEnd="4dp"/>
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Восток-5, 13/21"
-                android:textSize="14sp" />
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <!-- Дата -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/dateLabel"
+                <TextView
+                    android:id="@+id/serviceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Услуги:"
+                    android:textColor="@color/light_blue"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/serviceType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дезинфекция"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="15dp" />
+            </LinearLayout>
+
+            <!-- Адрес -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Дата:"
-                android:textSize="14sp"
-                android:layout_marginEnd="4dp"/>
-            <TextView
-                android:id="@+id/date"
+                android:orientation="vertical"
+                android:layout_marginStart="35dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Адрес:"
+                    android:textColor="@color/light_blue"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Восток-5"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="15dp" />
+
+                <TextView
+                    android:id="@+id/houseNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13/21"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <!-- Дата -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="17.11.2024, 21:30"
-                android:textSize="14sp" />
+                android:orientation="vertical"
+                android:layout_marginStart="35dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Дата:"
+                    android:textColor="@color/light_blue"
+                    android:textSize="18sp"
+                    android:layout_marginStart="16dp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="17.11.2024"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="15dp" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21:30"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Кнопка "Завершить" -->
@@ -88,8 +130,10 @@
             android:id="@+id/completeOrderButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Завершить"
             android:layout_marginTop="16dp"
-            android:visibility="visible" />
+            android:text="Завершить"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

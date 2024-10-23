@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.dezis.geeks_dezis.R
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
 
     private val navController: NavController by lazy {
         val navHostFragment =
@@ -52,6 +54,8 @@ class MainActivity : AppCompatActivity() {
                 binding.networkWarning.visibility = View.VISIBLE
             }
         }
+        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
+
     }
 
     private fun initBottom() {
@@ -86,17 +90,16 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.chatFragment -> {
-                    navController.navigate(R.id.chatFragment)
+                    navController.navigate(R.id.chatFragment2)
                     true
                 }
                 R.id.nav_profile -> {
-                    navController.navigate(R.id.profileFragment)
+                    navController.navigate(R.id.profile)
                     true
                 }
                 else -> false
             }
         }
     }
-
 
 }

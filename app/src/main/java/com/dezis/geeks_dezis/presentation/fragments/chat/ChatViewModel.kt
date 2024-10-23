@@ -1,10 +1,23 @@
-/*
 package com.dezis.geeks_dezis.presentation.fragments.chat
+
+import com.dezis.geeks_dezis.core.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class ChatViewModel @Inject constructor() : BaseViewModel() {
+
+    init {
+        // Логика убрана, чтобы не нужно было менять фрагмент
+    }
+}
+
+/*
+ package com.dezis.geeks_dezis.presentation.fragments.chat
 
 import android.content.ContentValues.TAG
 import android.util.Log
 import com.dezis.geeks_dezis.core.base.BaseViewModel
-import com.dezis.geeks_dezis.data.remote.apiservice.ChatService
 import com.tinder.scarlet.Scarlet
 import com.tinder.scarlet.WebSocket
 import com.tinder.scarlet.streamadapter.rxjava2.RxJava2StreamAdapterFactory
@@ -66,4 +79,5 @@ class ChatViewModel@Inject constructor(
                 handleOnMessageReceived(response.message)
         }
     }
-}*/
+}
+*/

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
@@ -47,6 +48,8 @@ class ServiceScreenFragment : Fragment() {
                     "запахов, плесени и высолов. Мы предлагаем услуги дезинфекции жилых и коммерческих объектов, используя современные и безопасные дезинфицирующие средства. ")
         )
 
-        viewPager.adapter = ServicePagerAdapter(services)
+        val navController = findNavController()
+
+        viewPager.adapter = ServicePagerAdapter(services, navController)
     }
 }

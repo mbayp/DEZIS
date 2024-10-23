@@ -6,11 +6,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
 
-class ServicePagerAdapter(private val services: List<ServiceModel>) :
-    RecyclerView.Adapter<ServicePagerAdapter.ServiceViewHolder>() {
+class ServicePagerAdapter(
+    private val services: List<ServiceModel>,
+    private val navController: NavController
+) : RecyclerView.Adapter<ServicePagerAdapter.ServiceViewHolder>() {
 
     class ServiceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.image)
@@ -21,7 +24,7 @@ class ServicePagerAdapter(private val services: List<ServiceModel>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_service_card, parent, false)
+            .inflate(R.layout.item_service_screen, parent, false)
         return ServiceViewHolder(view)
     }
 
@@ -31,7 +34,7 @@ class ServicePagerAdapter(private val services: List<ServiceModel>) :
         holder.title.text = service.title
         holder.description.text = service.description
         holder.button.setOnClickListener {
-            // Действие на нажатие кнопки
+            navController.navigate(R.id.action_serviceScreenFragment_to_calendarFragment)
         }
     }
 
