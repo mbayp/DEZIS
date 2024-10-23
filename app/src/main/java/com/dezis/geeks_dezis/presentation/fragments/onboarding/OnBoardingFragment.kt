@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -14,7 +15,9 @@ import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.On
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFourthFragment
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardSecondFragment
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardThirdFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OnBoardingFragment : Fragment() {
     private val binding by lazy {
         FragmentOnBoardingBinding.inflate(layoutInflater)
@@ -37,7 +40,8 @@ class OnBoardingFragment : Fragment() {
             OnBoardFourthFragment(),
             OnBoardFifthFragment(),
         )
-        binding.viewPager.adapter = OnBoardingAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
+        binding.viewPager.adapter =
+            OnBoardingAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
         binding.btnContinue.setOnClickListener {
             if (binding.viewPager.currentItem < fragmentList.size - 1) {
                 binding.viewPager.currentItem = binding.viewPager.currentItem + 1
@@ -45,7 +49,7 @@ class OnBoardingFragment : Fragment() {
                 findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
             }
         }
-        binding.btnSkip.setOnClickListener{
+        binding.btnSkip.setOnClickListener {
             findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
         }
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -53,12 +57,20 @@ class OnBoardingFragment : Fragment() {
                 super.onPageSelected(position)
                 if (position == fragmentList.size - 1) {
                     binding.btnSkip.visibility = View.GONE
+                    // Переместить btnContinue вниз, если btnSkip невидима
+                    val params = binding.btnContinue.layoutParams as ConstraintLayout.LayoutParams
+                    params.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
+                    params.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                    binding.btnContinue.layoutParams = params
                 } else {
                     binding.btnSkip.visibility = View.VISIBLE
+                    // Вернуть btnContinue к начальному состоянию
+                    val params = binding.btnContinue.layoutParams as ConstraintLayout.LayoutParams
+                    params.bottomToTop = binding.btnSkip.id
+                    params.bottomToBottom = ConstraintLayout.LayoutParams.UNSET
+                    binding.btnContinue.layoutParams = params
                 }
             }
         })
-
     }
-
 }

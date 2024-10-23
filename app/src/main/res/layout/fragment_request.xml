@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".admin.presentation.fragment.RequestFragment">
+    android:orientation="vertical"
+    tools:context=".presentation.fragments.admin_booking.RequestFragment">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Запросы для входа"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="55dp"/>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -13,4 +25,4 @@
         android:padding="16dp"
         android:clipToPadding="false" />
 
-</FrameLayout>
+</LinearLayout>

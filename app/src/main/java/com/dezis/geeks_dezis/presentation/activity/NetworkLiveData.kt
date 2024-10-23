@@ -6,8 +6,10 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import androidx.lifecycle.LiveData
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class NetworkLiveData(context: Context) : LiveData<Boolean>() {
+class NetworkLiveData @Inject constructor(@ApplicationContext context: Context) : LiveData<Boolean>() {
 
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -39,4 +41,5 @@ class NetworkLiveData(context: Context) : LiveData<Boolean>() {
         super.onInactive()
         connectivityManager.unregisterNetworkCallback(networkCallback)
     }
+
 }

@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dezis.geeks_dezis.R
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class OnBoardFirstFragment : Fragment() {
 
     override fun onCreateView(

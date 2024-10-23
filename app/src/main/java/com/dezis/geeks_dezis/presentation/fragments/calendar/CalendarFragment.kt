@@ -16,8 +16,10 @@ import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentCalendarBinding
 import com.dezis.geeks_dezis.presentation.fragments.calendar.view_model.CalendarViewModel
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
+@AndroidEntryPoint
 class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel>(
     R.layout.fragment_calendar
 ) {
@@ -43,7 +45,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         binding.calendarView.minDate = calendar.timeInMillis
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            viewModel.selectedDate.value = "$dayOfMonth/${month + 1}/$year"
+            viewModel.selectedDate.value = "$year-${month + 1}-$dayOfMonth"
             showTimePickerDialog()
         }
     }
@@ -85,6 +87,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         resetButton.setOnClickListener {
             timePicker.hour = calendar.get(Calendar.HOUR_OF_DAY)
             timePicker.minute = calendar.get(Calendar.MINUTE)
+            timePickerDialog.dismiss()
+
         }
 
         timePickerDialog.show()
@@ -92,11 +96,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupOrderButton() {
         binding.orderServiceButton.setOnClickListener {
-            val isBooked = viewModel.bookService()
-
-            if (!isBooked) {
-                showToast("Услуга уже забронирована на эту дату и время.")
-            }
+            viewModel.bookService(userId = 7)  // Укажите реальный ID пользователя
         }
     }
 
@@ -113,5 +113,4 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         toast.setGravity(Gravity.CENTER, 0, 0)
         toast.show()
     }
-
 }

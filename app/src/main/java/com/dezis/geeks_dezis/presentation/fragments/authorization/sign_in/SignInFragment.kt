@@ -13,13 +13,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentSignInBinding
+import com.dezis.geeks_dezis.presentation.fragments.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.layout.fragment_sign_in){
+
     override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
     override val viewModel: SignInViewModel by viewModels()
 
@@ -33,8 +35,8 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
             }
         }
         setupClickableText()
-
     }
+
     private fun validateFields() {
         val isAllFieldsValid =
             binding.etLogIn.text.toString().isNotEmpty() &&
@@ -45,6 +47,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
             binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
         }
     }
+
     private fun setupClickableText() {
         val termsTextView = binding.termsOfSale
         val spannableString = SpannableString(
@@ -77,8 +80,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
         termsTextView.movementMethod = LinkMovementMethod.getInstance()
         termsTextView.highlightColor = Color.TRANSPARENT
     }
-
-
 
     private fun validateInputs():Boolean{
         var isValid = true

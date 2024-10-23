@@ -3,6 +3,7 @@ package com.dezis.geeks_dezis.di
 import android.app.Application
 import android.content.Context
 import com.dezis.geeks_dezis.core.common.Constants.BASE_URL
+import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
 import dagger.Module
 import dagger.Provides
@@ -60,4 +61,12 @@ object NetworkModule {
     @Singleton
     fun provideUserApiService(retrofit: Retrofit): UserApiService =
         retrofit.create(UserApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideLotosApiService(retrofit: Retrofit): DezisApiService {
+        val apiService = retrofit.create(DezisApiService::class.java)
+        return apiService
+    }
+
 }

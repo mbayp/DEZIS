@@ -22,7 +22,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentCodeVerificationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,CodeVerificationViewModel>(R.layout.fragment_code_verification) {
     override val binding: FragmentCodeVerificationBinding by viewBinding(FragmentCodeVerificationBinding::bind)
     override val viewModel: CodeVerificationViewModel by viewModels()
@@ -35,10 +37,12 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
             val correctCode = "1234"
 
             if (validateInputs()&&enteredCode == correctCode){
-                findNavController().navigate(R.id.action_codeVerificationFragment_to_waitingFragment)
+                findNavController().navigate(R.id.homeFragment)
 
             }else {
                 binding.tilCode.error = "Код введен неверно"
+                findNavController().navigate(R.id.homeFragment)
+
             }
         }
         setupClickableText()
@@ -109,10 +113,5 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
     private fun resetBorderColor() {
         binding.tilCode.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
-
-
-
-
-
 
 }

@@ -11,18 +11,19 @@ import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
     protected fun <T> mutableStateFlow() = MutableStateFlow<UiState<T>>(UiState.Idle())
-    private fun <T, S> Flow<Either<String, T>>.gatherRequest(
+
+    protected fun <T, S> gatherRequest(
+        flow: Flow<Either<String, T>>,
         state: MutableStateFlow<UiState<S>>,
         mappedData: (data: T) -> S,
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             state.value = UiState.Loading()
-            this@gatherRequest.collect {
+            flow.collect {
                 when (it) {
                     is Either.Left -> {
                         state.value = UiState.Error(it.value)
                     }
-
                     is Either.Right -> {
                         state.value = UiState.Success(mappedData(it.value))
                     }
@@ -30,5 +31,4 @@ abstract class BaseViewModel : ViewModel() {
             }
         }
     }
-
 }

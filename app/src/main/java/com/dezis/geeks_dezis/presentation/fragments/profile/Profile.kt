@@ -1,21 +1,26 @@
 package com.dezis.geeks_dezis.presentation.fragments.profile
 
-import android.text.InputType
 import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class Profile : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
-
+@AndroidEntryPoint
+class Profile @Inject constructor() :
+    BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
     override val binding by lazy { FragmentProfileBinding.bind(requireView()) }
 
-    override val viewModel: ProfileViewModel by lazy { ProfileViewModel() }
+    override val viewModel: ProfileViewModel by viewModels()
 
     private var isDataChangedByUser: Boolean = false
 
@@ -30,19 +35,22 @@ class Profile : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.
 
     override fun init() {
         super.init()
+        setupListeners()
+        observeViewModel()
+    }
+
+    private fun setupListeners() {
         binding.imgHistory.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_history)
         }
 
-//        binding.imgEdit.setOnClickListener {
-//            pickImageLauncher.launch("image/*")
-//        }
-
         binding.editPhoneNumber.setOnClickListener {
-            showPhoneNumberDialog()
+            showCustomPhoneNumberDialog()
         }
 
-        observeViewModel()
+        binding.imgAvatar.setOnClickListener {
+            pickImageLauncher.launch("image/*")
+        }
     }
 
     private fun showCustomDialog() {
@@ -83,25 +91,37 @@ class Profile : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.
         )
     }
 
-    private fun showPhoneNumberDialog() {
+    private fun showCustomPhoneNumberDialog() {
+        val dialogView =
+            LayoutInflater.from(requireContext()).inflate(R.layout.custom_alert_edit_number, null)
+
+        val etPhoneNumber = dialogView.findViewById<EditText>(R.id.etPhoneNumber)
+        val btnSave = dialogView.findViewById<TextView>(R.id.tv_save)
+        val btnCancel = dialogView.findViewById<TextView>(R.id.tv_cancel)
+
+        etPhoneNumber.setText("+996 ")
+
         val dialog = AlertDialog.Builder(requireContext())
-        val input = EditText(requireContext())
-        input.inputType = InputType.TYPE_CLASS_PHONE
-        dialog.setView(input)
-        dialog.setTitle("Изменить номер телефона")
-        dialog.setPositiveButton("Сохранить") { _, _ ->
-            val newPhoneNumber = input.text.toString()
+            .setView(dialogView)
+            .create()
+
+        btnSave.setOnClickListener {
+            val newPhoneNumber = etPhoneNumber.text.toString()
             if (newPhoneNumber.isNotEmpty()) {
                 viewModel.updatePhoneNumber(newPhoneNumber)
                 isDataChangedByUser = true
+                dialog.dismiss()
+            } else {
+                showToast("Неверный формат номера")
             }
         }
-        dialog.setNegativeButton("Отмена", null)
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
         dialog.show()
     }
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
-
 }

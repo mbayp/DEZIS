@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/grey_dark"
+    android:background="@color/dark_blue"
     tools:context=".presentation.fragments.authorization.CodeVerificationFragment">
 
     <com.google.android.material.textview.MaterialTextView
@@ -26,6 +26,7 @@
         android:text="@string/inst_txt"
         android:textColor="#878a92"
         android:textSize="18sp"
+        android:layout_marginBottom="24dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_reg"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +63,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_code"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="46dp"
         />
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_after_minute"
@@ -80,7 +80,6 @@
         android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:text="@string/continue_txt"
         android:textColor="@color/white"
         android:padding="16dp"

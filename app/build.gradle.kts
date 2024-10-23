@@ -23,6 +23,7 @@ android {
 
     buildTypes {
         release {
+
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -39,6 +40,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -80,6 +82,19 @@ dependencies {
     implementation(libs.google.material.v190)
 
     implementation(libs.glide)
+    implementation(libs.circleimageview)
+
+    // Scarlet
+    implementation(libs.scarlet)
+    implementation(libs.websocket.okhttp)
+    implementation(libs.stream.adapter.rxjava2)
+
+    //RX
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.rxkotlin)
+
+    implementation (libs.roundedimageview)
 
     implementation(libs.splash.screen)
 
@@ -88,6 +103,5 @@ dependencies {
     implementation(libs.view.pager)
 
     implementation(libs.onboarding)
-
 
 }

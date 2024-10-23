@@ -3,18 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/requestFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_chatFragment2"
+            app:destination="@id/chatFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/serviceScreenFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.ServiceScreenFragment"
-        android:label="ServiceScreenFragment" />
+        android:label="ServiceScreenFragment" >
+        <action
+            android:id="@+id/action_serviceScreenFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/profile"
@@ -34,41 +42,12 @@
         android:label="fragment_history"
         tools:layout="@layout/fragment_order_history" />
 
-    <fragment
-        android:id="@+id/personalAccountFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.PersonalAccountFragment"
-        android:label="PersonalAccountFragment">
-
-        <action
-            android:id="@+id/action_personalAccountFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-
-        <action
-            android:id="@+id/action_personalAccountFragment_to_aboutUsFragment"
-            app:destination="@id/aboutUsFragment" />
-
-        <action
-            android:id="@+id/action_personalAccountFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-
-    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.profile.ProfileFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-
-    <fragment
-        android:id="@+id/aboutUsFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.aboutus.AboutUsFragment"
-        android:label="fragment_about_us"
-        tools:layout="@layout/fragment_about_us" />
-
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.profile.settings.SettingsFragment"
-        android:label="SettingsFragment" />
 
     <fragment
         android:id="@+id/splashScreenFragment"
@@ -94,16 +73,18 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out">
-        <argument
-            android:name="userName"
-            app:argType="string" />
-        <argument
-            android:name="email"
-            app:argType="string" />
-        <argument
-            android:name="password"
-            app:argType="string" />
+            app:popExitAnim="@anim/slide_out"
+            >
+            <argument
+                android:name="userName"
+                app:argType="string" />
+            <argument
+                android:name="email"
+                app:argType="string" />
+            <argument
+                android:name="password"
+                app:argType="string" />
+
         </action>
     </fragment>
     <fragment
@@ -157,22 +138,30 @@
             android:name="password"
             app:argType="string"
             />
+
     </fragment>
     <fragment
         android:id="@+id/codeVerificationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.CodeVerificationFragment"
         android:label="fragment_code_verification"
         tools:layout="@layout/fragment_code_verification" >
-
         <action
-            android:id="@+id/action_codeVerificationFragment_to_waitingFragment"
-            app:destination="@id/waitingFragment"
+            android:id="@+id/action_codeVerificationFragment_to_successfulVerificationFragment"
+            app:destination="@id/successfulVerificationFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
     </fragment>
-
+    <fragment
+        android:id="@+id/successfulVerificationFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
+        android:label="fragment_successful_verification"
+        tools:layout="@layout/fragment_code_verification" >
+        <action
+            android:id="@+id/action_successfulVerificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/adminOrUserFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.AdminOrUserFragment"
@@ -217,27 +206,40 @@
         android:id="@+id/adminSignInFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.admin.AdminSignInFragment"
         android:label="AdminSignInFragment"
-        tools:layout="@layout/fragment_admin_sign_in">
-        <action
-            android:id="@+id/action_adminSignInFragment_to_waitingFragment"
-            app:destination="@id/waitingFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_admin_sign_in"/>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/waitingFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.WaitingFragment"
-        android:label="WaitingFragment"
-        tools:layout="@layout/fragment_waiting_permission">
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_waitingFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
+            android:id="@+id/action_homeFragment_to_serviceScreenFragment"
+            app:destination="@id/serviceScreenFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/chats"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_order_history.chats.Chats"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/chatFragment2"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/newOrderFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_order_history.NewOrderFragment"
+        android:label="NewOrderFragment"
+        tools:layout="@layout/fragment_new_order"/>
+    <!--<fragment
+        android:id="@+id/requestFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
+        android:label="NewOrderFragment" />-->
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
 </navigation>

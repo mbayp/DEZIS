@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/grey_dark">
+    android:background="@color/dark_blue">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:cornerRadius="12dp"
-        app:backgroundTint="@color/dark_blue"
+        app:backgroundTint="@color/grey_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ic_dezis"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="@string/administrator_txt"
         android:textSize="18sp"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/grey_dark"
         android:fontFamily="@font/roboto_reg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
