@@ -4,50 +4,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:background="@color/dark_blue"
     app:cardCornerRadius="12dp">
 
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical"
-android:padding="16dp">
+    <LinearLayout
+        android:background="@color/dark_blue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-<!-- Заголовок над изображением -->
-<TextView
-    android:id="@+id/title"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Заголовок"
-    android:textAppearance="?attr/textAppearanceHeadline6"
-    android:layout_marginBottom="8dp" />
+        <!-- Заголовок над изображением -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Заголовок"
+            android:textColor="@color/white"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:layout_marginBottom="8dp" />
 
-<!-- Изображение под заголовком -->
-<ImageView
-    android:id="@+id/image"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:scaleType="centerCrop"
-    android:src="@drawable/image1" />
+        <!-- Изображение под заголовком -->
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image1" />
 
-<!-- Описание под изображением -->
-<TextView
-    android:id="@+id/description"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Описание"
-    android:textAppearance="?attr/textAppearanceBody2"
-    android:layout_marginTop="8dp" />
+        <!-- Описание под изображением -->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Описание"
+            android:textColor="@color/white"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:layout_marginTop="8dp" />
 
-<!-- Кнопка под описанием -->
-<Button
-    android:id="@+id/button"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Заказать"
-    android:textColor="@android:color/white"
-    android:backgroundTint="#0A84FF"
-    android:layout_marginTop="16dp" />
-</LinearLayout>
+        <!-- Кнопка под описанием -->
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Заказать"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#0A84FF"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView>
