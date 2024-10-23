@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.dezis.geeks_dezis.core.common.Constants.BASE_URL
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
+import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,38 +33,34 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        gsonConverterFactory: GsonConverterFactory,
-    ): Retrofit =
-        Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(BASE_URL)
-            .addConverterFactory(gsonConverterFactory)
+    fun provideOkHttpClient(): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        return OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .callTimeout(60, TimeUnit.SECONDS)
             .build()
+    }
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(
-    ): OkHttpClient = OkHttpClient().newBuilder()
-        .addInterceptor(
-            HttpLoggingInterceptor().setLevel(
-                HttpLoggingInterceptor.Level.BODY
-            )
-        )
-        .connectTimeout(60, TimeUnit.SECONDS)
-        .readTimeout(60, TimeUnit.SECONDS)
-        .writeTimeout(60, TimeUnit.SECONDS)
-        .callTimeout(60, TimeUnit.SECONDS)
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
+    ): Retrofit = Retrofit.Builder()
+        .client(okHttpClient)
+        .baseUrl(BASE_URL)
+        .addConverterFactory(gsonConverterFactory)
         .build()
 
     @Provides
     @Singleton
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        return interceptor
-    }
+    fun provideUserApiService(retrofit: Retrofit): UserApiService =
+        retrofit.create(UserApiService::class.java)
 
     @Provides
     @Singleton
@@ -71,16 +68,5 @@ object NetworkModule {
         val apiService = retrofit.create(DezisApiService::class.java)
         return apiService
     }
-
-    /*    @Provides
-      @Singleton
-      fun provideChatService(okHttpClient: OkHttpClient): ChatService {
-          return Scarlet.Builder()
-              .webSocketFactory(okHttpClient.newWebSocketFactory("wss://example.com/api/v1/chat/messages/send"))
-              .addStreamAdapterFactory(RxJava2StreamAdapterFactory())
-              .build()
-              .create(ChatService::class.java)
-
-      }*/
 
 }

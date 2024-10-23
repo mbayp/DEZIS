@@ -12,7 +12,7 @@
         <item name="boxBackgroundColor">@color/edit_text_grey</item>
         <item name="errorIconDrawable">@null</item>
         <item name="hintTextColor">@color/white</item>
-        <item name="errorTextColor">@color/white</item>
+        <item name="errorTextColor">@color/red</item>
         <item name="boxCornerRadiusBottomEnd">10dp</item>
         <item name="boxCornerRadiusBottomStart">10dp</item>
         <item name="boxCornerRadiusTopStart">10dp</item>

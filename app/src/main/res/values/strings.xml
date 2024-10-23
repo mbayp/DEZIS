@@ -93,4 +93,5 @@
     <string name="denied_txt">К сожалению администратор не дал вам разрешение на вход в приложение! Попробуйте зайти с другого аккаунта.</string>
     <string name="return_to_entrance_txt">Вернуться ко входу</string>
     <string name="login_txt">Логин</string>
+    <string name="administrator_txt">Администратор</string>
 </resources>

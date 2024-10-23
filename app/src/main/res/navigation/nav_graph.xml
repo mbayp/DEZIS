@@ -73,7 +73,19 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
+            app:popExitAnim="@anim/slide_out"
+            >
+            <argument
+                android:name="userName"
+                app:argType="string" />
+            <argument
+                android:name="email"
+                app:argType="string" />
+            <argument
+                android:name="password"
+                app:argType="string" />
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -114,6 +126,19 @@
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"
             />
+        <argument
+            android:name="userName"
+            app:argType="string"
+            />
+        <argument
+            android:name="email"
+            app:argType="string"
+            />
+        <argument
+            android:name="password"
+            app:argType="string"
+            />
+
     </fragment>
     <fragment
         android:id="@+id/codeVerificationFragment"
@@ -132,7 +157,7 @@
         android:id="@+id/successfulVerificationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
         android:label="fragment_successful_verification"
-        tools:layout="@layout/fragment_successful_verification" >
+        tools:layout="@layout/fragment_code_verification" >
         <action
             android:id="@+id/action_successfulVerificationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -206,12 +231,12 @@
         android:name="com.dezis.geeks_dezis.presentation.fragments.admin_order_history.NewOrderFragment"
         android:label="NewOrderFragment"
         tools:layout="@layout/fragment_new_order"/>
-    <fragment
+    <!--<fragment
         android:id="@+id/requestFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"
         android:label="fragment_request"
         tools:layout="@layout/fragment_request" />
-        android:label="NewOrderFragment" />
+        android:label="NewOrderFragment" />-->
     <fragment
         android:id="@+id/requestFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"

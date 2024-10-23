@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        initBottomNav()
         initBottom()
         initAdminBottom()
 
@@ -69,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.authorizationFragment,
                 R.id.secondAuthorizationFragment,
                 R.id.codeVerificationFragment,
-                R.id.successfulVerificationFragment,
+                R.id.waitingFragment,
                 R.id.signInFragment,
                 R.id.adminOrUserFragment,
                 R.id.adminSignInFragment,
@@ -88,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
-                R.id.nav_calendar -> {
+                R.id.calendarFragment -> {
                     navController.navigate(R.id.calendarFragment)
                     true
                 }
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.chatFragment2)
                     true
                 }
-                R.id.nav_profile -> {
+                R.id.profileFragment -> {
                     navController.navigate(R.id.profile)
                     true
                 }
@@ -134,6 +136,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+    }
+    private fun initBottomNav() {
+        binding.bottomNav.apply {
+            setupWithNavController(navController)
+            itemIconTintList = null
         }
     }
 
