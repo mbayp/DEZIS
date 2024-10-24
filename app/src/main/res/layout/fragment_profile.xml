@@ -183,7 +183,7 @@
         </FrameLayout>
 
     </LinearLayout>
-
+<!--
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -191,6 +191,6 @@
         android:layout_gravity="bottom"
         android:background="@color/dark_blue"
         app:itemIconTint="@color/white"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu" />-->
 
 </FrameLayout>
