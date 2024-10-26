@@ -1,3 +1,4 @@
+/*
 package com.dezis.geeks_dezis.core.common
 
 object Constants {
@@ -7,4 +8,4 @@ object Constants {
     const val NETWORK_TIMEOUT = 60L
     const val get_booking = "contact/booking/"
     const val post_booking = "contact/booking/"
-}
+}*/

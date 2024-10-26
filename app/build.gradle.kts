@@ -17,20 +17,53 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://dezis.pp.ua/api/v1/\""
+            )
+            buildConfigField(
+                "String",
+                "get_booking",
+                "\"contact/booking/\""
+            )
+            buildConfigField(
+                "String",
+                "post_booking",
+                "\"contact/booking/\""
+            )
+        }
+
+        debug {
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"https://dezis.pp.ua/api/v1/\""
+            )
+            buildConfigField(
+                "String",
+                "get_booking",
+                "\"contact/booking/\""
+            )
+            buildConfigField(
+                "String",
+                "post_booking",
+                "\"contact/booking/\""
+            )
         }
     }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

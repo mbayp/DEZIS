@@ -2,7 +2,7 @@ package com.dezis.geeks_dezis.di
 
 import android.app.Application
 import android.content.Context
-import com.dezis.geeks_dezis.core.common.Constants.BASE_URL
+import com.dezis.geeks_dezis.BuildConfig.BASE_URL
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
 import dagger.Module
@@ -39,10 +39,10 @@ object NetworkModule {
 
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
-            .callTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .callTimeout(15, TimeUnit.SECONDS)
             .build()
     }
 
