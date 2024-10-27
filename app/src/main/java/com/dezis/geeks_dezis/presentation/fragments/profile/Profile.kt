@@ -74,7 +74,6 @@ class Profile @Inject constructor() :
                 binding.tvPhoneNumber.text = it
                 if (isDataChangedByUser) {
                     showCustomDialog()
-                    isDataChangedByUser = false
                 }
             },
             error = { showToast("Ошибка обновления номера телефона: $it") }
@@ -84,7 +83,6 @@ class Profile @Inject constructor() :
             success = {
                 if (isDataChangedByUser) {
                     showCustomDialog()
-                    isDataChangedByUser = false
                 }
             },
             error = { showToast("Ошибка загрузки аватара: $it") }

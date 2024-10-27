@@ -1,10 +1,12 @@
 package com.dezis.geeks_dezis.presentation.fragments.profile.history
 
+import android.view.LayoutInflater
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dezis.geeks_dezis.core.base.makeNetworkRequest
 import com.dezis.geeks_dezis.core.common.Either
 import com.dezis.geeks_dezis.core.common.UiState
+import com.dezis.geeks_dezis.databinding.FragmentOrderHistoryBinding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
