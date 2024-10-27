@@ -34,7 +34,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
                 findNavController().navigate(R.id.action_signInFragment_to_codeVerificationFragment)
             }
         }
-        setupClickableText()
+       // setupClickableText()
     }
 
     private fun validateFields() {
@@ -42,9 +42,9 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
             binding.etLogIn.text.toString().isNotEmpty() &&
             binding.etPasswordl.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_blue))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
         }
     }
 
