@@ -112,4 +112,20 @@
     <string name="gmail">Почта:</string>
     <string name="NameSeurname">ФИО:</string>
     <string name="dete">Дата:</string>
+    <string name="back_button">Назад</string>
+    <string name="new_order">Новые заказы</string>
+    <string name="completed_orders">Завершенные</string>
+    <string name="complete_order_button">Завершить</string>
+    <string name="_21_30">21:30</string>
+    <string name="_17_11_2024">17.11.2024</string>
+    <string name="data">Дата:</string>
+    <string name="_13_21">13/21</string>
+    <string name="_5">Восток-5</string>
+    <string name="address_label">Адрес:</string>
+    <string name="service_type_disinfection">Дезинфекция</string>
+    <string name="alexey_ivanovichh">Alexey Ivanovich</string>
+    <string name="label_services">Услуги:</string>
+    <string name="header">Заголовок</string>
+    <string name="order2">Заказать</string>
+    <string name="desc">Описание</string>
 </resources>
