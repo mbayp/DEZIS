@@ -1,23 +1,28 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_blue">
+    android:orientation="vertical"
+    android:background="@color/dark_blue"
+    android:paddingHorizontal="16dp">
 
+    <ImageView
+        android:id="@+id/iv_arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/arrow_left"
+/>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/calendar_card_view"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:cardElevation="4dp">
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -26,76 +31,60 @@
             android:background="@color/dark_white"
             android:dateTextAppearance="?android:attr/textAppearanceMedium"
             android:weekDayTextAppearance="?android:attr/textAppearanceSmall" />
-
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:textSize="18dp"
         android:id="@+id/service_selection_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:text="Выберите услугу:"
-        android:textColor="@android:color/white"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_card_view" />
+        android:text="@string/choose"
+        android:textSize="18sp"
+        android:textColor="@android:color/white" />
 
-    <!-- Чекбоксы с белыми цветами -->
     <CheckBox
         android:id="@+id/radio_disinfection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:text="Дезинфекция"
-        android:textSize="18dp"
+        android:text="@string/dezinfection"
+        android:textSize="18sp"
         android:textColor="@android:color/white"
-        android:buttonTint="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/service_selection_label" />
+        android:buttonTint="@android:color/white" />
 
     <CheckBox
         android:id="@+id/radio_deratization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:text="Дератизация"
-        android:textSize="18dp"
+        android:text="@string/deratization"
+        android:textSize="18sp"
         android:textColor="@android:color/white"
-        android:buttonTint="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_disinfection" />
+        android:buttonTint="@android:color/white" />
 
     <CheckBox
         android:id="@+id/radio_disinsection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:text="Дезинсекция"
-        android:textSize="18dp"
+        android:text="@string/dezinsection"
+        android:textSize="18sp"
         android:textColor="@android:color/white"
-        android:buttonTint="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_deratization" />
+        android:buttonTint="@android:color/white" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/order_service_button"
-        android:background="@drawable/button_background"
-        android:textSize="16sp"
-        app:backgroundTint="@color/button_color"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Заказать услугу"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@color/button_color"
+        android:text="@string/order"
+        android:textSize="16sp"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radio_disinsection" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginBottom="16dp" />
+</LinearLayout>

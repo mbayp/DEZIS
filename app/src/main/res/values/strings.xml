@@ -94,4 +94,22 @@
     <string name="return_to_entrance_txt">Вернуться ко входу</string>
     <string name="login_txt">Логин</string>
     <string name="administrator_txt">Администратор</string>
+    <string name="choose">Выберите услугу:</string>
+    <string name="dezinfection">Дезинфекция</string>
+    <string name="order">Заказать услугу</string>
+    <string name="dezinsection">Дезинсекция</string>
+    <string name="data_have_saved">Данные успешно сохранены</string>
+    <string name="in_main">На главную</string>
+    <string name="ready">Готово</string>
+    <string name="reset">Сбросить</string>
+    <string name="enter_request">Запросы для входа</string>
+    <string name="succes">Подтвердить</string>
+    <string name="UnEnter">Отказать</string>
+    <string name="time">Время:</string>
+    <string name="nymber_of_home">Номер квартиры/дома:</string>
+    <string name="adress">Адрес: </string>
+    <string name="phone_number_user">Телефон:</string>
+    <string name="gmail">Почта:</string>
+    <string name="NameSeurname">ФИО:</string>
+    <string name="dete">Дата:</string>
 </resources>

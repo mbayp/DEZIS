@@ -2,180 +2,262 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_margin="8dp"
-    android:background="@drawable/roundered_layout">
+    android:background="@drawable/roundered_layout"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Дата -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Дата: "
-            android:textSize="16sp"
-            android:textColor="@color/blue"/> <!-- Статичная часть -->
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/text_date"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="@string/dete"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/text_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="17.11.2024"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="17.11.2024"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="@string/NameSeurname"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="Abduganueva Ayana"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="@string/gmail"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/text_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="ayanaabdgna1@gmail.com"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="@string/phone_number_user"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/text_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="4dp"
+                    android:text="+996 500 848 484"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_marginVertical="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/adress"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_marginVertical="4dp"
+                    android:id="@+id/text_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Восток-5"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_marginVertical="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nymber_of_home"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:layout_marginVertical="4dp"
+                    android:id="@+id/text_apartment_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="51/12"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
-    <!-- ФИО -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button_confirm"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ФИО: "
-            android:textSize="16sp"
-            android:textColor="@color/blue"/> <!-- Статичная часть -->
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/succes"
+            android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/text_name"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Abduganueva Ayana"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/rounded_button_grey"
+            android:text="@string/UnEnter"
+            android:textColor="@color/white" />
     </LinearLayout>
 
-    <!-- Почта -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Почта: "
-            android:textSize="16sp"
-            android:textColor="@color/blue"/> <!-- Статичная часть -->
-
-        <TextView
-            android:id="@+id/text_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ayanaabdgna1@gmail.com"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
-    </LinearLayout>
-
-    <!-- Телефон -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Телефон: "
-            android:textSize="16sp"
-            android:textColor="@color/blue"/> <!-- Статичная часть -->
-
-        <TextView
-            android:id="@+id/text_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+996 500 848 484"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
-    </LinearLayout>
-
-    <!-- Адрес -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Адрес: "
-            android:textSize="16sp"
-            android:textColor="@color/blue"/> <!-- Статичная часть -->
-
-        <TextView
-            android:id="@+id/text_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Восток-5"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
-    </LinearLayout>
-
-    <!-- Номер квартиры/дома -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Номер квартиры/дома: "
-            android:textSize="16sp"
-            android:textColor="@color/blue"/> <!-- Статичная часть -->
-
-        <TextView
-            android:id="@+id/text_apartment_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="51/12"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Время: "
-            android:textSize="16sp"
-            android:textColor="@color/blue"/> <!-- Статичная часть -->
-
-        <TextView
-            android:id="@+id/textTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12.00"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"/> <!-- Динамическая часть -->
-    </LinearLayout>
-
-    <!-- Кнопки -->
-    <Button
-        android:id="@+id/button_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Подтвердить"
-        android:layout_weight="1"
-        android:textColor="@color/white"
-        android:layout_marginVertical="8dp"
-        android:background="@drawable/rounded_button" />
-
-    <Button
-        android:id="@+id/button_cancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Отказать"
-        android:layout_weight="1"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_button_grey" />
 </LinearLayout>
