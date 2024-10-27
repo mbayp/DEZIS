@@ -34,5 +34,6 @@
     <color name="grey_dark">#0A84FF</color>
     <color name="gray3">#888D91</color>
     <color name="button_color">#0A84FF</color>
+    <color name="true_gray">#515151</color>
 
 </resources>
