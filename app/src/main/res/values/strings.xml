@@ -112,4 +112,7 @@
     <string name="gmail">Почта:</string>
     <string name="NameSeurname">ФИО:</string>
     <string name="dete">Дата:</string>
+    <string name="admin_btn">Администратор</string>
+    <string name="for_service">Для оформления заказов</string>
+    <string name="txt_sistem_sing">Для управления системой</string>
 </resources>
