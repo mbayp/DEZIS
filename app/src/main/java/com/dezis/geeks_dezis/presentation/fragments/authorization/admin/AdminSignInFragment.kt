@@ -93,14 +93,14 @@ class AdminSignInFragment :
             binding.btnContinue.setBackgroundColor(
                 ContextCompat.getColor(
                     requireContext(),
-                    R.color.blue
+                    R.color.true_gray
                 )
             )
         } else {
             binding.btnContinue.setBackgroundColor(
                 ContextCompat.getColor(
                     requireContext(),
-                    R.color.grey
+                    R.color.dark_grey
                 )
             )
         }

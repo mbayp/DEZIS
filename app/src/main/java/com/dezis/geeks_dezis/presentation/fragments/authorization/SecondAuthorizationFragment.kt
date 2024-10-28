@@ -60,7 +60,7 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
             }
         }
 
-        setupClickableText()
+      //  setupClickableText()
     }
 
     private fun sendRegistrationRequest(userRegisterDto: UserRegisterDto) {
@@ -133,9 +133,9 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
             binding.etAddress.text.toString().isNotEmpty() &&
                     binding.etNumFlat.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
         } else {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
         }
     }
 

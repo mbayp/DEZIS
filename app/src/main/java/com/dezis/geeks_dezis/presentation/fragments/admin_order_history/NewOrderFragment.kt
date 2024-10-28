@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -37,6 +38,15 @@ class NewOrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_new_order, container, false)
+
+
+        val backButton: ImageView = view.findViewById(R.id.img_back)
+
+
+        backButton.setOnClickListener {
+
+            requireActivity().onBackPressed()
+        }
 
         ordersRecyclerView = view.findViewById(R.id.ordersRecyclerView)
         tabLayout = view.findViewById(R.id.tabLayout)
@@ -83,6 +93,6 @@ class NewOrderFragment : Fragment() {
     }
 
     private fun showCompletedOrders() {
-        // Реализуйте логику для завершенных заказов
+        // логика для завершенных заказов
     }
 }

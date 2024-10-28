@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".presentation.fragments.authorization.WaitingFragment"
-    >
-    <com.google.android.material.imageview.ShapeableImageView
+    android:orientation="vertical"
+    tools:context=".presentation.fragments.authorization.WaitingFragment">
+
+    <ImageView
+        android:id="@+id/ic_denied"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:src="@drawable/ic_waiting"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/ic_denied"/>
-    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginTop="150dp"
+        android:src="@drawable/ic_waiting" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="58dp"
+        android:gravity="center"
         android:text="@string/txt_waiting"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ic_denied"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:gravity="center"
-        app:fontFamily="@font/roboto_reg"
-        android:layout_marginHorizontal="58dp"/>
+        app:fontFamily="@font/roboto_reg" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

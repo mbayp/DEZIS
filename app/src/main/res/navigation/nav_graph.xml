@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/requestFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -104,8 +104,7 @@
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"
             >
-            <argument
-                android:name="email"
+        <argument android:name="email"
                 app:argType="string"/>
         </action>
     </fragment>
@@ -133,10 +132,8 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"
-            >
-            <argument
-                android:name="email"
+            app:popExitAnim="@anim/slide_out">
+            <argument android:name="email"
                 app:argType="string"/>
         </action>
         <argument
@@ -159,16 +156,24 @@
         android:label="fragment_code_verification"
         tools:layout="@layout/fragment_code_verification" >
         <action
-            android:id="@+id/action_codeVerificationFragment_to_homeFragment"
+            android:id="@+id/action_codeVerificationFragment_to_successfulVerificationFragment"
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
-        <argument
-            android:name="email"
+        <argument android:name="email"
             app:argType="string"/>
     </fragment>
+    <!--fragment
+        android:id="@+id/successfulVerificationFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
+        android:label="fragment_successful_verification"
+        tools:layout="@layout/fragment_code_verification" >
+        <action
+            android:id="@+id/action_successfulVerificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>-->
     <fragment
         android:id="@+id/adminOrUserFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.AdminOrUserFragment"
