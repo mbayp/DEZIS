@@ -32,16 +32,6 @@ android {
                 "BASE_URL",
                 "\"https://dezis.pp.ua/api/v1/\""
             )
-            buildConfigField(
-                "String",
-                "get_booking",
-                "\"contact/booking/\""
-            )
-            buildConfigField(
-                "String",
-                "post_booking",
-                "\"contact/booking/\""
-            )
         }
 
         debug {
@@ -49,16 +39,6 @@ android {
                 "String",
                 "BASE_URL",
                 "\"https://dezis.pp.ua/api/v1/\""
-            )
-            buildConfigField(
-                "String",
-                "get_booking",
-                "\"contact/booking/\""
-            )
-            buildConfigField(
-                "String",
-                "post_booking",
-                "\"contact/booking/\""
             )
         }
     }

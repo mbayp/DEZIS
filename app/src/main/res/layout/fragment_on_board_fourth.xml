@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardFourthFragment">
+
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
 
         />
     <com.google.android.material.imageview.ShapeableImageView

@@ -8,13 +8,15 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import com.dezis.geeks_dezis.BuildConfig
+import com.dezis.geeks_dezis.core.common.Constants.get_booking
+import com.dezis.geeks_dezis.core.common.Constants.post_booking
 
 interface DezisApiService {
 
-    @GET(BuildConfig.get_booking)
+    @GET(get_booking)
     fun getBookings(): Call<List<Booking>>
 
-    @POST(BuildConfig.post_booking)
+    @POST(post_booking)
     fun bookService(
         @Body bookingRequest: BookingRequest
     ): Call<BookingResponse>
