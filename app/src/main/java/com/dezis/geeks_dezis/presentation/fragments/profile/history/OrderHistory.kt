@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.common.UiState
@@ -16,7 +17,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-class OrderHistory @Inject constructor() : Fragment(R.layout.fragment_order_history) {
+class OrderHistory @Inject constructor() : Fragment() {
 
     private var _binding: FragmentOrderHistoryBinding? = null
     private val binding get() = _binding!!
@@ -36,6 +37,13 @@ class OrderHistory @Inject constructor() : Fragment(R.layout.fragment_order_hist
         super.onViewCreated(view, savedInstanceState)
         init()
         launchObserver()
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+        binding.imgBack.setOnClickListener {
+            findNavController().navigate(R.id.action_history_to_profile)
+        }
     }
 
     override fun onDestroyView() {

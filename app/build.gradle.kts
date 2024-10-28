@@ -127,7 +127,7 @@ dependencies {
     implementation(libs.rxandroid)
     implementation(libs.rxkotlin)
 
-    implementation (libs.roundedimageview)
+    implementation(libs.roundedimageview)
 
     implementation(libs.splash.screen)
 
