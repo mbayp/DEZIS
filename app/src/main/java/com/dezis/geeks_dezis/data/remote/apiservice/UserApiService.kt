@@ -33,5 +33,4 @@ interface UserApiService {
 
     @POST("user/verify-user/")
     suspend fun verifyCode(@Body request: VerificationRequest): Response<VerificationResponse>
-
 }
