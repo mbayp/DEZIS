@@ -14,17 +14,15 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Заголовок над изображением -->
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Заголовок"
+            android:text="@string/header"
             android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:layout_marginBottom="8dp" />
 
-        <!-- Изображение под заголовком -->
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
@@ -32,22 +30,20 @@
             android:scaleType="centerCrop"
             android:src="@drawable/image1" />
 
-        <!-- Описание под изображением -->
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Описание"
+            android:text="@string/desc"
             android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceBody2"
             android:layout_marginTop="8dp" />
 
-        <!-- Кнопка под описанием -->
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Заказать"
+            android:text="@string/order2"
             android:textColor="@android:color/white"
             android:backgroundTint="#0A84FF"
             android:layout_marginTop="16dp" />
