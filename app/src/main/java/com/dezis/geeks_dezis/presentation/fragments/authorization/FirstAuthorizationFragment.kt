@@ -40,7 +40,7 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 findNavController().navigate(action)
             }
         }
-        setupClickableText()
+       // setupClickableText()
     }
     private fun validateFields() {
         val isAllFieldsValid = binding.etName.text.toString().isNotEmpty() &&
@@ -48,9 +48,9 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 binding.etEmail.text.toString().isNotEmpty()
 
         if (isAllFieldsValid) {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
         }
     }
 

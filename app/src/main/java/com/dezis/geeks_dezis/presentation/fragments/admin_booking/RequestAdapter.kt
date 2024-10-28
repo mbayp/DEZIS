@@ -27,7 +27,7 @@ class RequestAdapter @Inject constructor(
         fun bind(booking: Booking) {
             binding.textDate.text = "Дата: ${booking.date}"
             binding.textName.text = "Услуга: ${booking.service}"
-            //binding.textTime.text = "Время: ${booking.time}"
+           // binding.textTime.text = "Время: ${booking.time}"
 
             binding.buttonConfirm.setOnClickListener {
                 // Обработка подтверждения
