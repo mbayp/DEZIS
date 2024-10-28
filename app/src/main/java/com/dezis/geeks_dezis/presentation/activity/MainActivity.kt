@@ -141,7 +141,6 @@ class MainActivity : AppCompatActivity() {
     private fun initBottomNav() {
         binding.bottomNav.apply {
             setupWithNavController(navController)
-            itemIconTintList = null
         }
     }
 
