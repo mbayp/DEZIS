@@ -4,18 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <ImageView
         android:id="@+id/ic_dezis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="150dp"
-        android:src="@drawable/ic_dezis_and_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:src="@drawable/ic_dezis_and_text" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/btn_register"
@@ -24,6 +31,7 @@
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/button_background"
         android:padding="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/reg_txt"
         android:textColor="@android:color/white"
         android:textSize="16sp"
@@ -35,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_background_second"
         android:padding="16dp"
         android:text="@string/sign_in_txt"
@@ -43,6 +51,5 @@
         android:textSize="16sp"
         app:backgroundTint="@null"
         app:cornerRadius="12dp" />
-
 
 </LinearLayout>
