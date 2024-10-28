@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/requestFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -40,7 +40,11 @@
         android:id="@+id/history"
         android:name="com.dezis.geeks_dezis.presentation.fragments.profile.history.OrderHistory"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_order_history" />
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/action_history_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
 
 
     <fragment
@@ -95,19 +99,17 @@
         android:id="@+id/signInFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.sign_in.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_sign_in">
+
         <action
-            android:id="@+id/action_signInFragment_to_codeVerificationFragment"
-            app:destination="@id/codeVerificationFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"
-            >
-        <argument android:name="email"
-                app:argType="string"/>
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/homeFragment">
+            <argument
+                android:name="email"
+                app:argType="string" />
         </action>
     </fragment>
+
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.OnBoardingFragment"
@@ -263,4 +265,8 @@
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.WaitingFragment"
         android:label="fragment_waiting_permission"
         tools:layout="@layout/fragment_waiting_permission" />
+    <fragment
+        android:id="@+id/successfulVerificationFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
+        android:label="SuccessfulVerificationFragment" />
 </navigation>

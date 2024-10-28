@@ -65,7 +65,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
                         val loginResponse = response.body()
                         loginResponse?.let {
                             Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
-                            val action = SignInFragmentDirections.actionSignInFragmentToCodeVerificationFragment(
+                            val action = SignInFragmentDirections.actionSignInFragmentToHomeFragment(
                                 email = constantEmail
                             )
                             findNavController().navigate(action)

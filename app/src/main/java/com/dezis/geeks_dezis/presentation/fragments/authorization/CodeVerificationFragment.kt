@@ -67,7 +67,7 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         Toast.makeText(requireContext(), "Код подтвержден", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_codeVerificationFragment_to_homeFragment)
+                        findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
                     } else {
                         binding.tilCode.error = "Код введен неверно"
                     }
