@@ -60,7 +60,7 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
             }
         }
 
-      //  setupClickableText()
+        setupClickableText()
     }
 
     private fun sendRegistrationRequest(userRegisterDto: UserRegisterDto) {
