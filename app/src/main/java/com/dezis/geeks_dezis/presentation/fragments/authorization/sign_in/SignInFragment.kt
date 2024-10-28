@@ -9,15 +9,23 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
+import com.dezis.geeks_dezis.data.remote.model.LoginRequest
 import com.dezis.geeks_dezis.databinding.FragmentSignInBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.layout.fragment_sign_in){
@@ -25,16 +33,48 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
     override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
     override val viewModel: SignInViewModel by viewModels()
 
+    @Inject
+    lateinit var userApiService: UserApiService
+
     override fun constructorListeners() {
         binding.etLogIn.addTextChangedListener { validateFields() }
         binding.etPasswordl.addTextChangedListener { validateFields() }
 
         binding.btnContinue.setOnClickListener{
             if (validateInputs()){
-                findNavController().navigate(R.id.action_signInFragment_to_codeVerificationFragment)
+                val email = binding.etLogIn.text.toString()
+                val password = binding.etPasswordl.text.toString()
+                loginUser(email, password)
             }
         }
         setupClickableText()
+    }
+
+    private fun loginUser(email: String, password: String) {
+        val loginRequest = LoginRequest(email = email, password = password)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = userApiService.loginUser(loginRequest)
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        val loginResponse = response.body()
+                        loginResponse?.let {
+                            Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
+                            val action = SignInFragmentDirections.actionSignInFragmentToCodeVerificationFragment(
+                                email = email
+                            )
+                            findNavController().navigate(action)
+                        }
+                    } else {
+                        Toast.makeText(requireContext(), "Ошибка входа: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun validateFields() {

@@ -57,14 +57,12 @@ class OnBoardingFragment : Fragment() {
                 super.onPageSelected(position)
                 if (position == fragmentList.size - 1) {
                     binding.btnSkip.visibility = View.GONE
-                    // Переместить btnContinue вниз, если btnSkip невидима
                     val params = binding.btnContinue.layoutParams as ConstraintLayout.LayoutParams
                     params.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
                     params.bottomToTop = ConstraintLayout.LayoutParams.UNSET
                     binding.btnContinue.layoutParams = params
                 } else {
                     binding.btnSkip.visibility = View.VISIBLE
-                    // Вернуть btnContinue к начальному состоянию
                     val params = binding.btnContinue.layoutParams as ConstraintLayout.LayoutParams
                     params.bottomToTop = binding.btnSkip.id
                     params.bottomToBottom = ConstraintLayout.LayoutParams.UNSET

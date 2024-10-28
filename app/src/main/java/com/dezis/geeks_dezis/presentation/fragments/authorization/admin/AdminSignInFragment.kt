@@ -9,23 +9,37 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.core.extensions.Extensions.showToast
+import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
+import com.dezis.geeks_dezis.data.remote.model.LoginRequest
+import com.dezis.geeks_dezis.data.remote.model.ManagerResponse
+import com.dezis.geeks_dezis.data.remote.model.MangerRequest
 import com.dezis.geeks_dezis.databinding.FragmentAdminSignInBinding
+import com.dezis.geeks_dezis.presentation.fragments.authorization.sign_in.SignInFragmentDirections
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.HttpException
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AdminSignInFragment :
     BaseFragment<FragmentAdminSignInBinding, AdminSignInViewModel>(R.layout.fragment_admin_sign_in) {
-
     override val binding by viewBinding(FragmentAdminSignInBinding::bind)
-
     override val viewModel: AdminSignInViewModel by viewModels()
+    @Inject
+    lateinit var userApiService: UserApiService
+
 
     override fun constructorListeners() {
         binding.etLogIn.addTextChangedListener { validateFields() }
@@ -33,12 +47,39 @@ class AdminSignInFragment :
 
         binding.btnContinue.setOnClickListener {
             if (validateInputs()) {
-                findNavController()
+                val login = binding.etLogIn.text.toString()
+                val password = binding.etPasswordl.text.toString()
+                loginMnager(login, password)
             }
         }
         setupClickableText()
 
     }
+
+    private fun loginMnager(login: String, password: String) {
+        val loginRequest = MangerRequest(login = login,password=password)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = userApiService.loginManager(loginRequest)
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        val loginResponse = response.body()
+                        loginResponse?.let {
+                            Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_adminSignInFragment_to_requestFragment)
+                        }
+                    } else {
+                        Toast.makeText(requireContext(), "Ошибка входа: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
 
     private fun validateFields() {
         val isAllFieldsValid =
