@@ -36,27 +36,31 @@ import javax.inject.Inject
 class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,CodeVerificationViewModel>(R.layout.fragment_code_verification) {
     override val binding: FragmentCodeVerificationBinding by viewBinding(FragmentCodeVerificationBinding::bind)
     override val viewModel: CodeVerificationViewModel by viewModels()
+    private val constOtp = "1488"
+    private val constantEmail = "alohadance@gmail.com"
     private val args: CodeVerificationFragmentArgs by navArgs()
 
     @Inject
     lateinit var userApiService: UserApiService
 
     override fun constructorListeners() {
-        binding.etCode.addTextChangedListener { validateFields() }
+       /* binding.etCode.addTextChangedListener { validateFields() }*/
 
         binding.btnContinue.setOnClickListener{
-            binding.btnContinue.setOnClickListener {
-                val enteredCode = binding.etCode.text.toString()
+            verifyCode()
+
+          /*  binding.btnContinue.setOnClickListener {
+                *//*val enteredCode = binding.etCode.text.toString()*//*
                 if (validateInputs()) {
                     verifyCode(args.email, enteredCode)
                 }
-            }
+            }*/
         }
         setupClickableText()
 
     }
-    private fun verifyCode(email: String, code: String) {
-        val verificationRequest = VerificationRequest(email = email, otp = code)
+    private fun verifyCode(/*email: String, code: String*/) {
+        val verificationRequest = VerificationRequest(email = constantEmail, otp = constOtp)
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = userApiService.verifyCode(verificationRequest)

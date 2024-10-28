@@ -24,16 +24,14 @@ interface UserApiService {
     @POST("user/register-user/")
     suspend fun registerUser(@Body userRegisterDto: UserRegisterDto)
     : Response<RegistrationResponse>
-
-
-    @POST("/user/login-user/")
+    @POST("/api/v1/user/login-user/")
     suspend fun loginUser(@Body loginRequest: LoginRequest): Response<LoginResponse>
 
-    @POST("/user/login-manager/")
+    @POST("/api/v1/user/login-manager/")
     suspend fun loginManager(@Body loginRequest: MangerRequest): Response<ManagerResponse>
 
 
-    @POST("/user/verify-user/")
+    @POST("user/verify-user/")
     suspend fun verifyCode(@Body request: VerificationRequest): Response<VerificationResponse>
 
 }

@@ -37,27 +37,30 @@ class AdminSignInFragment :
     BaseFragment<FragmentAdminSignInBinding, AdminSignInViewModel>(R.layout.fragment_admin_sign_in) {
     override val binding by viewBinding(FragmentAdminSignInBinding::bind)
     override val viewModel: AdminSignInViewModel by viewModels()
+    private val constantLoh = "Botik"
+    private val constantPassword = "botik228"
     @Inject
     lateinit var userApiService: UserApiService
 
 
     override fun constructorListeners() {
-        binding.etLogIn.addTextChangedListener { validateFields() }
-        binding.etPasswordl.addTextChangedListener { validateFields() }
+        /*binding.etLogIn.addTextChangedListener { validateFields() }
+        binding.etPasswordl.addTextChangedListener { validateFields() }*/
 
         binding.btnContinue.setOnClickListener {
-            if (validateInputs()) {
+           /* if (validateInputs()) {
                 val login = binding.etLogIn.text.toString()
                 val password = binding.etPasswordl.text.toString()
                 loginMnager(login, password)
-            }
+            }*/
+            loginManager()
         }
         setupClickableText()
 
     }
 
-    private fun loginMnager(login: String, password: String) {
-        val loginRequest = MangerRequest(login = login,password=password)
+    private fun loginManager(/*login: String, password: String*/) {
+        val loginRequest = MangerRequest(login = constantLoh,password=constantPassword)
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = userApiService.loginManager(loginRequest)

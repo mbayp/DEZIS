@@ -33,25 +33,30 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
     override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
     override val viewModel: SignInViewModel by viewModels()
 
+    private val constantEmail = "alohadance@gmail.com"
+    private val constantPassword = "aloha12345"
+
     @Inject
     lateinit var userApiService: UserApiService
 
     override fun constructorListeners() {
-        binding.etLogIn.addTextChangedListener { validateFields() }
-        binding.etPasswordl.addTextChangedListener { validateFields() }
+        /*binding.etLogIn.addTextChangedListener { validateFields() }
+        binding.etPasswordl.addTextChangedListener { validateFields() }*/
 
         binding.btnContinue.setOnClickListener{
-            if (validateInputs()){
-                val email = binding.etLogIn.text.toString()
+            loginUser()
+           /* if (validateInputs()){
+
                 val password = binding.etPasswordl.text.toString()
-                loginUser(email, password)
-            }
+
+            }*/
+
         }
         setupClickableText()
     }
 
-    private fun loginUser(email: String, password: String) {
-        val loginRequest = LoginRequest(email = email, password = password)
+    private fun loginUser(/*email:String,password:String*/) {
+        val loginRequest = LoginRequest(email = constantEmail, password = constantPassword)
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = userApiService.loginUser(loginRequest)
@@ -61,7 +66,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
                         loginResponse?.let {
                             Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
                             val action = SignInFragmentDirections.actionSignInFragmentToCodeVerificationFragment(
-                                email = email
+                                email = constantEmail
                             )
                             findNavController().navigate(action)
                         }
