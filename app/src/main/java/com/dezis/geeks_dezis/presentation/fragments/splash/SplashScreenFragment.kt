@@ -18,15 +18,15 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashScreenFragment : Fragment() {
-    private val binding by lazy {
-        FragmentSplashScreenBinding.inflate(layoutInflater)
-    }
 
+    private var _binding: FragmentSplashScreenBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        _binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -39,7 +39,10 @@ class SplashScreenFragment : Fragment() {
             delay(3000)
             findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
         }
-
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

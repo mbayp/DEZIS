@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.profile -> {
-                    navController.navigate(R.id.profileFragment)
+                    navController.navigate(R.id.profile)
                     true
                 }
                 else -> false
@@ -144,7 +144,6 @@ class MainActivity : AppCompatActivity() {
     private fun initBottomNav() {
         binding.bottomNav.apply {
             setupWithNavController(navController)
-            itemIconTintList = null
         }
     }
 

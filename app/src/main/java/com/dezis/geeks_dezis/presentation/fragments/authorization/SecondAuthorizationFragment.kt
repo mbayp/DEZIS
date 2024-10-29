@@ -35,7 +35,7 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
 
     override val binding: FragmentSecondAuthorizationBinding by viewBinding(FragmentSecondAuthorizationBinding::bind)
     override val viewModel: SecondAuthorizationViewModel by viewModels()
-    private val args: SecondAuthorizationFragmentArgs by navArgs()
+    private val args: SecondAuthorizationFragmentArgs by navArgs() // Получение аргументов из предыдущего фрагмента
 
     @Inject
     lateinit var userApiService: UserApiService
@@ -60,7 +60,7 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
             }
         }
 
-      //  setupClickableText()
+        setupClickableText()
     }
 
     private fun sendRegistrationRequest(userRegisterDto: UserRegisterDto) {
@@ -69,7 +69,10 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
                 val response = userApiService.registerUser(userRegisterDto)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        findNavController().navigate(R.id.action_secondAuthorizationFragment_to_codeVerificationFragment)
+                        findNavController().navigate(
+                            SecondAuthorizationFragmentDirections
+                                .actionSecondAuthorizationFragmentToCodeVerificationFragment(email = args.email)
+                        )
                     } else {
                         handleError(response.errorBody())
                     }

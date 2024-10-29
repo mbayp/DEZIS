@@ -18,36 +18,64 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
+import com.dezis.geeks_dezis.data.remote.model.VerificationRequest
 import com.dezis.geeks_dezis.databinding.FragmentCodeVerificationBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,CodeVerificationViewModel>(R.layout.fragment_code_verification) {
     override val binding: FragmentCodeVerificationBinding by viewBinding(FragmentCodeVerificationBinding::bind)
     override val viewModel: CodeVerificationViewModel by viewModels()
+    //private val constOtp = "1488"
+    //private val constantEmail = "alohadance@gmail.com"
+    private val args: CodeVerificationFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var userApiService: UserApiService
 
     override fun constructorListeners() {
         binding.etCode.addTextChangedListener { validateFields() }
 
-        binding.btnContinue.setOnClickListener{
+        binding.btnContinue.setOnClickListener {
             val enteredCode = binding.etCode.text.toString()
-            val correctCode = "1234"
-
-            if (validateInputs()&&enteredCode == correctCode){
-                findNavController().navigate(R.id.homeFragment)
-
-            }else {
-                binding.tilCode.error = "Код введен неверно"
-                findNavController().navigate(R.id.homeFragment)
-
+            if (validateInputs()) {
+                verifyCode(args.email, enteredCode)
             }
         }
         setupClickableText()
-
     }
+
+    private fun verifyCode(email: String, code: String) {
+        val verificationRequest = VerificationRequest(email = email, otp = code)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = userApiService.verifyCode(verificationRequest)
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(requireContext(), "Код подтвержден", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
+                    } else {
+                        binding.tilCode.error = "Код введен неверно"
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
     private fun validateFields() {
         val isAllFieldsValid =
             binding.etCode.text.toString().isNotEmpty()

@@ -11,8 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    application: Application,
-    private val context: Context
+    application: Application
 ) : BaseViewModel() {
 
     private val _phoneNumber = MutableStateFlow<UiState<String>>(UiState.Idle())

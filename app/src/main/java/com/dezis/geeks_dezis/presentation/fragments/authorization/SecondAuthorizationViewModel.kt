@@ -21,7 +21,7 @@ class SecondAuthorizationViewModel @Inject constructor(private val userRepositor
 
     private val _registrationResult = MutableLiveData<UiState<RegistrationResponse>>()
     val registrationResult: LiveData<UiState<RegistrationResponse>> get() = _registrationResult
-/*
+
     fun refreshTokens(refreshToken: String) {
         viewModelScope.launch {
             _refreshTokenResult.value = UiState.Loading()
@@ -32,9 +32,8 @@ class SecondAuthorizationViewModel @Inject constructor(private val userRepositor
                 UiState.Error("Ошибка обновления токена")
             }
         }
-    }*/
-
-  /*  fun registerUser(userRegisterDto: UserRegisterDto, accessToken: String) {
+    }
+   fun registerUser(userRegisterDto: UserRegisterDto, accessToken: String) {
         viewModelScope.launch {
             _registrationResult.value = UiState.Loading()
             val response = userRepository.registerUser(userRegisterDto)
@@ -44,6 +43,6 @@ class SecondAuthorizationViewModel @Inject constructor(private val userRepositor
                 UiState.Error("Ошибка регистрации: ${response.errorBody()?.string()}")
             }
         }
-    }*/
+    }
 }
 

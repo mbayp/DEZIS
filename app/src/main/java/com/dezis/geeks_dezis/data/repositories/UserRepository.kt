@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val apiService: UserApiService) {
 
-    /*suspend fun refreshTokens(refreshToken: String): TokenResponse? {
+    suspend fun refreshTokens(refreshToken: String): TokenResponse? {
         val request = RefreshTokenRequest(refreshToken)
         val response = apiService.refreshToken(request)
         return if (response.isSuccessful) response.body() else null
@@ -18,7 +18,7 @@ class UserRepository @Inject constructor(private val apiService: UserApiService)
 
     suspend fun registerUser(userRegistrationRequest: UserRegisterDto): Response<RegistrationResponse> {
         return apiService.registerUser(userRegistrationRequest)
-    }*/
+    }
 }
 
 
