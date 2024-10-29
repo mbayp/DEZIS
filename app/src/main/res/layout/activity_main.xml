@@ -16,6 +16,8 @@
         android:elevation="1dp"
         android:text="Нет соединения с интернетом,Проверьте подключение к интернету"
         android:gravity="center"
+        android:backgroundTint="@color/button_color"
+        android:visibility="gone"
         android:paddingHorizontal="48dp"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"

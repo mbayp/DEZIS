@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="106dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/gray"
     android:padding="8dp">
 
@@ -30,9 +31,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="User Name"
+                tools:text="User Name"
                 android:textColor="@color/white"
-                android:textSize="26dp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -47,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:text="Last message"
+                    tools:text="Last message"
                     android:textColor="@color/gray3"
                     android:textSize="21sp" />
 
@@ -68,7 +69,7 @@
         android:layout_gravity="end"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="25dp"
-        android:text="3:14"
+        tools:text="3:14"
         android:textColor="@color/gray3"
         android:textSize="16sp" />
 </FrameLayout>
