@@ -11,17 +11,17 @@ import com.dezis.geeks_dezis.databinding.FragmentLoginOrSigninBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LogInOrSignInFragment:Fragment() {
-    private val binding by lazy {
-        FragmentLoginOrSigninBinding.inflate(layoutInflater)
-    }
+class LogInOrSignInFragment : Fragment() {
+    private var _binding: FragmentLoginOrSigninBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
-        return  binding.root
+    ): View {
+        _binding = FragmentLoginOrSigninBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,4 +34,8 @@ class LogInOrSignInFragment:Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
