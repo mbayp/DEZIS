@@ -25,7 +25,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 ) {
 
     override val binding: FragmentCalendarBinding by viewBinding(FragmentCalendarBinding::bind)
-
     override val viewModel: CalendarViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +34,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         setupOrderButton()
 
         viewModel.bookingMessage.observe(viewLifecycleOwner, Observer { message ->
-            if (message != null) showToast(message)
+            message?.let { showToast(it) }
         })
     }
 
@@ -51,14 +50,14 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
     }
 
     private fun setupServiceSelection() {
-        binding.radioDisinfection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.updateSelectedService(binding.radioDisinfection.text.toString(), isChecked)
+        binding.checkboxDisinfection.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.toggleServiceSelection(binding.checkboxDisinfection.text.toString(), isChecked)
         }
-        binding.radioDeratization.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.updateSelectedService(binding.radioDeratization.text.toString(), isChecked)
+        binding.checkboxDeratization.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.toggleServiceSelection(binding.checkboxDeratization.text.toString(), isChecked)
         }
-        binding.radioDisinsection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.updateSelectedService(binding.radioDisinsection.text.toString(), isChecked)
+        binding.checkboxDisinsection.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.toggleServiceSelection(binding.checkboxDisinsection.text.toString(), isChecked)
         }
     }
 
@@ -74,10 +73,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
             .setCancelable(false)
             .create()
 
-        val calendar = Calendar.getInstance()
-        timePicker.hour = calendar.get(Calendar.HOUR_OF_DAY)
-        timePicker.minute = calendar.get(Calendar.MINUTE)
-
         doneButton.setOnClickListener {
             viewModel.selectedTime.value =
                 String.format("%02d:%02d", timePicker.hour, timePicker.minute)
@@ -85,10 +80,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         }
 
         resetButton.setOnClickListener {
-            timePicker.hour = calendar.get(Calendar.HOUR_OF_DAY)
-            timePicker.minute = calendar.get(Calendar.MINUTE)
             timePickerDialog.dismiss()
-
         }
 
         timePickerDialog.show()
@@ -96,14 +88,12 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupOrderButton() {
         binding.orderServiceButton.setOnClickListener {
-            viewModel.bookService(userId = 7)  // Укажите реальный ID пользователя
+            viewModel.bookService(userId = 6)
         }
     }
 
     private fun showToast(message: String) {
-        val layoutInflater = layoutInflater
         val customToastView = layoutInflater.inflate(R.layout.custom_toast, null)
-
         val toastMessageTextView = customToastView.findViewById<TextView>(R.id.toast_message)
         toastMessageTextView.text = message
 

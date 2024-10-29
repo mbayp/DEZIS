@@ -19,51 +19,54 @@ class CalendarViewModel @Inject constructor(
     private val dezisApiService: DezisApiService
 ) : BaseViewModel() {
 
-    private val selectedService = MutableLiveData<String?>()
+    val selectedServices = MutableLiveData<MutableList<String>>(mutableListOf())
     val selectedDate = MutableLiveData<String?>()
     val selectedTime = MutableLiveData<String?>()
     val bookingMessage = MutableLiveData<String?>()
 
-    fun updateSelectedService(serviceName: String, isChecked: Boolean) {
+    fun toggleServiceSelection(serviceName: String, isChecked: Boolean) {
+        val services = selectedServices.value ?: mutableListOf()
         if (isChecked) {
-            selectedService.value = serviceName
-        } else if (selectedService.value == serviceName) {
-            selectedService.value = null
+            services.add(serviceName)
+        } else {
+            services.remove(serviceName)
         }
+        selectedServices.value = services
     }
 
     fun bookService(userId: Int) {
-        val service = selectedService.value
+        val services = selectedServices.value
         val date = selectedDate.value
         val time = selectedTime.value
 
-        if (service != null && date != null && time != null) {
+        if (!services.isNullOrEmpty() && date != null && time != null) {
             val bookingRequest = BookingRequest(
                 user = userId,
-                service = service,
+                service = services.joinToString(", "),
                 date = date,
                 time = time
             )
 
             viewModelScope.launch(Dispatchers.IO) {
-                dezisApiService.bookService(bookingRequest)
-                    .enqueue(object : Callback<BookingResponse> {
-                        override fun onResponse(
-                            call: Call<BookingResponse>,
-                            response: Response<BookingResponse>
-                        ) {
-                            if (response.isSuccessful) {
-                                bookingMessage.postValue("Бронирование успешно: ${response.body()}")
-                            } else {
-                                bookingMessage.postValue("Ошибка бронирования: ${response.errorBody()}")
-                            }
+                dezisApiService.bookService(bookingRequest).enqueue(object : Callback<BookingResponse> {
+                    override fun onResponse(
+                        call: Call<BookingResponse>,
+                        response: Response<BookingResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            bookingMessage.postValue("Бронирование успешно")
+                        } else {
+                            bookingMessage.postValue("Ошибка бронирования: ${response.message()}")
                         }
+                    }
 
-                        override fun onFailure(call: Call<BookingResponse>, t: Throwable) {
-                            bookingMessage.postValue("Ошибка соединения: ${t.message}")
-                        }
-                    })
+                    override fun onFailure(call: Call<BookingResponse>, t: Throwable) {
+                        bookingMessage.postValue("Ошибка соединения: ${t.message}")
+                    }
+                })
             }
+        } else {
+            bookingMessage.postValue("Пожалуйста, выберите услугу, дату и время")
         }
     }
 }
