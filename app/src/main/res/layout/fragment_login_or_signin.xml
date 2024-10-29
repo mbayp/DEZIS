@@ -13,6 +13,7 @@
         style="@style/CenteredImageWithMargin"
         android:src="@drawable/ic_dezis_and_text" />
 
+
     <Button
         style="@style/CustomMaterialButtonStyle"
         android:id="@+id/btn_register"
