@@ -13,22 +13,15 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/CenterWhiteText"
             android:id="@+id/tv_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="158dp"
             android:text="@string/signin_txt"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:fontFamily="@font/roboto_reg" />
+            android:textSize="24sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_log_in"
             style="@style/CustomTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="30dp"
             android:hint="@string/login_txt">
 
@@ -42,9 +35,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
             style="@style/CustomTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             android:hint="@string/password_txt"
             app:passwordToggleEnabled="true"
@@ -59,40 +49,30 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            style="@style/CenterWhiteText"
             android:id="@+id/btn_forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_gravity="start"
             android:layout_marginTop="10dp"
             android:text="@string/forgot_password_txt"
-            android:textColor="@color/white"
-            app:fontFamily="@font/roboto_reg" />
+            android:layout_marginHorizontal="16dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            style="@style/CustomMaterialButtonStyle"
             android:layout_marginTop="38dp"
-            android:padding="18dp"
             android:text="@string/continue_txt"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:backgroundTint="@color/grey"
-            app:cornerRadius="12dp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <TextView
+        style="@style/CenterWhiteText"
         android:id="@+id/terms_of_sale"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="18dp"
         android:layout_marginBottom="96dp"
         android:gravity="center"
         android:linksClickable="true"
         android:text="@string/policy_txt"
-        android:textColor="@color/white"
         android:textSize="12sp" />
 
 

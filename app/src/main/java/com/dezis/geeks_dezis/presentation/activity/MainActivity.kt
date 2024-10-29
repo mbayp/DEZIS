@@ -56,11 +56,14 @@ class MainActivity : AppCompatActivity() {
         viewModel.networkLiveData.observe(this) { isConnected ->
             if (isConnected) {
                 binding.networkWarning.visibility = View.GONE
+                window.statusBarColor = ContextCompat.getColor(this, R.color.dark_blue)
             } else {
                 binding.networkWarning.visibility = View.VISIBLE
+                window.statusBarColor = ContextCompat.getColor(this, R.color.grey_dark)
+
             }
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.black));
         }
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.black)
     }
 
     private fun initBottom() {

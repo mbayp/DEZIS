@@ -7,61 +7,32 @@
     android:orientation="vertical">
 
     <ImageView
+        style="@style/CenteredImageWithMargin"
         android:id="@+id/ic_dezis"
-        android:layout_marginTop="234dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:src="@drawable/ic_dezis_and_text" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_user"
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:fontFamily="@font/roboto_reg"
-        android:padding="16dp"
-        android:text="@string/user_txt"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:backgroundTint="@color/grey_dark"
-        app:cornerRadius="12dp" />
+        style="@style/CustomMaterialButtonStyle"
+        android:text="@string/user_txt" />
+
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_reg"
-        android:text="@string/for_service"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        style="@style/CenterWhiteText"
+        android:text="@string/for_service" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_admin"
+        style="@style/CustomMaterialButtonStyle"
         android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:fontFamily="@font/roboto_reg"
-        android:padding="16dp"
-        app:strokeColor="@color/grey_dark"
-        app:strokeWidth="1dp"
         android:text="@string/admin_btn"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
         app:backgroundTint="@color/dark_blue"
-        app:cornerRadius="12dp" />
+        app:strokeColor="@color/grey_dark"
+        app:strokeWidth="1dp" />
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_reg"
-        android:text="@string/txt_sistem_sing"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        style="@style/CenterWhiteText"
+        android:text="@string/txt_sistem_sing" />
 
 </LinearLayout>
