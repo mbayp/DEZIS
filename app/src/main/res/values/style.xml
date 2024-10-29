@@ -47,9 +47,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center|top|start</item>
-        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginStart">20dp</item>
         <item name="android:layout_marginTop">60dp</item>
-        <item name="android:layout_marginEnd">0dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
     </style>
@@ -68,5 +68,60 @@
         <item name="android:drawableEnd">@drawable/ic_line_arrow</item>
         <item name="android:gravity">start</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Стиль для номерного TextView -->
+    <style name="NumberTextViewStyle">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginEnd">14dp</item>
+        <item name="android:background">@drawable/bg_circle_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <!-- Стиль для информационного TextView -->
+    <style name="InformationTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/roboto_thin</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Стиль для MaterialButton -->
+    <style name="CustomMaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">100dp</item>
+        <item name="android:fontFamily">@font/roboto_reg</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/grey_dark</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <!-- styles.xml -->
+    <style name="CenteredImageWithMargin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">234dp</item>
+    </style>
+
+    <style name="CenterWhiteText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:fontFamily">@font/roboto_reg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

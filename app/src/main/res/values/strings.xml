@@ -56,7 +56,7 @@
     <string name="phone_number">Номер телефона</string>
     <string name="order_history">История заказов</string>
     <string name="first_treatment">Первая обработка:</string>
-    <string name="services">Услуги:</string>
+    <string name="services">Услуги</string>
     <string name="all_treatments">Все обработки:</string>
     <string name="date">Дата:</string>
     <string name="alexey_ivanovich" translatable="false">Alexey Ivanovich</string>

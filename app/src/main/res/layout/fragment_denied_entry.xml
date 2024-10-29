@@ -7,37 +7,26 @@
     android:orientation="vertical">
 
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/ic_waiting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/CenteredImageWithMargin"
         android:layout_marginTop="110dp"
         android:src="@drawable/ic_denied" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/txt_denied"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/CenterWhiteText"
         android:layout_marginHorizontal="74dp"
         android:gravity="center"
         android:text="@string/denied_txt"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:fontFamily="@font/roboto_reg" />
+        android:textSize="16sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        style="@style/CustomMaterialButtonStyle"
         android:layout_marginTop="10dp"
-        android:backgroundTint="@color/grey_dark"
-        android:padding="16dp"
         android:text="@string/return_to_entrance_txt"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:cornerRadius="12dp" />
+         />
 
 
 </LinearLayout>

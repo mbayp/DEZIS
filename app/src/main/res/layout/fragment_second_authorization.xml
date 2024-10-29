@@ -6,31 +6,22 @@
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.authorization.SecondAuthorizationFragment">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
+            style="@style/CenterWhiteText"
             android:id="@+id/tv_registration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="102dp"
             android:layout_marginBottom="16dp"
             android:text="@string/reg_txt"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:fontFamily="@font/roboto_reg" />
+            android:textSize="24sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_address"
             style="@style/CustomTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:hint="@string/address_txt"
             app:cursorColor="@color/dark_grey">
@@ -45,9 +36,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_num_flat"
             style="@style/CustomTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="10dp"
             android:hint="@string/num_flat_txt">
 
@@ -59,32 +47,23 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            style="@style/CustomMaterialButtonStyle"
             android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="26dp"
-            android:fontFamily="@font/roboto_reg"
-            android:padding="16dp"
             android:text="@string/continue_txt"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:backgroundTint="@color/grey"
-            app:cornerRadius="8dp" />
+            />
 
     </LinearLayout>
 
     <TextView
+        style="@style/CenterWhiteText"
         android:id="@+id/terms_of_sale"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="18dp"
         android:layout_marginBottom="96dp"
         android:gravity="center"
         android:linksClickable="true"
         android:text="@string/policy_txt"
-        android:textColor="@color/white"
         android:textSize="12sp" />
 
 
