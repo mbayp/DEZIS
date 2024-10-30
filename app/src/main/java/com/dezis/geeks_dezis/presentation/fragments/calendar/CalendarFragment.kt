@@ -30,17 +30,30 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupCalendar()
         setupServiceSelection()
         setupOrderButton()
+        setupGoToHomeButton()
+
 
         binding.ivArrowBack.setOnClickListener {
             findNavController().navigate(R.id.action_calendarFragment_to_serviceScreenFragment)
         }
+
         viewModel.bookingMessage.observe(viewLifecycleOwner, Observer { message ->
             message?.let { showToast(it) }
         })
     }
+
+    private fun setupGoToHomeButton() {
+        val successLayout = binding.root.findViewById<View>(R.id.success_layout)
+        val btnGoToHome = successLayout?.findViewById<Button>(R.id.btn_go_to_home)
+        btnGoToHome?.setOnClickListener {
+            findNavController().navigate(R.id.action_calendarFragment_to_homeFragment)
+        }
+    }
+
 
     private fun setupCalendar() {
         val calendar = Calendar.getInstance()
