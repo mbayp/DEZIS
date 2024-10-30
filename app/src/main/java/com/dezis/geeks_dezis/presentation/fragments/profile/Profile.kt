@@ -8,14 +8,17 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.core.common.UiState
 import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class Profile @Inject constructor() :
     BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
@@ -42,7 +45,7 @@ class Profile @Inject constructor() :
         setupListeners()
         observeViewModel()
         loadSavedData()
-        viewModel.fetchUserData(userId = 1)
+        viewModel.fetchUserData(userId = 6)
     }
 
     private fun setupListeners() {
@@ -113,6 +116,29 @@ class Profile @Inject constructor() :
             },
             error = { showToast("Error loading phone: $it") }
         )
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.userData.collect { state ->
+                when (state) {
+                    is UiState.Loading -> {
+                    }
+
+                    is UiState.Success -> {
+                        state.data.let { userResponse ->
+                            binding.tvFullName.text = userResponse.username
+                            binding.tvEmail.text = userResponse.email
+                        }
+                    }
+
+                    is UiState.Error -> {
+                        showToast("Error loading user data: ${state.mes}")
+                    }
+
+                    is UiState.Idle -> {
+                    }
+                }
+            }
+        }
     }
 
     private fun showToast(message: String) {
