@@ -4,11 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
+    android:gravity="center"
     android:orientation="vertical">
 
     <ImageView
-        style="@style/CenteredImageWithMargin"
         android:id="@+id/ic_dezis"
+        style="@style/CenteredImageWithMargin"
+        android:layout_gravity="center"
+        android:layout_marginTop="0dp"
         android:src="@drawable/ic_dezis_and_text" />
 
 
@@ -26,6 +29,7 @@
         android:id="@+id/btn_admin"
         style="@style/CustomMaterialButtonStyle"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
         android:text="@string/admin_btn"
         app:backgroundTint="@color/dark_blue"
         app:strokeColor="@color/grey_dark"
@@ -33,6 +37,8 @@
 
     <TextView
         style="@style/CenterWhiteText"
+        android:layout_marginBottom="0dp"
         android:text="@string/txt_sistem_sing" />
-
 </LinearLayout>
+
+

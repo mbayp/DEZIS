@@ -37,7 +37,7 @@
             android:id="@+id/til_email"
             style="@style/CustomTextInputLayout"
             android:layout_marginTop="10dp"
-            android:hint="@string/email_txt">
+            android:hint="@string/e_mail">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
