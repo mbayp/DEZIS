@@ -104,6 +104,7 @@
         <androidx.cardview.widget.CardView
             style="@style/ServiceCardView"
             app:cardCornerRadius="12dp"
+            android:layout_height="260dp"
             >
 
             <TextView

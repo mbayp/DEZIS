@@ -2,6 +2,7 @@ package com.dezis.geeks_dezis.presentation.activity
 
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableStringBuilder
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,9 @@ class MainActivity : AppCompatActivity() {
         initBottom()
         initAdminBottom()
 
+        val warningText = SpannableStringBuilder("Нет соединения с интернетом\n\n")
+        warningText.append("Проверьте подключение к интернету")
+        binding.networkWarning.text = warningText
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.decorView.systemUiVisibility = (
