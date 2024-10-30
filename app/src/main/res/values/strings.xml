@@ -2,6 +2,7 @@
     <string name="app_name">GEEKS_DEZIS</string>
     <string name="type_a_massage">Type a massage</string>
     <string name="reg_txt">Регистрация</string>
+    <string name="email_txt">example@gmail.com</string>
     <string name="name_txt">ФИО</string>
     <string name="num_txt">Номер телефона</string>
     <string name="num_ord_txt">Номер заказа</string>
@@ -132,4 +133,5 @@
     <string name="txt_sistem_sing">Для управления системой</string>
     <string name="todo">TODO</string>
     <string name="off_order">Заказ завершен?</string>
+    <string name="Successfully_saved_changes">Успешно сохранены \nизменения</string>
 </resources>
