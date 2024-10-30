@@ -1,5 +1,6 @@
 package com.dezis.geeks_dezis.presentation.fragments.admin_order_history
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,18 +40,46 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         private val completeOrderButton: Button = itemView.findViewById(R.id.completeOrderButton)
 
         fun bind(order: Booking) {
-            // Используем реальные данные из объекта Booking
-            clientName.text = "Client: ${order.user}" // Обновите в зависимости от структуры Booking (можно использовать имя пользователя)
+            clientName.text = "Client: ${order.user}"
             serviceType.text = order.service
-            address.text = "Address: ${order.id}" // Если доступен адрес, замените это значение на реальное поле
+            address.text = "Address: ${order.id}"
             date.text = "${order.date}, ${order.time}"
 
             // Если заказ завершен, скрываем кнопку, иначе показываем
-            if (order.time.isNotEmpty()) {
-                completeOrderButton.visibility = View.VISIBLE
-            } else {
-                completeOrderButton.visibility = View.GONE
+            completeOrderButton.visibility = if (order.time.isNotEmpty()) View.VISIBLE else View.GONE
+
+            completeOrderButton.setOnClickListener {
+                showCompleteOrderDialog(order)
             }
+        }
+
+        private fun showCompleteOrderDialog(order: Booking) {
+            val dialogView = LayoutInflater.from(itemView.context).inflate(R.layout.custom_dialog_layout, null)
+            val dialogBuilder = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog) // Убедитесь, что `CustomAlertDialog` соответствует вашему стилю.
+
+            val dialog = dialogBuilder.setView(dialogView).create()
+
+            val yesButton = dialogView.findViewById<TextView>(R.id.dialog_yes_button)
+            val noButton = dialogView.findViewById<TextView>(R.id.dialog_no_button)
+
+            yesButton.setOnClickListener {
+                // Логика завершения заказа
+                completeOrder(order)
+                dialog.dismiss()
+            }
+
+            noButton.setOnClickListener {
+                // Закрытие диалога без действий
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
+
+        private fun completeOrder(order: Booking) {
+            // Здесь можно реализовать завершение заказа, например, обновление базы данных или UI
+            // Например, можно изменить статус заказа и скрыть кнопку завершения
+            completeOrderButton.visibility = View.GONE
         }
     }
 }
