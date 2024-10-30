@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_calendarFragment_to_chatFragment2"
             app:destination="@id/chatFragment2" />
+        <action
+            android:id="@+id/action_calendarFragment_to_serviceScreenFragment"
+            app:destination="@id/serviceScreenFragment" />
     </fragment>
 
     <fragment

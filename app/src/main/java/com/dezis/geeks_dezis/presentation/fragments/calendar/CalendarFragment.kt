@@ -11,6 +11,7 @@ import android.widget.TimePicker
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentCalendarBinding
@@ -33,6 +34,9 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         setupServiceSelection()
         setupOrderButton()
 
+        binding.ivArrowBack.setOnClickListener {
+            findNavController().navigate(R.id.action_calendarFragment_to_serviceScreenFragment)
+        }
         viewModel.bookingMessage.observe(viewLifecycleOwner, Observer { message ->
             message?.let { showToast(it) }
         })
