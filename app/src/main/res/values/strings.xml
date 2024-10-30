@@ -131,4 +131,5 @@
     <string name="admin_btn">Администратор</string>
     <string name="for_service">Для оформления заказов</string>
     <string name="txt_sistem_sing">Для управления системой</string>
+    <string name="Successfully_saved_changes">Успешно сохранены \nизменения</string>
 </resources>

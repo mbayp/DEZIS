@@ -1,17 +1,18 @@
 package com.dezis.geeks_dezis.presentation.fragments.profile
 
-import android.app.Application
-import android.content.Context
+import androidx.lifecycle.viewModelScope
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import com.dezis.geeks_dezis.core.common.UiState
+import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    application: Application
+    private val apiService: DezisApiService
 ) : BaseViewModel() {
 
     private val _phoneNumber = MutableStateFlow<UiState<String>>(UiState.Idle())
@@ -28,5 +29,20 @@ class ProfileViewModel @Inject constructor(
     fun updateAvatar(newAvatarUri: String) {
         _avatar.value = UiState.Loading()
         _avatar.value = UiState.Success(newAvatarUri)
+    }
+
+    private val _userData = MutableStateFlow<UiState<UserResponse>>(UiState.Idle())
+    val userData: StateFlow<UiState<UserResponse>> get() = _userData
+
+    fun fetchUserData(userId: Int) {
+        viewModelScope.launch {
+            _userData.value = UiState.Loading()
+            try {
+                val response = apiService.getUserData(userId)
+                _userData.value = UiState.Success(response)
+            } catch (e: Exception) {
+                _userData.value = UiState.Error(e.message ?: "Unknown error occurred")
+            }
+        }
     }
 }
