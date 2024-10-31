@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/dark_blue"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardThirdFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_hands"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/img_on_board4"
         android:scaleType="centerCrop"
-        />
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
@@ -26,6 +24,33 @@
         android:layout_marginHorizontal="28dp"
         android:textColor="@color/white"
         app:fontFamily="@font/roboto_reg"
+        android:layout_below="@id/img_hands"
         android:layout_marginTop="50dp"/>
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_continue"
+            style="@style/CustomMaterialButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/continue_txt" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_skip"
+            style="@style/CustomMaterialButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/dark_blue"
+            app:strokeColor="@color/grey_dark"
+            app:strokeWidth="1dp"
+            android:text="@string/skip_txt"
+            android:layout_below="@id/btn_continue"
+            android:layout_marginTop="16dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

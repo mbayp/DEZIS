@@ -1,3 +1,4 @@
+/*
 package com.dezis.geeks_dezis.presentation.fragments.onboarding
 
 import android.os.Bundle
@@ -23,13 +24,11 @@ class OnBoardingFragment : Fragment() {
         FragmentOnBoardingBinding.inflate(layoutInflater)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,37 +37,41 @@ class OnBoardingFragment : Fragment() {
             OnBoardSecondFragment(),
             OnBoardThirdFragment(),
             OnBoardFourthFragment(),
-            OnBoardFifthFragment(),
+            OnBoardFifthFragment()
         )
+
         binding.viewPager.adapter =
             OnBoardingAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
+
         binding.btnContinue.setOnClickListener {
             if (binding.viewPager.currentItem < fragmentList.size - 1) {
-                binding.viewPager.currentItem = binding.viewPager.currentItem + 1
+                binding.viewPager.currentItem += 1
             } else {
                 findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
             }
         }
+
         binding.btnSkip.setOnClickListener {
             findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
         }
+
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (position == fragmentList.size - 1) {
                     binding.btnSkip.visibility = View.GONE
-                    val params = binding.btnContinue.layoutParams as ConstraintLayout.LayoutParams
-                    params.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
-                    params.bottomToTop = ConstraintLayout.LayoutParams.UNSET
+                    val params = binding.btnContinue.layoutParams as ViewGroup.LayoutParams
+                    params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
                     binding.btnContinue.layoutParams = params
                 } else {
                     binding.btnSkip.visibility = View.VISIBLE
-                    val params = binding.btnContinue.layoutParams as ConstraintLayout.LayoutParams
-                    params.bottomToTop = binding.btnSkip.id
-                    params.bottomToBottom = ConstraintLayout.LayoutParams.UNSET
+                    val params = binding.btnContinue.layoutParams as ViewGroup.LayoutParams
+                    params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
                     binding.btnContinue.layoutParams = params
                 }
             }
         })
+
     }
 }
+*/

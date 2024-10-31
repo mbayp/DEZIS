@@ -18,7 +18,7 @@ import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentFirstAuthorizationBinding
 import by.kirich1409.viewbindingdelegate.viewBinding
 
-class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
+    class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
     override val binding: FragmentFirstAuthorizationBinding by viewBinding(FragmentFirstAuthorizationBinding::bind)
     override val viewModel: FirstAuthorizationViewModel by viewModels()
 

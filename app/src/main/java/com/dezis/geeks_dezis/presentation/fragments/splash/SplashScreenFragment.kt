@@ -37,7 +37,7 @@ class SplashScreenFragment : Fragment() {
         binding.splashIcon.startAnimation(animation)
         lifecycleScope.launch {
             delay(3000)
-            findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardingFragment)
+            findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardFirstFragment)
         }
     }
 

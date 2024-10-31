@@ -74,7 +74,12 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.splashScreenFragment,
-                R.id.onBoardingFragment,
+                //R.id.onBoardingFragment ,
+                R.id.onBoardFirstFragment,
+                R.id.onBoardSecondFragment,
+                R.id.onBoardThirdFragment,
+                R.id.onBoardFourthFragment,
+                R.id.onBoardFifthFragment,
                 R.id.authorizationFragment,
                 R.id.secondAuthorizationFragment,
                 R.id.codeVerificationFragment,
