@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/img_on_board4"
         android:scaleType="centerCrop"
+        android:layout_marginTop="60dp"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="16dp"/>
 
