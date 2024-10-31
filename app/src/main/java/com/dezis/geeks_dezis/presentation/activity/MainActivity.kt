@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 window.statusBarColor = ContextCompat.getColor(this, R.color.grey_dark)
 
             }
-            getWindow().setNavigationBarColor(getResources().getColor(R.color.black));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.dark_blue));
         }
     }
 
