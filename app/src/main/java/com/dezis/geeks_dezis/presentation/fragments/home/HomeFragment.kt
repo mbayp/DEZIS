@@ -23,14 +23,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     }
 
     private fun navigation() = with(binding) {
-        btnDetailsDeratization.setOnClickListener{
-            findNavController().navigate(R.id.serviceScreenFragment)
-        }
-        btnDetailsDisinfection.setOnClickListener{
-            findNavController().navigate(R.id.serviceScreenFragment)
-        }
-        btnDetailsDisinsection.setOnClickListener{
-            findNavController().navigate(R.id.serviceScreenFragment)
+        listOf(btnDetailsDeratization, btnDetailsDisinfection, btnDetailsDisinsection).forEach {
+            it.setOnClickListener {
+                findNavController().navigate(
+                    R.id.serviceScreenFragment
+                )
+            }
         }
     }
 
