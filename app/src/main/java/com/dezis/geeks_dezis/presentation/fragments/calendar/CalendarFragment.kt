@@ -109,7 +109,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupOrderButton() {
         binding.orderServiceButton.setOnClickListener {
-            viewModel.bookService(userId = 6)
+            viewModel.bookService(userId = 1)
         }
     }
 
@@ -129,15 +129,13 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         dialog.setCancelable(false)
 
         val goToHomeButton = customToastView.findViewById<Button>(R.id.btn_go_to_home)
-        if (goToHomeButton != null) {
-            goToHomeButton.setOnClickListener {
-                findNavController().navigate(R.id.action_calendarFragment_to_homeFragment)
-                dialog.dismiss()
-            }
+        goToHomeButton?.setOnClickListener {
+            findNavController().navigate(R.id.action_calendarFragment_to_homeFragment)
+            dialog.dismiss()
         }
 
         val okButton = customToastView.findViewById<Button>(R.id.btn_ok)
-        okButton.setOnClickListener {
+        okButton?.setOnClickListener {
             dialog.dismiss()
         }
 

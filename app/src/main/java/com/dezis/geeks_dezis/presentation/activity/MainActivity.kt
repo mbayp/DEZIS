@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.chatFragment -> {
-                    navController.navigate(R.id.chatFragment)
+                    navController.navigate(R.id.chatFragment2)
                     true
                 }
                 R.id.newOrderFragment -> {
