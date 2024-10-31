@@ -1,10 +1,14 @@
 package com.dezis.geeks_dezis.presentation.fragments.calendar
 
 import android.app.AlertDialog
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.TimePicker
@@ -36,13 +40,14 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         setupOrderButton()
         setupGoToHomeButton()
 
-
         binding.ivArrowBack.setOnClickListener {
             findNavController().navigate(R.id.action_calendarFragment_to_serviceScreenFragment)
         }
 
         viewModel.bookingMessage.observe(viewLifecycleOwner, Observer { message ->
-            message?.let { showToast(it) }
+            message?.let {
+                showToastMessage(it)
+            }
         })
     }
 
@@ -53,7 +58,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
             findNavController().navigate(R.id.action_calendarFragment_to_homeFragment)
         }
     }
-
 
     private fun setupCalendar() {
         val calendar = Calendar.getInstance()
@@ -109,15 +113,42 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         }
     }
 
-    private fun showToast(message: String) {
-        val customToastView = layoutInflater.inflate(R.layout.custom_toast, null)
+    private fun showToastMessage(message: String) {
+        val customToastView = if (message.startsWith("Ошибка")) {
+            layoutInflater.inflate(R.layout.custom_toast_error, null)
+        } else {
+            layoutInflater.inflate(R.layout.custom_toast, null)
+        }
+
         val toastMessageTextView = customToastView.findViewById<TextView>(R.id.toast_message)
         toastMessageTextView.text = message
 
-        val toast = Toast(requireContext())
-        toast.duration = Toast.LENGTH_LONG
-        toast.view = customToastView
-        toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.show()
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(customToastView)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+
+        val goToHomeButton = customToastView.findViewById<Button>(R.id.btn_go_to_home)
+        if (goToHomeButton != null) {
+            goToHomeButton.setOnClickListener {
+                findNavController().navigate(R.id.action_calendarFragment_to_homeFragment)
+                dialog.dismiss()
+            }
+        }
+
+        val okButton = customToastView.findViewById<Button>(R.id.btn_ok)
+        okButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        val params = dialog.window?.attributes
+        params?.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        params?.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        dialog.window?.attributes = params
+
+        dialog.show()
     }
+
+
+
 }

@@ -66,7 +66,7 @@ class CalendarViewModel @Inject constructor(
                 })
             }
         } else {
-            bookingMessage.postValue("Пожалуйста, выберите услугу, дату и время")
+            bookingMessage.postValue("Ошибка: Пожалуйста, выберите услугу, дату и время")
         }
     }
 }

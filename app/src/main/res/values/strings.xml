@@ -134,4 +134,6 @@
     <string name="todo">TODO</string>
     <string name="off_order">Заказ завершен?</string>
     <string name="Successfully_saved_changes">Успешно сохранены \nизменения</string>
+    <string name="error">Ошибка</string>
+    <string name="ok">Ok</string>
 </resources>

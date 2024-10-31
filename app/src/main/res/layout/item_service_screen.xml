@@ -64,9 +64,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:textAllCaps="false"
             android:background="@drawable/rounded_button"
             android:text="@string/order"
-            android:textAllCaps="false"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

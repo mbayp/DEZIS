@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
-    private var ordersList = listOf<Booking>() // Используем список Booking
+    private var ordersList = listOf<Booking>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
@@ -27,12 +28,12 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
 
     override fun getItemCount(): Int = ordersList.size
 
-    fun setOrders(orders: List<Booking>) { // Обновляем список заказов
+    fun setOrders(orders: List<Booking>) {
         ordersList = orders
         notifyDataSetChanged()
     }
 
-    class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val clientName: TextView = itemView.findViewById(R.id.clientName)
         private val serviceType: TextView = itemView.findViewById(R.id.serviceType)
         private val address: TextView = itemView.findViewById(R.id.address)
@@ -45,41 +46,47 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
             address.text = "Address: ${order.id}"
             date.text = "${order.date}, ${order.time}"
 
-            // Если заказ завершен, скрываем кнопку, иначе показываем
+            // Показать кнопку только для незавершенных заказов
             completeOrderButton.visibility = if (order.time.isNotEmpty()) View.VISIBLE else View.GONE
 
             completeOrderButton.setOnClickListener {
-                showCompleteOrderDialog(order)
+                showConfirmationDialog(order)
             }
         }
 
-        private fun showCompleteOrderDialog(order: Booking) {
+        private fun showConfirmationDialog(order: Booking) {
             val dialogView = LayoutInflater.from(itemView.context).inflate(R.layout.custom_dialog_layout, null)
-            val dialogBuilder = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog) // Убедитесь, что `CustomAlertDialog` соответствует вашему стилю.
-
+            val dialogBuilder = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
             val dialog = dialogBuilder.setView(dialogView).create()
 
             val yesButton = dialogView.findViewById<TextView>(R.id.dialog_yes_button)
             val noButton = dialogView.findViewById<TextView>(R.id.dialog_no_button)
 
             yesButton.setOnClickListener {
-                // Логика завершения заказа
-                completeOrder(order)
                 dialog.dismiss()
+                showOrderCompletedDialog() // Открываем второй диалог после нажатия "Да"
             }
 
             noButton.setOnClickListener {
-                // Закрытие диалога без действий
                 dialog.dismiss()
             }
 
             dialog.show()
         }
 
-        private fun completeOrder(order: Booking) {
-            // Здесь можно реализовать завершение заказа, например, обновление базы данных или UI
-            // Например, можно изменить статус заказа и скрыть кнопку завершения
-            completeOrderButton.visibility = View.GONE
+        private fun showOrderCompletedDialog() {
+            val completedDialogView = LayoutInflater.from(itemView.context).inflate(R.layout.order_completed_dialog, null)
+            val completedDialogBuilder = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
+            val completedDialog = completedDialogBuilder.setView(completedDialogView).create()
+
+            val closeButton = completedDialogView.findViewById<ImageView>(R.id.closeButton)
+            closeButton.setOnClickListener {
+                completedDialog.dismiss()
+                // Скрываем кнопку "Завершить" после закрытия второго диалога
+                completeOrderButton.visibility = View.GONE
+            }
+
+            completedDialog.show()
         }
     }
 }

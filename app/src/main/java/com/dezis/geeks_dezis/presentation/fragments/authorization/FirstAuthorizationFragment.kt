@@ -40,8 +40,9 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 findNavController().navigate(action)
             }
         }
-       // setupClickableText()
+        // setupClickableText()
     }
+
     private fun validateFields() {
         val isAllFieldsValid = binding.etName.text.toString().isNotEmpty() &&
                 binding.etPassword.text.toString().isNotEmpty() &&
@@ -65,6 +66,9 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
         if (binding.etEmail.text.toString().isEmpty()) {
             binding.tilEmail.error = " "
             isValid = false
+        } else if (!isEmailValid(binding.etEmail.text.toString())) {
+            binding.tilEmail.error = "Введите корректный адрес электронной почты"
+            isValid = false
         } else {
             binding.tilEmail.error = null
         }
@@ -72,9 +76,27 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
             binding.tilPassword.error = " "
             isValid = false
         } else {
-            binding.tilPassword.error = null
+            val password = binding.etPassword.text.toString()
+            if (!isPasswordValid(password)) {
+                binding.tilPassword.error = "Пароль должен содержать заглавные и строчные буквы, цифры и иметь длину не менее 8 символов"
+                isValid = false
+            } else {
+                binding.tilPassword.error = null
+            }
         }
         return isValid
+    }
+
+    private fun isPasswordValid(password: String): Boolean {
+        val hasUppercase = password.any { it.isUpperCase() }
+        val hasLowercase = password.any { it.isLowerCase() }
+        val hasDigit = password.any { it.isDigit() }
+        val isValidLength = password.length >= 8
+        return hasUppercase && hasLowercase && hasDigit && isValidLength
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     private fun setupClickableText() {
