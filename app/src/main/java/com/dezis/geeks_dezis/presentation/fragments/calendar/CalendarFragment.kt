@@ -36,13 +36,14 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         setupOrderButton()
         setupGoToHomeButton()
 
-
         binding.ivArrowBack.setOnClickListener {
             findNavController().navigate(R.id.action_calendarFragment_to_serviceScreenFragment)
         }
 
         viewModel.bookingMessage.observe(viewLifecycleOwner, Observer { message ->
-            message?.let { showToast(it) }
+            message?.let {
+                showToastMessage(it)
+            }
         })
     }
 
@@ -53,7 +54,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
             findNavController().navigate(R.id.action_calendarFragment_to_homeFragment)
         }
     }
-
 
     private fun setupCalendar() {
         val calendar = Calendar.getInstance()
@@ -109,8 +109,13 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         }
     }
 
-    private fun showToast(message: String) {
-        val customToastView = layoutInflater.inflate(R.layout.custom_toast, null)
+    private fun showToastMessage(message: String) {
+        val customToastView = if (message.startsWith("Ошибка")) {
+            layoutInflater.inflate(R.layout.custom_toast_error, null)
+        } else {
+            layoutInflater.inflate(R.layout.custom_toast, null)
+        }
+
         val toastMessageTextView = customToastView.findViewById<TextView>(R.id.toast_message)
         toastMessageTextView.text = message
 
