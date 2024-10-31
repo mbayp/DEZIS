@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -69,12 +69,8 @@
         android:label="SplashScreenFragment"
         tools:layout="@layout/fragment_splash_screen">
         <action
-            android:id="@+id/action_splashScreenFragment_to_onBoardingFragment"
-            app:destination="@id/onBoardingFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
+            android:id="@+id/action_splashScreenFragment_to_onBoardFirstFragment"
+            app:destination="@id/onBoardFirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/authorizationFragment"
@@ -116,7 +112,7 @@
         </action>
     </fragment>
 
-    <fragment
+<!--    <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
@@ -128,7 +124,7 @@
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
-    </fragment>
+    </fragment>-->
     <fragment
         android:id="@+id/secondAuthorizationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SecondAuthorizationFragment"
@@ -275,4 +271,49 @@
         android:id="@+id/successfulVerificationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
         android:label="SuccessfulVerificationFragment" />
+    <fragment
+        android:id="@+id/onBoardFifthFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFifthFragment"
+        android:label="fragment_on_board_fifth"
+        tools:layout="@layout/fragment_on_board_fifth" >
+        <action
+            android:id="@+id/action_onBoardFifthFragment_to_adminOrUserFragment"
+            app:destination="@id/adminOrUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardFirstFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFirstFragment"
+        android:label="fragment_on_board_first"
+        tools:layout="@layout/fragment_on_board_first" >
+        <action
+            android:id="@+id/action_onBoardFirstFragment_to_onBoardSecondFragment"
+            app:destination="@id/onBoardSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardSecondFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardSecondFragment"
+        android:label="fragment_on_board_second"
+        tools:layout="@layout/fragment_on_board_second" >
+        <action
+            android:id="@+id/action_onBoardSecondFragment_to_onBoardThirdFragment"
+            app:destination="@id/onBoardThirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardThirdFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardThirdFragment"
+        android:label="fragment_on_board_third"
+        tools:layout="@layout/fragment_on_board_third" >
+        <action
+            android:id="@+id/action_onBoardThirdFragment_to_onBoardFourthFragment"
+            app:destination="@id/onBoardFourthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardFourthFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFourthFragment"
+        android:label="fragment_on_board_fourth"
+        tools:layout="@layout/fragment_on_board_fourth" >
+        <action
+            android:id="@+id/action_onBoardFourthFragment_to_onBoardFifthFragment"
+            app:destination="@id/onBoardFifthFragment" />
+    </fragment>
 </navigation>

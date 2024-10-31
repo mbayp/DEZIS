@@ -67,7 +67,6 @@
             android:textAllCaps="false"
             android:background="@drawable/rounded_button"
             android:text="@string/order"
-            android:textAllCaps="false"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
