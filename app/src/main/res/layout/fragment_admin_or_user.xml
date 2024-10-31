@@ -14,12 +14,10 @@
         android:layout_marginTop="0dp"
         android:src="@drawable/ic_dezis_and_text" />
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_user"
         style="@style/CustomMaterialButtonStyle"
         android:text="@string/user_txt" />
-
 
     <TextView
         style="@style/CenterWhiteText"
@@ -40,5 +38,3 @@
         android:layout_marginBottom="0dp"
         android:text="@string/txt_sistem_sing" />
 </LinearLayout>
-
-
