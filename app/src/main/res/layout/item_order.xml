@@ -118,12 +118,9 @@
 
 
     <Button
+        style="@style/CustomMaterialButtonStyle"
         android:id="@+id/completeOrderButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:text="@string/complete_order_button"
-        android:backgroundTint="@color/button_color"
-        android:textColor="@android:color/white"
         android:background="@drawable/rounded_button"
         app:layout_constraintTop_toBottomOf="@id/time"
         app:layout_constraintStart_toStartOf="parent"
