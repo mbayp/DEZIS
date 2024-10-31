@@ -1,10 +1,14 @@
 package com.dezis.geeks_dezis.presentation.fragments.calendar
 
 import android.app.AlertDialog
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.TimePicker
@@ -119,10 +123,32 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         val toastMessageTextView = customToastView.findViewById<TextView>(R.id.toast_message)
         toastMessageTextView.text = message
 
-        val toast = Toast(requireContext())
-        toast.duration = Toast.LENGTH_LONG
-        toast.view = customToastView
-        toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.show()
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(customToastView)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setCancelable(false)
+
+        val goToHomeButton = customToastView.findViewById<Button>(R.id.btn_go_to_home)
+        if (goToHomeButton != null) {
+            goToHomeButton.setOnClickListener {
+                findNavController().navigate(R.id.action_calendarFragment_to_homeFragment)
+                dialog.dismiss()
+            }
+        }
+
+        val okButton = customToastView.findViewById<Button>(R.id.btn_ok)
+        okButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        val params = dialog.window?.attributes
+        params?.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        params?.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        dialog.window?.attributes = params
+
+        dialog.show()
     }
+
+
+
 }

@@ -43,6 +43,14 @@
                 android:text="@string/error"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:text="@string/ok"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
 
         </LinearLayout>
