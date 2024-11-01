@@ -16,20 +16,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.core.extensions.Extensions.showToast
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
-import com.dezis.geeks_dezis.data.remote.model.LoginRequest
-import com.dezis.geeks_dezis.data.remote.model.ManagerResponse
 import com.dezis.geeks_dezis.data.remote.model.MangerRequest
 import com.dezis.geeks_dezis.databinding.FragmentAdminSignInBinding
-import com.dezis.geeks_dezis.presentation.fragments.authorization.sign_in.SignInFragmentDirections
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -37,6 +32,7 @@ class AdminSignInFragment :
     BaseFragment<FragmentAdminSignInBinding, AdminSignInViewModel>(R.layout.fragment_admin_sign_in) {
     override val binding by viewBinding(FragmentAdminSignInBinding::bind)
     override val viewModel: AdminSignInViewModel by viewModels()
+
     //private val constantLoh = "Botik"
     //private val constantPassword = "botik228"
     @Inject
@@ -67,21 +63,32 @@ class AdminSignInFragment :
                     if (response.isSuccessful) {
                         val loginResponse = response.body()
                         loginResponse?.let {
-                            Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                requireContext(),
+                                "Вход выполнен успешно",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             findNavController().navigate(R.id.action_adminSignInFragment_to_requestFragment)
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Ошибка входа: ${response.message()}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Ошибка входа: ${response.message()}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Ошибка сети: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
     }
-
 
 
     private fun validateFields() {
@@ -89,7 +96,7 @@ class AdminSignInFragment :
             binding.etLogIn.text.toString().isNotEmpty() &&
                     binding.etPasswordl.text.toString().isNotEmpty()
 
-        if (isAllFieldsValid) {
+        if (!isAllFieldsValid) {
             binding.btnContinue.setBackgroundColor(
                 ContextCompat.getColor(
                     requireContext(),
@@ -100,7 +107,7 @@ class AdminSignInFragment :
             binding.btnContinue.setBackgroundColor(
                 ContextCompat.getColor(
                     requireContext(),
-                    R.color.dark_grey
+                    R.color.grey_dark
                 )
             )
         }

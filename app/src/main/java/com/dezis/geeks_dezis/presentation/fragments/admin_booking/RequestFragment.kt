@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +42,7 @@ class RequestFragment : Fragment() {
         binding.recyclerView.adapter = requestAdapter
 
         fetchBookings()
+        onBackPressed()
 
         return binding.root
     }
@@ -67,6 +69,16 @@ class RequestFragment : Fragment() {
                 Log.e("RequestFragment", "Ошибка вызова API: ${t.message}")
             }
         })
+    }
+
+    private fun onBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finishAffinity() // Закрывает приложение
+                }
+            })
     }
 
     override fun onDestroyView() {
