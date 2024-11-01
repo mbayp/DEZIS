@@ -80,9 +80,9 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
         val isAllFieldsValid =
             binding.etCode.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
         }
     }
     private fun validateInputs():Boolean{
