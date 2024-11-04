@@ -22,6 +22,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.core.utils.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
 import com.dezis.geeks_dezis.data.remote.model.VerificationRequest
 import com.dezis.geeks_dezis.databinding.FragmentCodeVerificationBinding
@@ -39,6 +40,9 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
     //private val constOtp = "1488"
     //private val constantEmail = "alohadance@gmail.com"
     private val args: CodeVerificationFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var pref: PreferenceHelper
 
     @Inject
     lateinit var userApiService: UserApiService
@@ -62,6 +66,7 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
                 val response = userApiService.verifyCode(verificationRequest)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
+                        pref.singInUser()
                         Toast.makeText(requireContext(), "Код подтвержден", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
                     } else {

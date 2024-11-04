@@ -12,8 +12,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.dezis.geeks_dezis.R
+import com.dezis.geeks_dezis.core.utils.PreferenceHelper
 import com.dezis.geeks_dezis.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -30,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.navController
     }
 
+    @Inject
+    lateinit var shared: PreferenceHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
@@ -37,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         initBottomNav()
         initBottom()
         initAdminBottom()
+        if (shared.singInUserTrue()) navController.navigate(R.id.homeFragment)
+       // checkUserState()
+
 
         val warningText = SpannableStringBuilder("Нет соединения с интернетом\n\n")
         warningText.append("Проверьте подключение к интернету")
@@ -70,30 +78,45 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkUserState() {
+        when {
+            shared.singInUserTrue() -> {
+                // Пользователь завершил регистрацию, открываем главный экран
+                navController.navigate(R.id.homeFragment)
+            }
+            shared.singInAdminTrue() -> {
+                // Админ завершил регистрацию, открываем экран для админа
+                navController.navigate(R.id.requestFragment)
+            }
+            shared.isShowed() -> {
+                // Если онбординг не был показан, показываем его
+                navController.navigate(R.id.onBoardFirstFragment)
+                shared.onShowed()  // Устанавливаем, что онбординг показан
+            }
+            else -> {
+                // Если пользователь не зарегистрирован и онбординг показан, переходим на экран авторизации
+                navController.navigate(R.id.splashScreenFragment)
+            }
+        }
+    }
+
+
+
     private fun initBottom() {
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
+            binding.bottomNav.visibility = when (destination.id) {
                 R.id.splashScreenFragment,
-                //R.id.onBoardingFragment ,
                 R.id.onBoardFirstFragment,
                 R.id.onBoardSecondFragment,
                 R.id.onBoardThirdFragment,
                 R.id.onBoardFourthFragment,
                 R.id.onBoardFifthFragment,
                 R.id.authorizationFragment,
-                R.id.secondAuthorizationFragment,
-                R.id.codeVerificationFragment,
-                R.id.waitingFragment3,
-                R.id.signInFragment,
-                R.id.adminOrUserFragment,
-                R.id.adminSignInFragment,
-                R.id.logInOrSignInFragment -> {
-                    binding.bottomNav.visibility = View.GONE
-                }
-                else -> {
-                    binding.bottomNav.visibility = View.VISIBLE
-                }
+                R.id.codeVerificationFragment -> View.GONE
+                else -> View.VISIBLE
             }
+
         }
 
         binding.bottomNav.setOnNavigationItemSelectedListener { menuItem ->

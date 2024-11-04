@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.core.utils.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
 import com.dezis.geeks_dezis.data.remote.model.MangerRequest
 import com.dezis.geeks_dezis.databinding.FragmentAdminSignInBinding
@@ -37,6 +38,9 @@ class AdminSignInFragment :
     //private val constantPassword = "botik228"
     @Inject
     lateinit var userApiService: UserApiService
+
+    @Inject
+    lateinit var shered: PreferenceHelper
 
 
     override fun constructorListeners() {
@@ -68,6 +72,7 @@ class AdminSignInFragment :
                                 "Вход выполнен успешно",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            shered.singInAdmin()
                             findNavController().navigate(R.id.action_adminSignInFragment_to_requestFragment)
                         }
                     } else {
