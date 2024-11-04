@@ -81,7 +81,7 @@ class RequestFragment : Fragment() {
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    requireActivity().finishAffinity() // Закрываем приложение для экрана администратора
+                    requireActivity().finishAffinity()
                 }
             })
     }
@@ -94,6 +94,6 @@ class RequestFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        bookings.clear() // Сброс данных для предотвращения утечек памяти
+        bookings.clear()
     }
 }

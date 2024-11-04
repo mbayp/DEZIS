@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        // Инициализация навигационного контроллера
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_controller) as NavHostFragment
         navController = navHostFragment.navController
 
@@ -41,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         setupNetworkWarnings()
         handleWindowInsets()
 
-        // Наблюдение за изменениями состояния сети
         viewModel.networkLiveData.observe(this) { isConnected ->
             updateNetworkStatus(isConnected)
         }
