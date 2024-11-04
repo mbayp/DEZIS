@@ -13,25 +13,35 @@ class PreferenceHelper @Inject constructor(private val sharedPreferences: Shared
         return sharedPreferences.getBoolean(SHOWED, true)
     }
 
-    fun singInUser() {
-        sharedPreferences.edit().putBoolean(SINGIN, false).apply()
+    fun signInUser() {
+        sharedPreferences.edit().putBoolean(SING_IN, true).apply()
     }
 
-    fun singInUserTrue(): Boolean {
-        return sharedPreferences.getBoolean(SINGIN, true)
+    fun signInUserTrue(): Boolean {
+        return sharedPreferences.getBoolean(SING_IN, false)
     }
 
-    fun singInAdmin() {
-        sharedPreferences.edit().putBoolean(SINGIN, false).apply()
+    fun signInAdmin() {
+        sharedPreferences.edit().putBoolean(SING_IN, true).apply()
     }
 
-    fun singInAdminTrue(): Boolean {
-        return sharedPreferences.getBoolean(SINGIN, true)
+    fun signInAdminTrue(): Boolean {
+        return sharedPreferences.getBoolean(SING_IN, false)
     }
+
+    fun signUpUser() {
+        sharedPreferences.edit().putBoolean(SING_IN, true).apply()
+    }
+
+    fun signUpUserTrue(): Boolean {
+        return sharedPreferences.getBoolean(SING_IN, false)
+    }
+
+
 
 
     companion object {
         const val SHOWED = "SHOWED"
-        const val SINGIN = "SINGIN"
+        const val SING_IN = "SINGIN"
     }
 }

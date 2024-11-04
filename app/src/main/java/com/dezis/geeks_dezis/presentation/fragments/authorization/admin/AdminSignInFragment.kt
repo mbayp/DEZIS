@@ -72,7 +72,7 @@ class AdminSignInFragment :
                                 "Вход выполнен успешно",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            shered.singInAdmin()
+                            shered.signInAdmin()
                             findNavController().navigate(R.id.action_adminSignInFragment_to_requestFragment)
                         }
                     } else {

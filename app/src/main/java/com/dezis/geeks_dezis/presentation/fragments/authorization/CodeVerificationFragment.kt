@@ -66,7 +66,7 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
                 val response = userApiService.verifyCode(verificationRequest)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        pref.singInUser()
+                        pref.signInUser()
                         Toast.makeText(requireContext(), "Код подтвержден", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
                     } else {

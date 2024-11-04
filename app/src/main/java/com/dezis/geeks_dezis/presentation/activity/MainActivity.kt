@@ -3,6 +3,7 @@ package com.dezis.geeks_dezis.presentation.activity
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -39,11 +40,10 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        checkUserState()
         initBottomNav()
         initBottom()
         initAdminBottom()
-        if (shared.singInUserTrue()) navController.navigate(R.id.homeFragment)
-       // checkUserState()
 
 
         val warningText = SpannableStringBuilder("Нет соединения с интернетом\n\n")
@@ -80,19 +80,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserState() {
         when {
-            shared.singInUserTrue() -> {
+            shared.signInUserTrue() -> {
+                Log.e("TAG", "checkUserState: ${shared.signInUserTrue()}", )
                 // Пользователь завершил регистрацию, открываем главный экран
                 navController.navigate(R.id.homeFragment)
             }
-            shared.singInAdminTrue() -> {
+
+            shared.signInAdminTrue() -> {
                 // Админ завершил регистрацию, открываем экран для админа
                 navController.navigate(R.id.requestFragment)
             }
+
+            shared.signUpUserTrue() -> {
+                // Если пользователь вошел открываем главный экран
+                navController.navigate(R.id.homeFragment)
+            }
+
             shared.isShowed() -> {
                 // Если онбординг не был показан, показываем его
                 navController.navigate(R.id.onBoardFirstFragment)
                 shared.onShowed()  // Устанавливаем, что онбординг показан
             }
+
             else -> {
                 // Если пользователь не зарегистрирован и онбординг показан, переходим на экран авторизации
                 navController.navigate(R.id.splashScreenFragment)
@@ -101,23 +110,33 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun initBottom() {
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bottomNav.visibility = when (destination.id) {
+            when (destination.id) {
                 R.id.splashScreenFragment,
+                    //R.id.onBoardingFragment ,
                 R.id.onBoardFirstFragment,
                 R.id.onBoardSecondFragment,
                 R.id.onBoardThirdFragment,
                 R.id.onBoardFourthFragment,
                 R.id.onBoardFifthFragment,
                 R.id.authorizationFragment,
-                R.id.codeVerificationFragment -> View.GONE
-                else -> View.VISIBLE
-            }
+                R.id.secondAuthorizationFragment,
+                R.id.codeVerificationFragment,
+                R.id.waitingFragment3,
+                R.id.signInFragment,
+                R.id.adminOrUserFragment,
+                R.id.adminSignInFragment,
+                R.id.logInOrSignInFragment -> {
+                    binding.bottomNav.visibility = View.GONE
+                }
 
+                else -> {
+                    binding.bottomNav.visibility = View.VISIBLE
+                }
+            }
         }
+
 
         binding.bottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -125,18 +144,22 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
+
                 R.id.calendar -> {
                     navController.navigate(R.id.calendarFragment)
                     true
                 }
+
                 R.id.chatFragment -> {
                     navController.navigate(R.id.chatFragment2)
                     true
                 }
+
                 R.id.profile -> {
                     navController.navigate(R.id.profile)
                     true
                 }
+
                 else -> false
             }
         }
@@ -149,6 +172,7 @@ class MainActivity : AppCompatActivity() {
                     binding.bottomNav.visibility = View.GONE
                     binding.adminBottomNav.visibility = View.VISIBLE
                 }
+
                 else -> {
                     binding.adminBottomNav.visibility = View.GONE
                 }
@@ -157,22 +181,26 @@ class MainActivity : AppCompatActivity() {
 
         binding.adminBottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.requestFragment-> {
+                R.id.requestFragment -> {
                     navController.navigate(R.id.requestFragment)
                     true
                 }
+
                 R.id.chatFragment -> {
                     navController.navigate(R.id.chatFragment2)
                     true
                 }
+
                 R.id.newOrderFragment -> {
                     navController.navigate(R.id.newOrderFragment) // Фрагмент "Запросы"
                     true
                 }
+
                 else -> false
             }
         }
     }
+
     private fun initBottomNav() {
         binding.bottomNav.apply {
             setupWithNavController(navController)

@@ -19,6 +19,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.core.utils.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
 import com.dezis.geeks_dezis.data.remote.model.LoginRequest
 import com.dezis.geeks_dezis.databinding.FragmentSignInBinding
@@ -41,6 +42,9 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
 
     @Inject
     lateinit var userApiService: UserApiService
+
+    @Inject
+    lateinit var pref: PreferenceHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,6 +75,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
                 val response = userApiService.loginUser(loginRequest)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
+                        pref.signUpUser()
                         val loginResponse = response.body()
                         loginResponse?.let {
                             Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
