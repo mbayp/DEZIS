@@ -11,8 +11,20 @@
         android:id="@+id/ic_dezis"
         android:layout_marginTop="64dp"
         android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/logo_dezis" />
+    <TextView
+        android:id="@+id/tv_dezis_group"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_dezis_and_text" />
+        android:text="Dezis Group"
+        android:layout_below="@id/ic_dezis"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"      />
+
+
+
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_humans"
@@ -21,7 +33,7 @@
         android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"
 
-        android:layout_below="@id/ic_dezis"
+        android:layout_below="@id/tv_dezis_group"
         android:layout_marginTop="16dp"
         android:src="@drawable/img_on_board7" />
 

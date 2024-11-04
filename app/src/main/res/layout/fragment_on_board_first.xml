@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="@string/come_txt"
         android:textColor="@color/white"
-        app:fontFamily="@font/roboto"
+        app:fontFamily="@font/roboto_reg"
         android:textSize="22sp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
@@ -48,7 +48,7 @@
         android:textSize="22sp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto_reg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_continue"/>
 
