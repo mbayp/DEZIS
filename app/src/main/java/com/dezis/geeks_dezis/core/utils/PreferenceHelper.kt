@@ -5,43 +5,39 @@ import javax.inject.Inject
 
 class PreferenceHelper @Inject constructor(private val sharedPreferences: SharedPreferences) {
 
-    fun onShowed() {
-        sharedPreferences.edit().putBoolean(SHOWED, false).apply()
+    fun setOnboardingShown() {
+        sharedPreferences.edit().putBoolean(SHOWED, true).apply()
     }
 
-    fun isShowed(): Boolean {
-        return sharedPreferences.getBoolean(SHOWED, true)
+    fun isOnboardingShown(): Boolean {
+        return sharedPreferences.getBoolean(SHOWED, false)
     }
 
     fun signInUser() {
-        sharedPreferences.edit().putBoolean(SING_IN, true).apply()
+        sharedPreferences.edit().putBoolean(USER_SIGNED_IN, true).apply()
     }
 
-    fun signInUserTrue(): Boolean {
-        return sharedPreferences.getBoolean(SING_IN, false)
+    fun isUserSignedIn(): Boolean {
+        return sharedPreferences.getBoolean(USER_SIGNED_IN, false)
     }
-
     fun signInAdmin() {
-        sharedPreferences.edit().putBoolean(SING_IN, true).apply()
+        sharedPreferences.edit().putBoolean(ADMIN_SIGNED_IN, true).apply()
     }
 
-    fun signInAdminTrue(): Boolean {
-        return sharedPreferences.getBoolean(SING_IN, false)
+    fun isAdminSignedIn(): Boolean {
+        return sharedPreferences.getBoolean(ADMIN_SIGNED_IN, false)
     }
 
-    fun signUpUser() {
-        sharedPreferences.edit().putBoolean(SING_IN, true).apply()
+    fun signOut() {
+        sharedPreferences.edit()
+            .putBoolean(USER_SIGNED_IN, false)
+            .putBoolean(ADMIN_SIGNED_IN, false)
+            .apply()
     }
-
-    fun signUpUserTrue(): Boolean {
-        return sharedPreferences.getBoolean(SING_IN, false)
-    }
-
-
-
 
     companion object {
-        const val SHOWED = "SHOWED"
-        const val SING_IN = "SINGIN"
+        private const val SHOWED = "SHOWED"
+        private const val USER_SIGNED_IN = "USER_SIGNED_IN"
+        private const val ADMIN_SIGNED_IN = "ADMIN_SIGNED_IN"
     }
 }

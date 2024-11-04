@@ -32,13 +32,10 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.layout.fragment_sign_in){
+class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(R.layout.fragment_sign_in) {
 
     override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
     override val viewModel: SignInViewModel by viewModels()
-
-    //private val constantEmail = "alohadance@gmail.com"
-    //private val constantPassword = "aloha12345"
 
     @Inject
     lateinit var userApiService: UserApiService
@@ -75,7 +72,8 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
                 val response = userApiService.loginUser(loginRequest)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        pref.signUpUser()
+                        // Изменено с signUpUser() на signInUser()
+                        pref.signInUser()
                         val loginResponse = response.body()
                         loginResponse?.let {
                             Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
@@ -95,9 +93,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding,SignInViewModel>(R.lay
     }
 
     private fun validateFields() {
-        val isAllFieldsValid =
-            binding.etLogIn.text.toString().isNotEmpty() &&
-                    binding.etPasswordl.text.toString().isNotEmpty()
+        val isAllFieldsValid = binding.etLogIn.text.toString().isNotEmpty() && binding.etPasswordl.text.toString().isNotEmpty()
         binding.btnContinue.setBackgroundColor(
             if (isAllFieldsValid)
                 ContextCompat.getColor(requireContext(), R.color.grey_dark)
