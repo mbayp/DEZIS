@@ -5,8 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.model.Booking
@@ -35,43 +36,64 @@ class RequestFragment : Fragment() {
     ): View {
         _binding = FragmentRequestBinding.inflate(inflater, container, false)
 
-        requestAdapter = RequestAdapter(bookings)
-
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = requestAdapter
-
+        setupRecyclerView()
         fetchBookings()
+        setupOnBackPressedCallback()
 
         return binding.root
+    }
+
+    private fun setupRecyclerView() {
+        requestAdapter = RequestAdapter(bookings)
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = requestAdapter
+        }
     }
 
     private fun fetchBookings() {
         dezisApiService.getBookings().enqueue(object : Callback<List<Booking>> {
             override fun onResponse(call: Call<List<Booking>>, response: Response<List<Booking>>) {
-                if (response.isSuccessful && response.body() != null) {
-                    val bookingsResponse = response.body()!!
-                    Log.d("RequestFragment", "Получены данные: $bookingsResponse")
-
-                    bookings.clear()
-                    bookings.addAll(bookingsResponse)
-                    requestAdapter.notifyDataSetChanged()
+                if (response.isSuccessful) {
+                    response.body()?.let { bookingsResponse ->
+                        Log.d("RequestFragment", "Получены данные: $bookingsResponse")
+                        updateBookings(bookingsResponse)
+                    } ?: showError("Ошибка: Пустой ответ от сервера")
                 } else {
-                    Log.e(
-                        "RequestFragment",
-                        "Ошибка ответа: ${response.code()} ${response.message()}"
-                    )
+                    showError("Ошибка ответа: ${response.code()} ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<List<Booking>>, t: Throwable) {
-                Log.e("RequestFragment", "Ошибка вызова API: ${t.message}")
+                showError("Ошибка вызова API: ${t.message}")
             }
         })
+    }
+
+    private fun updateBookings(newBookings: List<Booking>) {
+        bookings.clear()
+        bookings.addAll(newBookings)
+        requestAdapter.notifyDataSetChanged()
+    }
+
+    private fun setupOnBackPressedCallback() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finishAffinity()
+                }
+            })
+    }
+
+    private fun showError(message: String) {
+        Log.e("RequestFragment", message)
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        bookings.clear()
     }
-
 }

@@ -32,13 +32,15 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 val username = binding.etName.text.toString()
                 val email = binding.etEmail.text.toString()
                 val password = binding.etPassword.text.toString()
+                val number = binding.etNumber.text.toString()
 
                 storeRegistrationData(username, email, password)
 
                 val action = FirstAuthorizationFragmentDirections.actionAuthorizationFragmentToSecondAuthorizationFragment(
                     userName = username,
                     email = email,
-                    password = password
+                    password = password,
+                    number = number
                 )
                 findNavController().navigate(action)
             }
@@ -97,8 +99,19 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 binding.tilPassword.error = null
             }
         }
+        val number = binding.etNumber.text.toString()
+        if (number.isEmpty()) {
+            binding.tilNumber.error = "Номер не может быть пустым"
+            isValid = false
+        } else if (number.length > 10) {
+            binding.tilNumber.error = "Номер должен содержать не более 10 символов"
+            isValid = false
+        } else {
+            binding.tilNumber.error = null
+        }
         return isValid
     }
+
 
     private fun isPasswordValid(password: String): Boolean {
         val hasUppercase = password.any { it.isUpperCase() }

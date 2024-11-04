@@ -1,7 +1,6 @@
 package com.dezis.geeks_dezis.presentation.fragments.home
 
-import android.os.Bundle
-import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
@@ -20,6 +19,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override fun init() {
         super.init()
         navigation()
+        onBackPressed()
     }
 
     private fun navigation() = with(binding) {
@@ -30,6 +30,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 )
             }
         }
+    }
+
+    private fun onBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finishAffinity() // Закрывает приложение
+                }
+            })
     }
 
 }

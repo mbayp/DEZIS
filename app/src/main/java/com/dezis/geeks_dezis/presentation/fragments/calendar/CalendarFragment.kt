@@ -64,11 +64,15 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         calendar.add(Calendar.DAY_OF_YEAR, 1)
         binding.calendarView.minDate = calendar.timeInMillis
 
+        calendar.add(Calendar.DAY_OF_YEAR, 30) //30 ней вперед(помень по запросу закащика)
+        binding.calendarView.maxDate = calendar.timeInMillis
+
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             viewModel.selectedDate.value = "$year-${month + 1}-$dayOfMonth"
             showTimePickerDialog()
         }
     }
+
 
     private fun setupServiceSelection() {
         binding.checkboxDisinfection.setOnCheckedChangeListener { _, isChecked ->
@@ -109,7 +113,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupOrderButton() {
         binding.orderServiceButton.setOnClickListener {
-            viewModel.bookService(userId = 1)
+            viewModel.bookService(userId = 57)
         }
     }
 

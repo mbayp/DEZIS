@@ -35,9 +35,11 @@ class SplashScreenFragment : Fragment() {
 
         val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.splash_icon_animation)
         binding.splashIcon.startAnimation(animation)
-        lifecycleScope.launch {
-            delay(3000)
-            findNavController().navigate(R.id.action_splashScreenFragment_to_onBoardFirstFragment)
+        if (findNavController().currentDestination?.id == R.id.splashScreenFragment) {
+            lifecycleScope.launch {
+                delay(3000)
+                findNavController().navigate(R.id.onBoardFirstFragment)
+            }
         }
     }
 
