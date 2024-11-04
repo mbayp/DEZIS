@@ -137,4 +137,6 @@
     <string name="error">Ошибка</string>
     <string name="ok">Ok</string>
     <string name="phone_number_reg">Номер телефона*</string>
+    <string name="order_done">Вы завершили заказ!</string>
+    <string name="close_x">Закрыть</string>
 </resources>
