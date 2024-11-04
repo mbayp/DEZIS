@@ -1,5 +1,6 @@
 package com.dezis.geeks_dezis.presentation.fragments.authorization
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -32,6 +33,8 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 val email = binding.etEmail.text.toString()
                 val password = binding.etPassword.text.toString()
 
+                storeRegistrationData(username, email, password)
+
                 val action = FirstAuthorizationFragmentDirections.actionAuthorizationFragmentToSecondAuthorizationFragment(
                     userName = username,
                     email = email,
@@ -41,6 +44,16 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
             }
         }
         // setupClickableText()
+    }
+
+    private fun storeRegistrationData(userName: String, email: String, password: String) {
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().apply() {
+            putString("userName", userName)
+            putString("email", email)
+            putString("password", password)
+            apply()
+        }
     }
 
     private fun validateFields() {
