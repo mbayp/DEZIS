@@ -109,7 +109,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupOrderButton() {
         binding.orderServiceButton.setOnClickListener {
-            viewModel.bookService(userId = 1)
+            viewModel.bookService(userId = 3)
         }
     }
 
