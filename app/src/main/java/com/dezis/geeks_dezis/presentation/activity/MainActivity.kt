@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             }
             sharedPreferences.isOnboardingShown() -> {
                 navController.navigate(R.id.onBoardFirstFragment)
-                sharedPreferences.setOnboardingShown()  // Устанавливаем флаг, что онбординг был показан
+                sharedPreferences.setOnboardingShown()
             }
             else -> {
                 navController.navigate(R.id.splashScreenFragment)
@@ -97,20 +97,33 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNav.setupWithNavController(navController)
         initUserBottomNav()
         initAdminBottomNav()
+
+        // Добавляем слушатель изменения пункта назначения для обновления состояния bottomNav
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (isUserScreen(destination.id)) {
+                binding.bottomNav.visibility = View.VISIBLE
+                binding.adminBottomNav.visibility = View.GONE
+                binding.bottomNav.menu.findItem(destination.id)?.isChecked = true
+            } else if (isAdminScreen(destination.id)) {
+                binding.bottomNav.visibility = View.GONE
+                binding.adminBottomNav.visibility = View.VISIBLE
+                binding.adminBottomNav.menu.findItem(destination.id)?.isChecked = true
+            } else {
+                // Если это экран, на котором не должно быть bottomNav, скрываем оба
+                binding.bottomNav.visibility = View.GONE
+                binding.adminBottomNav.visibility = View.GONE
+            }
+        }
     }
 
     private fun initUserBottomNav() {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bottomNav.visibility = if (shouldHideBottomNav(destination.id)) View.GONE else View.VISIBLE
-        }
-
         binding.bottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.homeFragment -> {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
-                R.id.calendar -> {
+                R.id.calendarFragment -> {
                     navController.navigate(R.id.calendarFragment)
                     true
                 }
@@ -128,10 +141,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initAdminBottomNav() {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.adminBottomNav.visibility = if (isAdminNavigationVisible(destination.id)) View.VISIBLE else View.GONE
-        }
-
         binding.adminBottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.requestFragment -> {
@@ -143,7 +152,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.newOrderFragment -> {
-                    navController.navigate(R.id.newOrderFragment) // Фрагмент "Новый Заказ"
+                    navController.navigate(R.id.newOrderFragment)
                     true
                 }
                 else -> false
@@ -151,30 +160,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun shouldHideBottomNav(destinationId: Int): Boolean {
-        return when (destinationId) {
-            R.id.splashScreenFragment,
-            R.id.onBoardFirstFragment,
-            R.id.onBoardSecondFragment,
-            R.id.onBoardThirdFragment,
-            R.id.onBoardFourthFragment,
-            R.id.onBoardFifthFragment,
-            R.id.authorizationFragment,
-            R.id.secondAuthorizationFragment,
-            R.id.codeVerificationFragment,
-            R.id.waitingFragment3,
-            R.id.signInFragment,
-            R.id.adminOrUserFragment,
-            R.id.adminSignInFragment,
-            R.id.logInOrSignInFragment -> true
-            else -> false
-        }
+    private fun isUserScreen(destinationId: Int): Boolean {
+        return destinationId in listOf(
+            R.id.homeFragment,
+            R.id.calendarFragment,
+            R.id.chatFragment2,
+            R.id.profile
+        )
     }
 
-    private fun isAdminNavigationVisible(destinationId: Int): Boolean {
-        return when (destinationId) {
-            R.id.newOrderFragment, R.id.requestFragment -> true
-            else -> false
-        }
+    private fun isAdminScreen(destinationId: Int): Boolean {
+        return destinationId in listOf(
+            R.id.requestFragment,
+            R.id.chatFragment2,
+            R.id.newOrderFragment
+        )
     }
 }
