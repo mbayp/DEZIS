@@ -40,12 +40,12 @@ class Profile @Inject constructor() :
 
     override fun init() {
         super.init()
-        sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
         setupListeners()
         observeViewModel()
         loadSavedData()
-        viewModel.fetchUserData(userId = 6)
+        viewModel.fetchUserData(userId = 0)
     }
 
     private fun setupListeners() {
@@ -63,6 +63,12 @@ class Profile @Inject constructor() :
     }
 
     private fun loadSavedData() {
+        val savedUsername = sharedPreferences.getString("username", "")
+        val savedEmail = sharedPreferences.getString("email", "")
+
+        binding.tvFullName.text = savedUsername
+        binding.tvEmail.text = savedEmail
+
         sharedPreferences.getString(SharedPreferencesKeys.PHONE_NUMBER, null)
             ?.let { savedPhoneNumber ->
                 binding.etPhoneNumber.setText(savedPhoneNumber)
@@ -84,54 +90,41 @@ class Profile @Inject constructor() :
             if (isValidPhoneNumber(newPhoneNumber)) {
                 viewModel.updatePhoneNumber(newPhoneNumber)
                 isDataChangedByUser = true
-
-                sharedPreferences.edit()
-                    .putString(SharedPreferencesKeys.PHONE_NUMBER, newPhoneNumber).apply()
-                showToast("Phone number updated")
+                showCustomDialog()
             } else {
-                showToast("Invalid phone number format")
+                Toast.makeText(context, "Неверный номер телефона", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun isValidPhoneNumber(phoneNumber: String): Boolean {
-        return phoneNumber.isNotEmpty() && phoneNumber.length in 7..15
+        return phoneNumber.length == 10 && phoneNumber.all { it.isDigit() }
     }
 
+
     private fun observeViewModel() {
-        viewModel.avatar.observeUIState(
-            success = { newAvatarUri ->
-                if (isDataChangedByUser) showCustomDialog()
-                sharedPreferences.edit().putString(SharedPreferencesKeys.AVATAR_URI, newAvatarUri)
-                    .apply()
-            },
-            error = { showToast("Error loading avatar: $it") }
-        )
-
-        viewModel.phoneNumber.observeUIState(
-            success = { newPhoneNumber ->
-                if (isDataChangedByUser) showCustomDialog()
-                sharedPreferences.edit()
-                    .putString(SharedPreferencesKeys.PHONE_NUMBER, newPhoneNumber).apply()
-            },
-            error = { showToast("Error loading phone: $it") }
-        )
-
         lifecycleScope.launchWhenStarted {
             viewModel.userData.collect { state ->
                 when (state) {
                     is UiState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
                     }
 
                     is UiState.Success -> {
-                        state.data.let { userResponse ->
-                            binding.tvFullName.text = userResponse.username
-                            binding.tvEmail.text = userResponse.email
-                        }
+                        binding.progressBar.visibility = View.GONE
+                        val userData = state.data
+                        binding.tvFullName.text = userData.username ?: "Username not available"
+                        binding.tvEmail.text = userData.email ?: "Email not available"
+                        binding.etPhoneNumber.setText(userData.number ?: "")
+                        Glide.with(this@Profile)
+                            .load(userData.avatar ?: R.drawable.ic_profile2)
+                            .placeholder(R.drawable.ic_profile2)
+                            .into(binding.imgAvatar)
                     }
 
                     is UiState.Error -> {
-                        showToast("Error loading user data: ${state.mes}")
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Ошибка: ${state.mes}", Toast.LENGTH_SHORT).show()
                     }
 
                     is UiState.Idle -> {
