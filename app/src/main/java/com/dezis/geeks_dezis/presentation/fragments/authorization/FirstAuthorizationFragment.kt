@@ -40,7 +40,7 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 findNavController().navigate(action)
             }
         }
-        // setupClickableText()
+        setupClickableText()
     }
 
     private fun validateFields() {
