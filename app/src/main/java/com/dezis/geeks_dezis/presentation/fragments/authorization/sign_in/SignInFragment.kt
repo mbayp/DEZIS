@@ -3,19 +3,22 @@ package com.dezis.geeks_dezis.presentation.fragments.authorization.sign_in
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
+import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.core.common.Extensions.showToast
 import com.dezis.geeks_dezis.core.common.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
 import com.dezis.geeks_dezis.data.remote.model.login.LoginRequest
@@ -29,11 +32,9 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SignInFragment :
-    BaseFragment<FragmentSignInBinding, SignInViewModel>(R.layout.fragment_sign_in) {
+class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(R.layout.fragment_sign_in) {
 
     override val binding: FragmentSignInBinding by viewBinding(FragmentSignInBinding::bind)
-
     override val viewModel: SignInViewModel by viewModels()
 
     @Inject
@@ -41,6 +42,14 @@ class SignInFragment :
 
     @Inject
     lateinit var pref: PreferenceHelper
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun constructorListeners() {
         binding.etLogIn.addTextChangedListener { validateFields() }
@@ -66,27 +75,30 @@ class SignInFragment :
                         pref.signInUser()
                         val loginResponse = response.body()
                         loginResponse?.let {
-                            showToast("Вход выполнен успешно")
-                            val action =
-                                SignInFragmentDirections.actionSignInFragmentToHomeFragment(email = email)
+                            // Сохраняем user_id
+                            pref.saveUserId(it.user_id)
+
+                            // Логируем user_id
+                            println("User ID: ${it.user_id}")
+
+                            Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
+                            val action = SignInFragmentDirections.actionSignInFragmentToHomeFragment(email = email)
                             findNavController().navigate(action)
                         }
                     } else {
-                        showToast("Ошибка входа")
+                        Toast.makeText(requireContext(), "Ошибка входа: ${response.message()}", Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    showToast("Ошибка сети.")
+                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
     private fun validateFields() {
-        val isAllFieldsValid =
-            binding.etLogIn.text.toString().isNotEmpty() && binding.etPasswordl.text.toString()
-                .isNotEmpty()
+        val isAllFieldsValid = binding.etLogIn.text.toString().isNotEmpty() && binding.etPasswordl.text.toString().isNotEmpty()
         binding.btnContinue.setBackgroundColor(
             if (isAllFieldsValid)
                 ContextCompat.getColor(requireContext(), R.color.grey_dark)
@@ -116,28 +128,9 @@ class SignInFragment :
         }
 
         spannableString.setSpan(salesTermsClickable, 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(
-            ForegroundColorSpan(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.blue
-                )
-            ), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        spannableString.setSpan(
-            privacyPolicyClickable,
-            100,
-            spannableString.length,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        spannableString.setSpan(
-            ForegroundColorSpan(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.blue
-                )
-            ), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(privacyPolicyClickable, 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         termsTextView.text = spannableString
         termsTextView.movementMethod = LinkMovementMethod.getInstance()
@@ -174,10 +167,7 @@ class SignInFragment :
     }
 
     private fun resetBorderColor() {
-        binding.tilLogIn.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.transparent)
-        binding.tilPassword.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilLogIn.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilPassword.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
     }
-
 }
