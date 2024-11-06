@@ -16,9 +16,4 @@ object RepositoryModule {
         return UserRepository(apiService)
     }
 
-    @Provides
-    fun provideOrderHistoryRepository(apiService: UserApiService): UserRepository {
-        return UserRepository(apiService)
-    }
-
 }

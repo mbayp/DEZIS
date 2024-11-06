@@ -84,7 +84,9 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 
