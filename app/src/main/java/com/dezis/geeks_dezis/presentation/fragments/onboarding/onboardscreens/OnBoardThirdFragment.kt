@@ -20,10 +20,10 @@ class OnBoardThirdFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_on_board_third, container, false)
 
         view.findViewById<MaterialButton>(R.id.btn_continue).setOnClickListener {
-            view.findNavController().navigate(R.id.onBoardFourthFragment)
+            view.findNavController().navigate(R.id.action_onBoardThirdFragment_to_onBoardFourthFragment)
         }
         view.findViewById<MaterialButton>(R.id.btn_skip).setOnClickListener {
-            view.findNavController().navigate(R.id.onBoardFifthFragment) // Пропускает к последнему фрагменту
+            view.findNavController().navigate(R.id.action_onBoardThirdFragment_to_onBoardFifthFragment)
         }
 
         return view

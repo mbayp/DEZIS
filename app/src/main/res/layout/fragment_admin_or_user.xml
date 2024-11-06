@@ -16,7 +16,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_user"
-        style="@style/CustomMaterialButtonStyle"
+        style="@style/CustomMaterialButtonForOnBoard"
         android:text="@string/user_txt" />
 
     <TextView

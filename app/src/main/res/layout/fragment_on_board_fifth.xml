@@ -7,7 +7,7 @@
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardFifthFragment">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/ic_dezis"
         android:layout_marginTop="64dp"
         android:layout_width="match_parent"
@@ -26,13 +26,12 @@
 
 
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/img_humans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"
-
         android:layout_below="@id/tv_dezis_group"
         android:layout_marginTop="16dp"
         android:src="@drawable/img_on_board7" />
@@ -57,12 +56,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
-            style="@style/CustomMaterialButtonStyle"
+            style="@style/CustomMaterialButtonForOnBoard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/continue_txt" />
-
-
     </RelativeLayout>
 
 </RelativeLayout>

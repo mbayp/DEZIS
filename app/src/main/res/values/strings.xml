@@ -17,7 +17,7 @@
     <string name="welcome_txt">С возвращением!</string>
     <string name="error_in_sign_in_txt">Не удалось войти?</string>
     <string name="skip_txt">Пропустить</string>
-    <string name="come_txt">Добро пожаловать!</string>
+    <string name="come_txt">Добро пожаловать!\nГотовы к чистым переменам?</string>
     <string name="ready_txt">Готовы к чистым переменам?</string>
     <string name="txt_know">Мы знаем, как эффективно избавиться от вредителей и бактерий. Мы-ваш щит от грязи!</string>
     <string name="txt_tracking">Отслеживайте обработки. Следите за датами первой и последней обработки.</string>
@@ -139,4 +139,7 @@
     <string name="phone_number_reg">Номер телефона*</string>
     <string name="order_done">Вы завершили заказ!</string>
     <string name="close_x">Закрыть</string>
+    <string name="no_internet_txt">Нет соединения с интернетом\nПроверьте подключение к интернету</string>
+    <string name="img_human_desc">Изображение оператора за компьютером для поддержки пользователей\n</string>
+    <string name="desc_logo">Логотип Dezis</string>
 </resources>

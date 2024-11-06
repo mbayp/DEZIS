@@ -26,6 +26,7 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
     override fun constructorListeners() {
         binding.etName.addTextChangedListener { validateFields() }
         binding.etPassword.addTextChangedListener { validateFields() }
+        binding.etNumber.addTextChangedListener { validateFields() }
         binding.etEmail.addTextChangedListener { validateFields() }
         binding.btnContinue.setOnClickListener {
             if (validateInputs()) {
@@ -45,7 +46,7 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 findNavController().navigate(action)
             }
         }
-        // setupClickableText()
+        setupClickableText()
     }
 
     private fun storeRegistrationData(userName: String, email: String, password: String) {
@@ -61,12 +62,13 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
     private fun validateFields() {
         val isAllFieldsValid = binding.etName.text.toString().isNotEmpty() &&
                 binding.etPassword.text.toString().isNotEmpty() &&
-                binding.etEmail.text.toString().isNotEmpty()
+                binding.etEmail.text.toString().isNotEmpty()&&
+                binding.etNumber.text.toString().isNotEmpty()
 
         if (isAllFieldsValid) {
             binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_grey))
         }
     }
 
