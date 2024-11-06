@@ -2,6 +2,7 @@ package com.dezis.geeks_dezis.data.remote.apiservice
 
 import com.dezis.geeks_dezis.data.remote.model.login.LoginRequest
 import com.dezis.geeks_dezis.data.remote.model.login.LoginResponse
+import com.dezis.geeks_dezis.data.remote.model.manager.ManagerRequest
 import com.dezis.geeks_dezis.data.remote.model.manager.ManagerResponse
 import com.dezis.geeks_dezis.data.remote.model.register.RefreshTokenRequest
 import com.dezis.geeks_dezis.data.remote.model.register.RegistrationResponse
@@ -20,13 +21,13 @@ interface UserApiService {
 
     @POST("user/register-user/")
     suspend fun registerUser(@Body userRegisterDto: UserRegisterDto)
-    : Response<RegistrationResponse>
+            : Response<RegistrationResponse>
 
     @POST("/api/v1/user/login-user/")
     suspend fun loginUser(@Body loginRequest: LoginRequest): Response<LoginResponse>
 
     @POST("/api/v1/user/login-manager/")
-    suspend fun loginManager(@Body loginRequest: MangerRequest): Response<ManagerResponse>
+    suspend fun loginManager(@Body loginRequest: ManagerRequest): Response<ManagerResponse>
 
     @POST("user/verify-user/")
     suspend fun verifyCode(@Body request: VerificationRequest): Response<VerificationResponse>
