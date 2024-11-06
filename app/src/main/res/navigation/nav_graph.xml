@@ -70,7 +70,11 @@
         tools:layout="@layout/fragment_splash_screen">
         <action
             android:id="@+id/action_splashScreenFragment_to_onBoardFirstFragment"
-            app:destination="@id/onBoardFirstFragment" />
+            app:destination="@id/onBoardFirstFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/authorizationFragment"
@@ -94,7 +98,9 @@
             <argument
                 android:name="password"
                 app:argType="string" />
-
+            <argument
+                android:name="number"
+                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -268,17 +274,17 @@
         android:label="fragment_waiting_permission"
         tools:layout="@layout/fragment_waiting_permission" />
     <fragment
-        android:id="@+id/successfulVerificationFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SuccessfulVerificationFragment"
-        android:label="SuccessfulVerificationFragment" />
-    <fragment
         android:id="@+id/onBoardFifthFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFifthFragment"
         android:label="fragment_on_board_fifth"
         tools:layout="@layout/fragment_on_board_fifth" >
         <action
             android:id="@+id/action_onBoardFifthFragment_to_adminOrUserFragment"
-            app:destination="@id/adminOrUserFragment" />
+            app:destination="@id/adminOrUserFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/onBoardFirstFragment"
@@ -287,7 +293,18 @@
         tools:layout="@layout/fragment_on_board_first" >
         <action
             android:id="@+id/action_onBoardFirstFragment_to_onBoardSecondFragment"
-            app:destination="@id/onBoardSecondFragment" />
+            app:destination="@id/onBoardSecondFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_onBoardFirstFragment_to_onBoardFifthFragment"
+            app:destination="@id/onBoardFifthFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/onBoardSecondFragment"
@@ -296,7 +313,18 @@
         tools:layout="@layout/fragment_on_board_second" >
         <action
             android:id="@+id/action_onBoardSecondFragment_to_onBoardThirdFragment"
-            app:destination="@id/onBoardThirdFragment" />
+            app:destination="@id/onBoardThirdFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_onBoardSecondFragment_to_onBoardFifthFragment"
+            app:destination="@id/onBoardFifthFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/onBoardThirdFragment"
@@ -305,7 +333,18 @@
         tools:layout="@layout/fragment_on_board_third" >
         <action
             android:id="@+id/action_onBoardThirdFragment_to_onBoardFourthFragment"
-            app:destination="@id/onBoardFourthFragment" />
+            app:destination="@id/onBoardFourthFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_onBoardThirdFragment_to_onBoardFifthFragment"
+            app:destination="@id/onBoardFifthFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/onBoardFourthFragment"
@@ -314,6 +353,10 @@
         tools:layout="@layout/fragment_on_board_fourth" >
         <action
             android:id="@+id/action_onBoardFourthFragment_to_onBoardFifthFragment"
-            app:destination="@id/onBoardFifthFragment" />
+            app:destination="@id/onBoardFifthFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
 </navigation>

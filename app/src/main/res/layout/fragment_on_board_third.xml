@@ -6,7 +6,7 @@
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardThirdFragment">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/img_hands"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,9 +14,10 @@
         android:scaleType="centerCrop"
         android:layout_marginTop="60dp"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        />
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txt_show"
@@ -25,7 +26,8 @@
         android:textColor="@color/white"
         app:fontFamily="@font/roboto_reg"
         android:layout_below="@id/img_hands"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,14 +37,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
-            style="@style/CustomMaterialButtonStyle"
+            style="@style/CustomMaterialButtonForOnBoard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/continue_txt" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_skip"
-            style="@style/CustomMaterialButtonStyle"
+            style="@style/CustomMaterialButtonForOnBoard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:backgroundTint="@color/dark_blue"

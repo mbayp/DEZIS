@@ -4,16 +4,18 @@ package com.dezis.geeks_dezis.presentation.fragments.profile
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(
-//    @SerializedName("avatar")
+    @SerializedName("avatar")
     val avatar: String?,
-//    @SerializedName("email")
+    @SerializedName("email")
     val email: String?,
-//    @SerializedName("id")
+    @SerializedName("id")
     val id: Int?,
-//    @SerializedName("number")
+    @SerializedName("is_active")
+    val isActive: Boolean?,
+    @SerializedName("number")
     val number: String?,
-//    @SerializedName("password")
+    @SerializedName("password")
     val password: String?,
-//    @SerializedName("username")
+    @SerializedName("username")
     val username: String?
 )

@@ -8,5 +8,5 @@ object Constants {
     const val NETWORK_TIMEOUT = 60L
     const val get_booking = "contact/booking/"
     const val post_booking = "contact/booking/"
-    const val get_user = "user/list-user/{id}"
+    const val get_user = "/api/v1/user/list-user/{id}"
 }

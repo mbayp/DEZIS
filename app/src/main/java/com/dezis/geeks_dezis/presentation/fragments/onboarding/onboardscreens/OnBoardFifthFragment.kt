@@ -20,9 +20,8 @@ class OnBoardFifthFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_on_board_fifth, container, false)
 
         view.findViewById<MaterialButton>(R.id.btn_continue).setOnClickListener {
-            view.findNavController().navigate(R.id.adminOrUserFragment)
+            view.findNavController().navigate(R.id.action_onBoardFifthFragment_to_adminOrUserFragment)
         }
-
         return view
     }
 }

@@ -1,5 +1,6 @@
 package com.dezis.geeks_dezis.presentation.fragments.authorization
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -25,17 +26,22 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
     override fun constructorListeners() {
         binding.etName.addTextChangedListener { validateFields() }
         binding.etPassword.addTextChangedListener { validateFields() }
+        binding.etNumber.addTextChangedListener { validateFields() }
         binding.etEmail.addTextChangedListener { validateFields() }
         binding.btnContinue.setOnClickListener {
             if (validateInputs()) {
                 val username = binding.etName.text.toString()
                 val email = binding.etEmail.text.toString()
                 val password = binding.etPassword.text.toString()
+                val number = binding.etNumber.text.toString()
+
+                storeRegistrationData(username, email, password)
 
                 val action = FirstAuthorizationFragmentDirections.actionAuthorizationFragmentToSecondAuthorizationFragment(
                     userName = username,
                     email = email,
-                    password = password
+                    password = password,
+                    number = number
                 )
                 findNavController().navigate(action)
             }
@@ -43,15 +49,26 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
         setupClickableText()
     }
 
+    private fun storeRegistrationData(userName: String, email: String, password: String) {
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().apply() {
+            putString("userName", userName)
+            putString("email", email)
+            putString("password", password)
+            apply()
+        }
+    }
+
     private fun validateFields() {
         val isAllFieldsValid = binding.etName.text.toString().isNotEmpty() &&
                 binding.etPassword.text.toString().isNotEmpty() &&
-                binding.etEmail.text.toString().isNotEmpty()
+                binding.etEmail.text.toString().isNotEmpty()&&
+                binding.etNumber.text.toString().isNotEmpty()
 
         if (isAllFieldsValid) {
             binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
+            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_grey))
         }
     }
 
@@ -84,8 +101,19 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
                 binding.tilPassword.error = null
             }
         }
+        val number = binding.etNumber.text.toString()
+        if (number.isEmpty()) {
+            binding.tilNumber.error = "Номер не может быть пустым"
+            isValid = false
+        } else if (number.length > 10) {
+            binding.tilNumber.error = "Номер должен содержать не более 10 символов"
+            isValid = false
+        } else {
+            binding.tilNumber.error = null
+        }
         return isValid
     }
+
 
     private fun isPasswordValid(password: String): Boolean {
         val hasUppercase = password.any { it.isUpperCase() }

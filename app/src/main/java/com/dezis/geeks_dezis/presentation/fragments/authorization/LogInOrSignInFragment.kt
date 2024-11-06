@@ -12,15 +12,15 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LogInOrSignInFragment : Fragment() {
-    private var _binding: FragmentLoginOrSigninBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy {
+        FragmentLoginOrSigninBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLoginOrSigninBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,8 +34,4 @@ class LogInOrSignInFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

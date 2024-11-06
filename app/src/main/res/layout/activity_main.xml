@@ -14,8 +14,7 @@
         android:layout_height="80dp"
         android:background="@color/grey_dark"
         android:elevation="1dp"
-        android:text="Нет соединения с интернетом/n/
-        Проверьте подключение к интернету"
+        android:text="@string/no_internet_txt"
         android:gravity="center"
         android:backgroundTint="@color/button_color"
         android:visibility="visible"

@@ -38,9 +38,23 @@
             style="@style/CustomTextInputLayout"
             android:layout_marginTop="10dp"
             android:hint="@string/e_mail">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_number"
+            style="@style/CustomTextInputLayout"
+            android:layout_marginTop="10dp"
+            android:hint="@string/phone_number_reg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_number"
+                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/white" />

@@ -41,6 +41,7 @@
                 android:id="@+id/et_code"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="number"
                 android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,8 +71,6 @@
             style="@style/CustomMaterialButtonStyle"
             android:layout_marginTop="6sp"
             android:text="@string/continue_txt" />
-
-
     </LinearLayout>
 
     <TextView
