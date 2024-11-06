@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/img_on_board3"
+        android:scaleType="center"
         android:layout_alignBottom="@id/ellipse_img"
         android:layout_marginBottom="60dp"
         />

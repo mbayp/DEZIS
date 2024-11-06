@@ -21,8 +21,6 @@
         android:id="@+id/img_human"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop"
         android:layout_alignTop="@id/ellipse_img"
         android:layout_marginTop="60dp"
         android:src="@drawable/img_on_board6"
