@@ -1,12 +1,8 @@
-
 package com.dezis.geeks_dezis.core.common
 
 object Constants {
-
-    //const val BASE_URL = "http://209.38.228.54:8084/api/v1/"
-    //const val BASE_URL = "https://dezis.pp.ua/api/v1/"
+    const val GET_BOOKING = "/api/v1/contact/booking/"
+    const val POST_BOOKING = "/api/v1/contact/booking/"
+    const val GET_USER = "/api/v1/user/list-user/{id}"
     const val NETWORK_TIMEOUT = 60L
-    const val get_booking = "contact/booking/"
-    const val post_booking = "contact/booking/"
-    const val get_user = "/api/v1/user/list-user/{id}"
 }

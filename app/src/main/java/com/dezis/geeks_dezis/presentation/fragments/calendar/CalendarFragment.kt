@@ -5,14 +5,12 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.TimePicker
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -64,7 +62,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         calendar.add(Calendar.DAY_OF_YEAR, 1)
         binding.calendarView.minDate = calendar.timeInMillis
 
-        calendar.add(Calendar.DAY_OF_YEAR, 30) //30 ней вперед(помень по запросу закащика)
+        calendar.add(Calendar.DAY_OF_YEAR, 30)
         binding.calendarView.maxDate = calendar.timeInMillis
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
@@ -73,16 +71,24 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
         }
     }
 
-
     private fun setupServiceSelection() {
         binding.checkboxDisinfection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.toggleServiceSelection(binding.checkboxDisinfection.text.toString(), isChecked)
+            viewModel.toggleServiceSelection(
+                binding.checkboxDisinfection.text.toString(),
+                isChecked
+            )
         }
         binding.checkboxDeratization.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.toggleServiceSelection(binding.checkboxDeratization.text.toString(), isChecked)
+            viewModel.toggleServiceSelection(
+                binding.checkboxDeratization.text.toString(),
+                isChecked
+            )
         }
         binding.checkboxDisinsection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.toggleServiceSelection(binding.checkboxDisinsection.text.toString(), isChecked)
+            viewModel.toggleServiceSelection(
+                binding.checkboxDisinsection.text.toString(),
+                isChecked
+            )
         }
     }
 
@@ -150,7 +156,5 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
         dialog.show()
     }
-
-
 
 }

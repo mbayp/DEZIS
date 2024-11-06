@@ -13,8 +13,8 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/CenterWhiteText"
             android:id="@+id/tv_welcome"
+            style="@style/CenterWhiteText"
             android:layout_marginTop="158dp"
             android:text="@string/signin_txt"
             android:textSize="24sp" />
@@ -30,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -46,15 +47,16 @@
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:textColor="@color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            style="@style/CenterWhiteText"
             android:id="@+id/btn_forgot_password"
+            style="@style/CenterWhiteText"
             android:layout_gravity="start"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="10dp"
-            android:text="@string/forgot_password_txt"
-            android:layout_marginHorizontal="16dp"/>
+            android:text="@string/forgot_password_txt" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
@@ -62,11 +64,12 @@
             android:layout_marginTop="38dp"
             android:text="@string/continue_txt"
             android:textSize="16sp" />
+
     </LinearLayout>
 
     <TextView
-        style="@style/CenterWhiteText"
         android:id="@+id/terms_of_sale"
+        style="@style/CenterWhiteText"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="18dp"
         android:layout_marginBottom="96dp"
@@ -74,6 +77,5 @@
         android:linksClickable="true"
         android:text="@string/policy_txt"
         android:textSize="12sp" />
-
 
 </FrameLayout>

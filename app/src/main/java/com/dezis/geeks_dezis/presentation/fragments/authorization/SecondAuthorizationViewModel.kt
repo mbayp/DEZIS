@@ -5,16 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import com.dezis.geeks_dezis.core.common.UiState
-import com.dezis.geeks_dezis.data.remote.model.RegistrationResponse
-import com.dezis.geeks_dezis.data.remote.model.TokenResponse
-import com.dezis.geeks_dezis.data.remote.model.UserRegisterDto
+import com.dezis.geeks_dezis.data.remote.model.register.RegistrationResponse
+import com.dezis.geeks_dezis.data.remote.model.register.TokenResponse
+import com.dezis.geeks_dezis.data.remote.model.user.UserRegisterDto
 import com.dezis.geeks_dezis.data.repositories.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SecondAuthorizationViewModel @Inject constructor(private val userRepository: UserRepository) : BaseViewModel() {
+class SecondAuthorizationViewModel @Inject constructor(private val userRepository: UserRepository) :
+    BaseViewModel() {
 
     private val _refreshTokenResult = MutableLiveData<UiState<TokenResponse>>()
     val refreshTokenResult: LiveData<UiState<TokenResponse>> get() = _refreshTokenResult
@@ -33,7 +34,8 @@ class SecondAuthorizationViewModel @Inject constructor(private val userRepositor
             }
         }
     }
-   fun registerUser(userRegisterDto: UserRegisterDto, accessToken: String) {
+
+    fun registerUser(userRegisterDto: UserRegisterDto, accessToken: String) {
         viewModelScope.launch {
             _registrationResult.value = UiState.Loading()
             val response = userRepository.registerUser(userRegisterDto)
@@ -44,5 +46,5 @@ class SecondAuthorizationViewModel @Inject constructor(private val userRepositor
             }
         }
     }
-}
 
+}

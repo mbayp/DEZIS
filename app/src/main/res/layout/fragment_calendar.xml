@@ -13,7 +13,6 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/arrow_left" />
 
-
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
@@ -82,4 +81,5 @@
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:backgroundTint="@color/button_color" />
+
 </LinearLayout>

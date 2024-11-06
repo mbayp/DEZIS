@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="20dp">
 
     <com.google.android.material.card.MaterialCardView
@@ -20,8 +20,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             android:padding="16dp">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -38,8 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginBottom="32dp"
-                android:paddingTop="12dp"
                 android:gravity="center"
+                android:paddingTop="12dp"
                 android:text="@string/data_have_saved"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />

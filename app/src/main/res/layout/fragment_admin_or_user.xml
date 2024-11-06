@@ -37,4 +37,5 @@
         style="@style/CenterWhiteText"
         android:layout_marginBottom="0dp"
         android:text="@string/txt_sistem_sing" />
+
 </LinearLayout>

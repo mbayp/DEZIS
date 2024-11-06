@@ -1,28 +1,29 @@
 package com.dezis.geeks_dezis.data.remote.apiservice
 
-import com.dezis.geeks_dezis.data.remote.model.Booking
-import com.dezis.geeks_dezis.data.remote.model.BookingRequest
-import com.dezis.geeks_dezis.data.remote.model.BookingResponse
+import com.dezis.geeks_dezis.core.common.Constants.GET_BOOKING
+import com.dezis.geeks_dezis.core.common.Constants.GET_USER
+import com.dezis.geeks_dezis.core.common.Constants.POST_BOOKING
+import com.dezis.geeks_dezis.data.remote.model.booking.Booking
+import com.dezis.geeks_dezis.data.remote.model.booking.BookingRequest
+import com.dezis.geeks_dezis.data.remote.model.booking.BookingResponse
+import com.dezis.geeks_dezis.data.remote.model.user.UserResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import com.dezis.geeks_dezis.core.common.Constants.get_booking
-import com.dezis.geeks_dezis.core.common.Constants.get_user
-import com.dezis.geeks_dezis.core.common.Constants.post_booking
-import com.dezis.geeks_dezis.presentation.fragments.profile.UserResponse
 import retrofit2.http.Path
 
 interface DezisApiService {
 
-    @GET(get_booking)
+    @GET(GET_BOOKING)
     fun getBookings(): Call<List<Booking>>
 
-    @POST(post_booking)
+    @POST(POST_BOOKING)
     fun bookService(
         @Body bookingRequest: BookingRequest
     ): Call<BookingResponse>
 
-    @GET(get_user)
+    @GET(GET_USER)
     fun getUserData(@Path("id") userId: Int): UserResponse
+
 }

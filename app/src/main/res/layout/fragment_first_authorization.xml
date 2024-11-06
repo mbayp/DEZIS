@@ -38,6 +38,7 @@
             style="@style/CustomTextInputLayout"
             android:layout_marginTop="10dp"
             android:hint="@string/e_mail">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
@@ -54,9 +55,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_number"
-                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="phone"
                 android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +96,4 @@
         android:text="@string/policy_txt"
         android:textSize="12sp" />
 
-
 </FrameLayout>
-

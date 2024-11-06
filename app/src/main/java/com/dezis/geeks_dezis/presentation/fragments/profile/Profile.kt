@@ -13,12 +13,13 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.core.common.SharedPreferencesKeys
 import com.dezis.geeks_dezis.core.common.UiState
 import com.dezis.geeks_dezis.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class Profile @Inject constructor() :
     BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
@@ -103,7 +104,7 @@ class Profile @Inject constructor() :
 
 
     private fun observeViewModel() {
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launch {
             viewModel.userData.collect { state ->
                 when (state) {
                     is UiState.Loading -> {
@@ -124,18 +125,12 @@ class Profile @Inject constructor() :
 
                     is UiState.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), "Ошибка: ${state.mes}", Toast.LENGTH_SHORT).show()
-                    }
-
-                    is UiState.Idle -> {
+                        Toast.makeText(requireContext(), "Ошибка: ${state.mes}", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showCustomDialog() {
@@ -151,4 +146,5 @@ class Profile @Inject constructor() :
             dialog.dismiss()
         }, 2000)
     }
+
 }

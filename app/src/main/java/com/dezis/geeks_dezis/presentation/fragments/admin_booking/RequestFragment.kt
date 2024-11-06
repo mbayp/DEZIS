@@ -10,7 +10,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
-import com.dezis.geeks_dezis.data.remote.model.Booking
+import com.dezis.geeks_dezis.data.remote.model.booking.Booking
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
@@ -27,7 +27,8 @@ class RequestFragment : Fragment() {
     @Inject
     lateinit var dezisApiService: DezisApiService
 
-    private lateinit var requestAdapter: RequestAdapter
+    private var requestAdapter: RequestAdapter? = null
+
     private val bookings: MutableList<Booking> = mutableListOf()
 
     override fun onCreateView(
@@ -73,7 +74,7 @@ class RequestFragment : Fragment() {
     private fun updateBookings(newBookings: List<Booking>) {
         bookings.clear()
         bookings.addAll(newBookings)
-        requestAdapter.notifyDataSetChanged()
+        requestAdapter?.notifyDataSetChanged()
     }
 
     private fun setupOnBackPressedCallback() {
@@ -96,4 +97,5 @@ class RequestFragment : Fragment() {
         _binding = null
         bookings.clear()
     }
+
 }

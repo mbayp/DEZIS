@@ -1,48 +1,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardSecondFragment">
+
     <ImageView
         android:id="@+id/ellipse_img"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/ellipse_img"
-        android:layout_alignParentTop="true"
         android:layout_above="@id/buttons_layout"
-        />
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ellipse_img" />
 
     <ImageView
         android:id="@+id/img_human"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_on_board3"
         android:layout_alignBottom="@id/ellipse_img"
         android:layout_marginBottom="60dp"
-        />
+        android:src="@drawable/img_on_board3" />
 
     <TextView
         android:id="@+id/txt_know"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="44dp"
         android:layout_above="@id/img_human"
         android:layout_alignTop="@id/ellipse_img"
+        android:layout_marginHorizontal="44dp"
         android:layout_marginTop="24dp"
-        android:text="@string/txt_know"
-        android:textColor="@color/white"
-        android:textSize="20sp"
         android:fontFamily="@font/roboto_reg"
         android:gravity="center"
-        />
+        android:text="@string/txt_know"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
             style="@style/CustomMaterialButtonForOnBoard"
@@ -52,18 +51,20 @@
             android:text="@string/continue_txt"
             app:layout_constraintBottom_toTopOf="@id/btn_skip"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_skip"
             style="@style/CustomMaterialButtonForOnBoard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/skip_txt"
             app:backgroundTint="@color/dark_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:strokeColor="@color/grey_dark"
             app:strokeWidth="1dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

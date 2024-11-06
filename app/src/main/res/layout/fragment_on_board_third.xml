@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardThirdFragment">
 
@@ -10,24 +10,22 @@
         android:id="@+id/img_hands"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_on_board4"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="60dp"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="16dp"
-        />
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_on_board4" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_show"
-        android:textSize="24sp"
-        android:layout_marginHorizontal="28dp"
-        android:textColor="@color/white"
-        app:fontFamily="@font/roboto_reg"
         android:layout_below="@id/img_hands"
+        android:layout_marginHorizontal="28dp"
         android:layout_marginTop="50dp"
-        />
+        android:text="@string/txt_show"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:fontFamily="@font/roboto_reg" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,12 +45,13 @@
             style="@style/CustomMaterialButtonForOnBoard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/btn_continue"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/skip_txt"
             app:backgroundTint="@color/dark_blue"
             app:strokeColor="@color/grey_dark"
-            app:strokeWidth="1dp"
-            android:text="@string/skip_txt"
-            android:layout_below="@id/btn_continue"
-            android:layout_marginTop="16dp" />
+            app:strokeWidth="1dp" />
     </RelativeLayout>
 
 </RelativeLayout>

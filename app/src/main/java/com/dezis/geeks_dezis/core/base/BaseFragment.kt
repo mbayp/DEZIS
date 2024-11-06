@@ -36,14 +36,12 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(
         success: ((data: T) -> Unit)? = null,
         loading: ((data: UiState.Loading<T>) -> Unit)? = null,
         error: ((error: String) -> Unit)? = null,
-        idle: ((idle: UiState.Idle<T>) -> Unit)? = null,
         gatherIfSucceed: ((state: UiState<T>) -> Unit)? = null,
     ) {
         safeFlowGather(lifecycleState) {
             collect {
                 gatherIfSucceed?.invoke(it)
                 when (it) {
-                    is UiState.Idle -> idle?.invoke(it)
                     is UiState.Loading -> loading?.invoke(it)
                     is UiState.Success -> success?.invoke(it.data)
                     is UiState.Error -> error?.invoke(it.mes)
@@ -52,7 +50,7 @@ abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(
         }
     }
 
-    fun safeFlowGather(
+    private fun safeFlowGather(
         lifeCycleState: Lifecycle.State = Lifecycle.State.STARTED,
         gather: suspend () -> Unit,
     ) {

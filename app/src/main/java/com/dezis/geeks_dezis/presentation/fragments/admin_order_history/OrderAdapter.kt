@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
-import com.dezis.geeks_dezis.data.remote.model.Booking
+import com.dezis.geeks_dezis.data.remote.model.booking.Booking
 import javax.inject.Inject
 
 class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
@@ -46,8 +46,8 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
             address.text = "Address: ${order.id}"
             date.text = "${order.date}, ${order.time}"
 
-            // Показать кнопку только для незавершенных заказов
-            completeOrderButton.visibility = if (order.time.isNotEmpty()) View.VISIBLE else View.GONE
+            completeOrderButton.visibility =
+                if (order.time.isNotEmpty()) View.VISIBLE else View.GONE
 
             completeOrderButton.setOnClickListener {
                 showConfirmationDialog(order)
@@ -55,7 +55,8 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         }
 
         private fun showConfirmationDialog(order: Booking) {
-            val dialogView = LayoutInflater.from(itemView.context).inflate(R.layout.custom_dialog_layout, null)
+            val dialogView =
+                LayoutInflater.from(itemView.context).inflate(R.layout.custom_dialog_layout, null)
             val dialogBuilder = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
             val dialog = dialogBuilder.setView(dialogView).create()
 
@@ -64,7 +65,7 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
 
             yesButton.setOnClickListener {
                 dialog.dismiss()
-                showOrderCompletedDialog() // Открываем второй диалог после нажатия "Да"
+                showOrderCompletedDialog()
             }
 
             noButton.setOnClickListener {
@@ -75,18 +76,20 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         }
 
         private fun showOrderCompletedDialog() {
-            val completedDialogView = LayoutInflater.from(itemView.context).inflate(R.layout.order_completed_dialog, null)
-            val completedDialogBuilder = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
+            val completedDialogView =
+                LayoutInflater.from(itemView.context).inflate(R.layout.order_completed_dialog, null)
+            val completedDialogBuilder =
+                AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
             val completedDialog = completedDialogBuilder.setView(completedDialogView).create()
 
             val closeButton = completedDialogView.findViewById<ImageView>(R.id.closeButton)
             closeButton.setOnClickListener {
                 completedDialog.dismiss()
-                // Скрываем кнопку "Завершить" после закрытия второго диалога
                 completeOrderButton.visibility = View.GONE
             }
 
             completedDialog.show()
         }
     }
+
 }

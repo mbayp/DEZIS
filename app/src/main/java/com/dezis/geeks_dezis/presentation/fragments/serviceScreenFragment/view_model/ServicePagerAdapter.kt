@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
+import com.dezis.geeks_dezis.data.remote.model.service.ServiceModel
 
 class ServicePagerAdapter(
     private val services: List<ServiceModel>,

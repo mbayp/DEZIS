@@ -1,6 +1,5 @@
 package com.dezis.geeks_dezis.presentation.fragments.splash
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +16,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-@SuppressLint("CustomSplashScreen")
 class SplashScreenFragment : Fragment() {
 
     private var _binding: FragmentSplashScreenBinding? = null
@@ -39,12 +37,12 @@ class SplashScreenFragment : Fragment() {
         if (findNavController().currentDestination?.id == R.id.splashScreenFragment) {
             lifecycleScope.launch {
                 delay(3000)
-               /* val navOptions = NavOptions.Builder()
+                val navOptions = NavOptions.Builder()
                     .setEnterAnim(R.anim.slide_in)
                     .setExitAnim(R.anim.slide_out)
                     .setPopEnterAnim(R.anim.slide_in)
                     .setPopExitAnim(R.anim.slide_out)
-                    .build()*/
+                    .build()
                 findNavController().navigate(R.id.onBoardFirstFragment)
             }
         }
@@ -54,4 +52,5 @@ class SplashScreenFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

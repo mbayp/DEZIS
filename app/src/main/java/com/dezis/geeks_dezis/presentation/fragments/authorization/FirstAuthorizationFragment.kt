@@ -14,13 +14,18 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentFirstAuthorizationBinding
-import by.kirich1409.viewbindingdelegate.viewBinding
 
-class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
-    override val binding: FragmentFirstAuthorizationBinding by viewBinding(FragmentFirstAuthorizationBinding::bind)
+class FirstAuthorizationFragment :
+    BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
+
+    override val binding: FragmentFirstAuthorizationBinding by viewBinding(
+        FragmentFirstAuthorizationBinding::bind
+    )
+
     override val viewModel: FirstAuthorizationViewModel by viewModels()
 
     override fun constructorListeners() {
@@ -37,12 +42,13 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
 
                 storeRegistrationData(username, email, password)
 
-                val action = FirstAuthorizationFragmentDirections.actionAuthorizationFragmentToSecondAuthorizationFragment(
-                    userName = username,
-                    email = email,
-                    password = password,
-                    number = number
-                )
+                val action =
+                    FirstAuthorizationFragmentDirections.actionAuthorizationFragmentToSecondAuthorizationFragment(
+                        userName = username,
+                        email = email,
+                        password = password,
+                        number = number
+                    )
                 findNavController().navigate(action)
             }
         }
@@ -50,8 +56,9 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
     }
 
     private fun storeRegistrationData(userName: String, email: String, password: String) {
-        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().apply() {
+        val sharedPreferences =
+            requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().apply {
             putString("userName", userName)
             putString("email", email)
             putString("password", password)
@@ -62,13 +69,23 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
     private fun validateFields() {
         val isAllFieldsValid = binding.etName.text.toString().isNotEmpty() &&
                 binding.etPassword.text.toString().isNotEmpty() &&
-                binding.etEmail.text.toString().isNotEmpty()&&
+                binding.etEmail.text.toString().isNotEmpty() &&
                 binding.etNumber.text.toString().isNotEmpty()
 
         if (isAllFieldsValid) {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
+            binding.btnContinue.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.grey_dark
+                )
+            )
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_grey))
+            binding.btnContinue.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.dark_grey
+                )
+            )
         }
     }
 
@@ -95,7 +112,8 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
         } else {
             val password = binding.etPassword.text.toString()
             if (!isPasswordValid(password)) {
-                binding.tilPassword.error = "Пароль должен содержать заглавные и строчные буквы, цифры и иметь длину не менее 8 символов"
+                binding.tilPassword.error =
+                    "Пароль должен содержать заглавные и строчные буквы, цифры и иметь длину не менее 8 символов"
                 isValid = false
             } else {
                 binding.tilPassword.error = null
@@ -148,13 +166,33 @@ class FirstAuthorizationFragment : BaseFragment<FragmentFirstAuthorizationBindin
         }
 
         spannableString.setSpan(salesTermsClickable, 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.blue
+                )
+            ), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
-        spannableString.setSpan(privacyPolicyClickable, 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            privacyPolicyClickable,
+            100,
+            spannableString.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.blue
+                )
+            ), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
         termsTextView.text = spannableString
         termsTextView.movementMethod = LinkMovementMethod.getInstance()
         termsTextView.highlightColor = Color.TRANSPARENT
     }
+
 }

@@ -4,22 +4,22 @@ import androidx.lifecycle.viewModelScope
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import com.dezis.geeks_dezis.core.common.UiState
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
+import com.dezis.geeks_dezis.data.remote.model.user.UserResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.log
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val apiService: DezisApiService
 ) : BaseViewModel() {
 
-    private val _phoneNumber = MutableStateFlow<UiState<String>>(UiState.Idle())
+    private val _phoneNumber = MutableStateFlow<UiState<String>>(UiState.Loading())
     val phoneNumber: StateFlow<UiState<String>> get() = _phoneNumber
 
-    private val _avatar = MutableStateFlow<UiState<String>>(UiState.Idle())
+    private val _avatar = MutableStateFlow<UiState<String>>(UiState.Loading())
     val avatar: StateFlow<UiState<String>> get() = _avatar
 
     fun updatePhoneNumber(newPhoneNumber: String) {
@@ -32,7 +32,7 @@ class ProfileViewModel @Inject constructor(
         _avatar.value = UiState.Success(newAvatarUri)
     }
 
-    private val _userData = MutableStateFlow<UiState<UserResponse>>(UiState.Idle())
+    private val _userData = MutableStateFlow<UiState<UserResponse>>(UiState.Loading())
     val userData: StateFlow<UiState<UserResponse>> get() = _userData
 
     fun fetchUserData(userId: Int) {
@@ -46,4 +46,5 @@ class ProfileViewModel @Inject constructor(
             }
         }
     }
+
 }

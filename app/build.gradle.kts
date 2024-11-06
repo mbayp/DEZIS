@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.dezis.geeks_dezis"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -27,6 +27,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            isShrinkResources = false
+        }
+        debug {
+            isMinifyEnabled = false
+            isShrinkResources = false
+
             buildConfigField(
                 "String",
                 "BASE_URL",
@@ -42,7 +48,6 @@ android {
             )
         }
     }
-
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -97,12 +102,10 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.circleimageview)
 
-    // Scarlet
     implementation(libs.scarlet)
     implementation(libs.websocket.okhttp)
     implementation(libs.stream.adapter.rxjava2)
 
-    //RX
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
     implementation(libs.rxkotlin)
@@ -116,5 +119,7 @@ dependencies {
     implementation(libs.view.pager)
 
     implementation(libs.onboarding)
+
+    implementation (libs.multidex)
 
 }

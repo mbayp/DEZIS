@@ -1,4 +1,3 @@
-/*
 package com.dezis.geeks_dezis.presentation.fragments.onboarding
 
 import android.os.Bundle
@@ -7,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.FragmentOnBoardingBinding
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFifthFragment
 import com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens.OnBoardFirstFragment
@@ -27,7 +24,7 @@ class OnBoardingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         return binding.root
     }
 
@@ -47,12 +44,12 @@ class OnBoardingFragment : Fragment() {
             if (binding.viewPager.currentItem < fragmentList.size - 1) {
                 binding.viewPager.currentItem += 1
             } else {
-                findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
+//                findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
             }
         }
 
         binding.btnSkip.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
+//            findNavController().navigate(R.id.action_onBoardingFragment_to_adminOrUserFragment)
         }
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -71,7 +68,6 @@ class OnBoardingFragment : Fragment() {
                 }
             }
         })
-
     }
+
 }
-*/

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
-    protected fun <T> mutableStateFlow() = MutableStateFlow<UiState<T>>(UiState.Idle())
+    protected fun <T> mutableStateFlow() = MutableStateFlow<UiState<T>>(UiState.Loading())
 
     protected fun <T, S> gatherRequest(
         flow: Flow<Either<String, T>>,
