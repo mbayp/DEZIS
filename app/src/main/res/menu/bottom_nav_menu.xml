@@ -8,7 +8,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/calendar"
+        android:id="@+id/calendarFragment"
         android:icon="@drawable/ic_calendar"
         android:title="" />
 

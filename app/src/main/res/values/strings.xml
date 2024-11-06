@@ -142,4 +142,5 @@
     <string name="no_internet_txt">Нет соединения с интернетом\nПроверьте подключение к интернету</string>
     <string name="img_human_desc">Изображение оператора за компьютером для поддержки пользователей\n</string>
     <string name="desc_logo">Логотип Dezis</string>
+    <string name="todo2">TODO</string>
 </resources>
