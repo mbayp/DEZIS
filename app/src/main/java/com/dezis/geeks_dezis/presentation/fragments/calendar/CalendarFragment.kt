@@ -16,11 +16,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
+import com.dezis.geeks_dezis.core.common.PreferenceHelper
 import com.dezis.geeks_dezis.databinding.FragmentCalendarBinding
 import com.dezis.geeks_dezis.presentation.fragments.calendar.view_model.CalendarViewModel
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel>(
@@ -29,6 +31,9 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     override val binding: FragmentCalendarBinding by viewBinding(FragmentCalendarBinding::bind)
     override val viewModel: CalendarViewModel by viewModels()
+
+    @Inject
+    lateinit var preferenceHelper: PreferenceHelper
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,22 +78,13 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupServiceSelection() {
         binding.checkboxDisinfection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.toggleServiceSelection(
-                binding.checkboxDisinfection.text.toString(),
-                isChecked
-            )
+            viewModel.toggleServiceSelection(binding.checkboxDisinfection.text.toString(), isChecked)
         }
         binding.checkboxDeratization.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.toggleServiceSelection(
-                binding.checkboxDeratization.text.toString(),
-                isChecked
-            )
+            viewModel.toggleServiceSelection(binding.checkboxDeratization.text.toString(), isChecked)
         }
         binding.checkboxDisinsection.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.toggleServiceSelection(
-                binding.checkboxDisinsection.text.toString(),
-                isChecked
-            )
+            viewModel.toggleServiceSelection(binding.checkboxDisinsection.text.toString(), isChecked)
         }
     }
 
@@ -119,7 +115,12 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
     private fun setupOrderButton() {
         binding.orderServiceButton.setOnClickListener {
-            viewModel.bookService(userId = 57)
+            val userId = preferenceHelper.getUserId()
+            if (userId != -1) {  // проверяем, что userId существует
+                viewModel.bookService(userId = userId)
+            } else {
+                showToastMessage("Ошибка: пользователь не авторизован")
+            }
         }
     }
 
@@ -156,5 +157,4 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding, CalendarViewModel
 
         dialog.show()
     }
-
 }

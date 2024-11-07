@@ -36,10 +36,18 @@ class PreferenceHelper @Inject constructor(private val sharedPreferences: Shared
             .apply()
     }
 
+    fun saveUserId(userId: Int) {
+        sharedPreferences.edit().putInt(USER_ID, userId).apply()
+    }
+
+    fun getUserId(): Int {
+        return sharedPreferences.getInt(USER_ID, -1)
+    }
+
     companion object {
         private const val SHOWED = "SHOWED"
         private const val USER_SIGNED_IN = "USER_SIGNED_IN"
         private const val ADMIN_SIGNED_IN = "ADMIN_SIGNED_IN"
+        private const val USER_ID = "USER_ID"
     }
-
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/requestFragment">
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -188,6 +188,10 @@
             android:name="password"
             app:argType="string" />
 
+        <argument
+            android:name="number"
+            app:argType="string" />
+
     </fragment>
 
     <fragment
@@ -196,17 +200,14 @@
         android:label="fragment_code_verification"
         tools:layout="@layout/fragment_code_verification">
 
-        <action
-            android:id="@+id/action_codeVerificationFragment_to_successfulVerificationFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
+
 
         <argument
             android:name="email"
             app:argType="string" />
+        <action
+            android:id="@+id/action_codeVerificationFragment_to_waitingFragment3"
+            app:destination="@id/waitingFragment3" />
 
     </fragment>
 
@@ -319,7 +320,7 @@
 
     <fragment
         android:id="@+id/requestFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_booking.RequestFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.admin_request.RequestFragment"
         android:label="fragment_request"
         tools:layout="@layout/fragment_request" />
 
@@ -327,7 +328,11 @@
         android:id="@+id/waitingFragment3"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.WaitingFragment"
         android:label="fragment_waiting_permission"
-        tools:layout="@layout/fragment_waiting_permission" />
+        tools:layout="@layout/fragment_waiting_permission" >
+        <action
+            android:id="@+id/action_waitingFragment3_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/onBoardFifthFragment"

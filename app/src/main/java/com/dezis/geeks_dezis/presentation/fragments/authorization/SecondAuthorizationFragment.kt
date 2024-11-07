@@ -59,7 +59,8 @@ class SecondAuthorizationFragment :
                     email = args.email,
                     apartmentNumber = apartmentNumber,
                     address = address,
-                    password = args.password
+                    password = args.password,
+                    number = args.number
                 )
                 sendRegistrationRequest(userRegistrationRequest)
             }

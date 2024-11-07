@@ -18,6 +18,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.databinding.FragmentFirstAuthorizationBinding
+import com.dezis.geeks_dezis.data.remote.model.user.UserRegisterDto
 
 class FirstAuthorizationFragment :
     BaseFragment<FragmentFirstAuthorizationBinding, FirstAuthorizationViewModel>(R.layout.fragment_first_authorization) {
@@ -40,7 +41,6 @@ class FirstAuthorizationFragment :
                 val password = binding.etPassword.text.toString()
                 val number = binding.etNumber.text.toString()
 
-                storeRegistrationData(username, email, password)
 
                 val action =
                     FirstAuthorizationFragmentDirections.actionAuthorizationFragmentToSecondAuthorizationFragment(
@@ -53,17 +53,6 @@ class FirstAuthorizationFragment :
             }
         }
         setupClickableText()
-    }
-
-    private fun storeRegistrationData(userName: String, email: String, password: String) {
-        val sharedPreferences =
-            requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        sharedPreferences.edit().apply {
-            putString("userName", userName)
-            putString("email", email)
-            putString("password", password)
-            apply()
-        }
     }
 
     private fun validateFields() {
@@ -132,7 +121,6 @@ class FirstAuthorizationFragment :
         return isValid
     }
 
-
     private fun isPasswordValid(password: String): Boolean {
         val hasUppercase = password.any { it.isUpperCase() }
         val hasLowercase = password.any { it.isLowerCase() }
@@ -194,5 +182,4 @@ class FirstAuthorizationFragment :
         termsTextView.movementMethod = LinkMovementMethod.getInstance()
         termsTextView.highlightColor = Color.TRANSPARENT
     }
-
 }
