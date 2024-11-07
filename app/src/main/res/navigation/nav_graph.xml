@@ -188,6 +188,10 @@
             android:name="password"
             app:argType="string" />
 
+        <argument
+            android:name="number"
+            app:argType="string" />
+
     </fragment>
 
     <fragment
