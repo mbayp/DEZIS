@@ -70,7 +70,7 @@ class CodeVerificationFragment :
                         pref.signInUser()
                         Toast.makeText(requireContext(), "Код подтвержден", Toast.LENGTH_SHORT)
                             .show()
-                        findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
+                        findNavController().navigate(R.id.action_codeVerificationFragment_to_waitingFragment3)
                     } else {
                         binding.tilCode.error = "Код введен неверно"
                     }
