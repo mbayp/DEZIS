@@ -5,5 +5,6 @@ data class UserRegisterDto(
     val email: String,
     var apartmentNumber: String,
     var address: String,
-    val password: String
+    val password: String,
+    val number: String
 )
