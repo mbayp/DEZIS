@@ -52,7 +52,7 @@ class RequestFragment :
                 Log.e("ololo", "launchObserver: ${response.body()}")
 
                 // Обновление адаптера с данными
-                requestAdapter?.submitList(null)
+                requestAdapter?.submitList(response.body())
             }
 
 
