@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkUserState() {
         when {
             sharedPreferences.isAdminSignedIn() -> {
-                navController.navigate(R.id.requestFragment)
+                navController.navigate(R.id.newOrderFragment)
             }
             sharedPreferences.isUserSignedIn() -> {
                 navController.navigate(R.id.homeFragment)
@@ -159,15 +159,15 @@ class MainActivity : AppCompatActivity() {
         binding.adminBottomNav.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.requestFragment -> {
-                    navController.navigate(R.id.requestFragment)
+                    navController.navigate(R.id.newOrderFragment)
                     true
                 }
                 R.id.chatFragment -> {
-                    navController.navigate(R.id.chatFragment2)
+                    navController.navigate(R.id.chats)
                     true
                 }
                 R.id.newOrderFragment -> {
-                    navController.navigate(R.id.newOrderFragment) // Фрагмент "Новый Заказ"
+                    navController.navigate(R.id.requestFragment) // Фрагмент "Новый Заказ"
                     true
                 }
                 else -> false
