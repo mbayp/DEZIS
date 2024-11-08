@@ -8,6 +8,7 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -80,7 +81,7 @@ class SecondAuthorizationFragment :
                 val response = userApiService.registerUser(userRegisterDto)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        // Переход на следующий экран после успешной регистрации
+                        Log.d("arsenchik","$response")
                         findNavController().navigate(
                             SecondAuthorizationFragmentDirections
                                 .actionSecondAuthorizationFragmentToCodeVerificationFragment(email = args.email)

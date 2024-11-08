@@ -7,7 +7,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/chatFragment"
+        android:id="@+id/error"
         android:icon="@drawable/ic_chat"
         android:title="" />
 

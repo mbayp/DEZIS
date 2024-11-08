@@ -4,9 +4,11 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.dezis.geeks_dezis.BuildConfig.BASE_URL
-import com.dezis.geeks_dezis.core.common.Constants.NETWORK_TIMEOUT
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
+import com.dezis.geeks_dezis.data.remote.interceptors.ErrorHandler
+import com.dezis.geeks_dezis.data.remote.interceptors.ErrorHandlingInterceptor
+import com.dezis.geeks_dezis.presentation.activity.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +24,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Provides
     @Singleton
     fun provideContext(application: Application): Context {
@@ -36,30 +37,31 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(
-    ): OkHttpClient = OkHttpClient().newBuilder()
-        .addInterceptor(
-            HttpLoggingInterceptor().setLevel(
-                HttpLoggingInterceptor.Level.BODY
-            )
-        )
-        .connectTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
-        .readTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
-        .writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
-        .callTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
-        .build()
+    fun provideOkHttpClient(errorHandler: ErrorHandler): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        return OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .addInterceptor(ErrorHandlingInterceptor(errorHandler))
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .callTimeout(15, TimeUnit.SECONDS)
+            .build()
+    }
 
     @Provides
     @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        gsonConverterFactory: GsonConverterFactory,
-    ): Retrofit =
-        Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(BASE_URL)
-            .addConverterFactory(gsonConverterFactory)
-            .build()
+        gsonConverterFactory: GsonConverterFactory
+    ): Retrofit = Retrofit.Builder()
+        .client(okHttpClient)
+        .baseUrl(BASE_URL)
+        .addConverterFactory(gsonConverterFactory)
+        .build()
 
     @Provides
     @Singleton
@@ -78,5 +80,4 @@ object NetworkModule {
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
     }
-
 }

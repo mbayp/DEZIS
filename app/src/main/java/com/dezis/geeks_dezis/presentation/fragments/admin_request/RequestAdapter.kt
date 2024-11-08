@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.data.remote.model.inactiveUser.InactiveUserModelItem
+import com.dezis.geeks_dezis.data.remote.model.updateUserRequestModel.UpdateUserRequestModel
 import com.dezis.geeks_dezis.databinding.ItemRequestBinding
 
 class RequestAdapter(
+    private val listener: OnItemActionListener
 ) : ListAdapter<InactiveUserModelItem, RequestAdapter.RequestViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestViewHolder {
@@ -20,9 +22,9 @@ class RequestAdapter(
         holder.bind(getItem(position))
     }
 
-
     inner class RequestViewHolder(private val binding: ItemRequestBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(model: InactiveUserModelItem) = with(binding) {
             textDate.text = model.createdAt
             textName.text = model.username
@@ -30,7 +32,25 @@ class RequestAdapter(
             textAddress.text = model.address
             textApartmentNumber.text = model.address
             textEmail.text = model.email
+
+            // Устанавливаем обработчики кликов для кнопок подтверждения и удаления
+            buttonConfirm.setOnClickListener {
+                listener.onConfirmClicked(model.id, UpdateUserRequestModel(
+                    isActive = true,
+                    avatar = model.avatar,
+                    number = model.number
+                ))
+            }
+
+            buttonCancel.setOnClickListener {
+                listener.onDeleteClicked(model.id)
+            }
         }
+    }
+
+    interface OnItemActionListener {
+        fun onConfirmClicked(userId: Int, model: UpdateUserRequestModel)
+        fun onDeleteClicked(userId: Int)
     }
 
     class DiffCallback : DiffUtil.ItemCallback<InactiveUserModelItem>() {

@@ -40,6 +40,10 @@ class AdminSignInFragment :
     @Inject
     lateinit var shered: PreferenceHelper
 
+    override fun init() {
+        setupClickableText()
+    }
+
 
     override fun constructorListeners() {
         binding.etLogIn.addTextChangedListener { validateFields() }
@@ -52,7 +56,6 @@ class AdminSignInFragment :
                 loginManager(login, password)
             }
         }
-        setupClickableText()
     }
 
     private fun loginManager(login: String, password: String) {
@@ -66,7 +69,7 @@ class AdminSignInFragment :
                         loginResponse?.let {
                             showToast("Вход выполнен успешно")
                             shered.signInAdmin()
-                            findNavController().navigate(R.id.action_adminSignInFragment_to_requestFragment)
+                            findNavController().navigate(R.id.action_adminSignInFragment_to_newOrderFragment)
                         }
                     } else {
                         showToast("Ошибка входа")

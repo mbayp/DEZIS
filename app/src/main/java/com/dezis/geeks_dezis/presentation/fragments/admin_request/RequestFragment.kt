@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.core.common.UiState
+import com.dezis.geeks_dezis.data.remote.model.updateUserRequestModel.UpdateUserRequestModel
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,12 +18,15 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RequestFragment :
-    BaseFragment<FragmentRequestBinding, RequestViewModell>(R.layout.fragment_request) {
+    BaseFragment<FragmentRequestBinding, RequestViewModell>(R.layout.fragment_request),
+    RequestAdapter.OnItemActionListener {
 
     override val binding: FragmentRequestBinding by viewBinding(FragmentRequestBinding::bind)
     override val viewModel: RequestViewModell by viewModels()
 
-    private val requestAdapter: RequestAdapter by lazy { RequestAdapter() }
+    private val requestAdapter: RequestAdapter by lazy {
+        RequestAdapter(this)
+    }
 
     override fun init() {
         super.init()
@@ -39,55 +43,50 @@ class RequestFragment :
 
     override fun launchObserver() {
         super.launchObserver()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.inactiveUserState.collect { uiState ->
+                Log.e("RequestFragment", "launchObserver: $uiState")
+                when (uiState) {
+                    is UiState.Loading -> showLoadingIfViewAvailable(true)
+                    is UiState.Success -> {
+                        showLoadingIfViewAvailable(false)
+                        val users = uiState.data
+                        if (users.isNullOrEmpty()) {
+                            showErrorIfViewAvailable("Список пользователей пуст")
+                            requestAdapter.submitList(users)
 
-        // Используем viewModelScope.launch, чтобы работать с корутинами
-        lifecycleScope.launch {
-            viewModel.getInactiveUser().collect { response ->
-                // Проверка, что тело ответа не пустое
-                if (response.body() != null) {
-                    showError("User")
+                        } else {
+                            requestAdapter.submitList(users)
+                        }
+                    }
+                    is UiState.Error -> {
+                        showLoadingIfViewAvailable(false)
+                        showErrorIfViewAvailable(uiState.mes)
+                    }
                 }
-
-                // Логирование тела ответа
-                Log.e("ololo", "launchObserver: ${response.body()}")
-
-                // Обновление адаптера с данными
-                requestAdapter?.submitList(response.body())
             }
-
-
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewModel.inactiveUser.collect {
-//                Log.e("ololo", "launchObserver: $it")
-//                when (it) {
-//                    is UiState.Success -> {
-//                        showLoading(false)
-//                        val users = it.data
-//                        if (users!!.isEmpty()) {
-//                            showError("Пустой ответ от сервера")
-//                        } else {
-//                            requestAdapter.submitList(users)
-//                        }
-//                        Log.e("ololo", "launchObserver: $users")
-//
-//                    }
-//
-//                    is UiState.Error -> {
-//                        showError(it.mes)
-//                        showLoading(false)
-//                    }
-//
-//                    is UiState.Loading -> {
-//                        Log.e("ololo", "launchObserver: Код говно", )
-//                        showLoading(true)
-//                    }
-//                }
-
         }
     }
 
-    private fun showLoading(loading: Boolean) {
-        binding.progress.visibility = if (loading) View.VISIBLE else View.GONE
+
+    private fun showLoadingIfViewAvailable(isLoading: Boolean) {
+        if (view != null && isAdded) {
+            showLoading(isLoading)
+        }
+    }
+
+    private fun showErrorIfViewAvailable(message: String) {
+        if (view != null && isAdded) {
+            showError(message)
+        }
+    }
+
+    override fun onConfirmClicked(userId: Int, model: UpdateUserRequestModel) {
+        viewModel.updateUser(userId, model)  // Подтверждение пользователя
+    }
+
+    override fun onDeleteClicked(userId: Int) {
+        viewModel.deleteUser(userId)  // Удаление пользователя
     }
 
     private fun setupOnBackPressedCallback() {
@@ -98,6 +97,10 @@ class RequestFragment :
                     requireActivity().finishAffinity()
                 }
             })
+    }
+
+    private fun showLoading(loading: Boolean) {
+        binding.progress.visibility = if (loading) View.VISIBLE else View.GONE
     }
 
     private fun showError(message: String) {
