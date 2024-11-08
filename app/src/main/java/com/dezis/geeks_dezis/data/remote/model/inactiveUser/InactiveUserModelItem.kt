@@ -7,7 +7,7 @@ data class InactiveUserModelItem(
     @SerializedName("apartment_number")
     val apartmentNumber: String,
     @SerializedName("avatar")
-    val avatar: Any,
+    val avatar: String,
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("email")
