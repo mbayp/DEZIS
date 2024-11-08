@@ -17,10 +17,19 @@ class ServicePagerAdapter(
 ) : RecyclerView.Adapter<ServicePagerAdapter.ServiceViewHolder>() {
 
     class ServiceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image: ImageView = itemView.findViewById(R.id.image)
-        val title: TextView = itemView.findViewById(R.id.title)
-        val description: TextView = itemView.findViewById(R.id.description)
-        val button: Button = itemView.findViewById(R.id.button)
+        private val image: ImageView = itemView.findViewById(R.id.image)
+        private val title: TextView = itemView.findViewById(R.id.title)
+        private val description: TextView = itemView.findViewById(R.id.description)
+        private val button: Button = itemView.findViewById(R.id.button)
+
+        fun bind(service: ServiceModel, navController: NavController) {
+            image.setImageResource(service.imageResId)
+            title.text = service.title
+            description.text = service.description
+            button.setOnClickListener {
+                navController.navigate(R.id.action_serviceScreenFragment_to_calendarFragment)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
@@ -30,13 +39,7 @@ class ServicePagerAdapter(
     }
 
     override fun onBindViewHolder(holder: ServiceViewHolder, position: Int) {
-        val service = services[position]
-        holder.image.setImageResource(service.imageResId)
-        holder.title.text = service.title
-        holder.description.text = service.description
-        holder.button.setOnClickListener {
-            navController.navigate(R.id.action_serviceScreenFragment_to_calendarFragment)
-        }
+        holder.bind(services[position], navController)
     }
 
     override fun getItemCount(): Int = services.size

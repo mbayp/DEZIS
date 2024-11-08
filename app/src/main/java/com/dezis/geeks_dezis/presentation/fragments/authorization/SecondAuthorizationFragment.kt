@@ -63,6 +63,11 @@ class SecondAuthorizationFragment :
                     password = args.password,
                     number = args.number
                 )
+
+                // Переход на экран загрузки
+                findNavController().navigate(R.id.action_secondAuthorizationFragment_to_loadingFragment)
+
+                // Отправка запроса на регистрацию
                 sendRegistrationRequest(userRegistrationRequest)
             }
         }
@@ -98,6 +103,8 @@ class SecondAuthorizationFragment :
     }
 
     private fun handleError(errorBody: ResponseBody?) {
+        // Закрытие экрана загрузки и возврат к текущему экрану при ошибке
+        findNavController().popBackStack()
         showToast("Error: ${errorBody?.string() ?: "Unknown error"}")
     }
 
