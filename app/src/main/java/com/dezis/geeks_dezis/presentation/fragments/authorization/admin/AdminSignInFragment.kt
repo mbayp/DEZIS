@@ -40,6 +40,10 @@ class AdminSignInFragment :
     @Inject
     lateinit var shered: PreferenceHelper
 
+    override fun init() {
+        setupClickableText()
+    }
+
 
     override fun constructorListeners() {
         binding.etLogIn.addTextChangedListener { validateFields() }
@@ -52,7 +56,6 @@ class AdminSignInFragment :
                 loginManager(login, password)
             }
         }
-        setupClickableText()
     }
 
     private fun loginManager(login: String, password: String) {

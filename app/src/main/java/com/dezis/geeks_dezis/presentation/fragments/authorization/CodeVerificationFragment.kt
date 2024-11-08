@@ -48,6 +48,11 @@ class CodeVerificationFragment :
     @Inject
     lateinit var userApiService: UserApiService
 
+
+    override fun init() {
+
+    }
+
     override fun constructorListeners() {
         binding.etCode.addTextChangedListener { validateFields() }
 
