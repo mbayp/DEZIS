@@ -11,30 +11,75 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.math.log
 
 @HiltViewModel
 class RequestViewModell @Inject constructor(private val repository: InactiveUserRepository) :
     BaseViewModel() {
 
+    private val _inactiveUserState = MutableStateFlow<UiState<InactiveUserModel>>(UiState.Loading())
+    val inactiveUserState: StateFlow<UiState<InactiveUserModel>> = _inactiveUserState
 
-    fun getInactiveUser() = repository.getInactiveUser()
+    init {
+        getInactiveUser()
+    }
 
-//    private val _inactiveUser = MutableStateFlow<UiState<InactiveUserModel>>(UiState.Error("daw"))
-//    val inactiveUser: StateFlow<UiState<InactiveUserModel>> get() = _inactiveUser
-//
-//    fun getInactiveUser(){
-//        viewModelScope.launch {
-//            Log.e("ololo", "getInactiveUser: 12345", )
-//            try {
-//                repository.getInactiveUsers().collect { data ->
-//                    Log.e("ololo", "g11111r: $data")
-//                    _inactiveUser.value = UiState.Success(data)
-//                }
-//            } catch (e: Exception) {
-//                _inactiveUser.value = UiState.Error(e.message ?: "Unknown error occurred")
-//            }
-//        }
-//    }
+    private fun getInactiveUser() {
+        Log.e("ololo", "getInactiveUser: 1233")
+        viewModelScope.launch {
+            _inactiveUserState.value = UiState.Loading()
+            try {
+                repository.getInactiveUser().collect { response ->
+                    Log.e("ololo", "getInactiveUser: ${response.isSuccessful}")
+                    if (response.isSuccessful) {
+                        val users = response.body()
+                        if (users != null) {
+                            _inactiveUserState.value = UiState.Success(users)
+                        } else {
+                            _inactiveUserState.value = UiState.Error("Пустой список пользователей")
+                        }
+                    } else {
+                        _inactiveUserState.value = UiState.Error("Ошибка загрузки данных")
+                    }
+                }
+            } catch (e: Exception) {
+                _inactiveUserState.value = UiState.Error(e.message ?: "Неизвестная ошибка")
+            }
+        }
+    }
 
+    fun updateUser(id: Int) {
+        viewModelScope.launch {
+            try {
+                val response = repository.updateUser(id)
+                Log.e("ololo", "updateUser failed with code: ${response.code()}, message: ${response.message()}")
+                val errorBody = response.errorBody()?.string()
+                Log.e("ololo", "updateUser error body: $errorBody")
+                if (response.isSuccessful) {
+                    getInactiveUser()
+                } else {
+                    _inactiveUserState.value = UiState.Error("Ошибка подтверждения пользователя")
+                }
+            } catch (e: Exception) {
+                _inactiveUserState.value =
+                    UiState.Error(e.message ?: "Ошибка подтверждения пользователя")
+            }
+        }
+    }
 
+    fun deleteUser(id: Int) {
+        viewModelScope.launch {
+            try {
+                val response = repository.deleteUser(id)
+                if (response.isSuccessful) {
+                    getInactiveUser()
+                } else {
+                    _inactiveUserState.value = UiState.Error("Ошибка удаления пользователя")
+                }
+            } catch (e: Exception) {
+                _inactiveUserState.value =
+                    UiState.Error(e.message ?: "Ошибка удаления пользователя")
+            }
+        }
+    }
 }
