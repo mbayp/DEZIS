@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_reg"
-        android:text="@string/server_eror_txt"
+        android:text="Технические неполадки"
         android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -35,7 +35,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_reg"
         android:gravity="center"
-        android:text="@string/sorry_text"
+        android:text="Извините за неудобства, возникли технические неполадки в нашем приложении. Мы работаем над исправлением проблемы. Пожалуйста, попробуйте обновить приложение. Спасибо за Ваше понимание!"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -44,7 +44,7 @@
         style="@style/CustomMaterialButtonForOnBoard"
         android:layout_below="@id/txt_sorry"
         android:layout_marginTop="20sp"
-        android:text="@string/update_txt" />
+        android:text="Обновить" />
 
 
 </RelativeLayout>
