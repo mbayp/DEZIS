@@ -8,6 +8,7 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -54,7 +55,8 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
                     email = args.email,
                     apartmentNumber = apartmentNumber,
                     address = address,
-                    password = args.password
+                    password = args.password,
+                    number = args.number
                 )
                 sendRegistrationRequest(userRegistrationRequest)
             }
@@ -69,6 +71,7 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
                 val response = userApiService.registerUser(userRegisterDto)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
+                        Log.d("arsenchik","$response")
                         findNavController().navigate(
                             SecondAuthorizationFragmentDirections
                                 .actionSecondAuthorizationFragmentToCodeVerificationFragment(email = args.email)

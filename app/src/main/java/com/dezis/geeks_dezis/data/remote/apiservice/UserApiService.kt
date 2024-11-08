@@ -30,7 +30,6 @@ interface UserApiService {
     @POST("/api/v1/user/login-manager/")
     suspend fun loginManager(@Body loginRequest: MangerRequest): Response<ManagerResponse>
 
-
     @POST("user/verify-user/")
     suspend fun verifyCode(@Body request: VerificationRequest): Response<VerificationResponse>
 }

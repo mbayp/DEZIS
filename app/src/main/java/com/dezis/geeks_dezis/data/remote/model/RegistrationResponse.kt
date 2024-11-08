@@ -6,5 +6,5 @@ data class RegistrationResponse(
     val email: String,
     val apartmentNumber: String,
     val address: String,
-    val otp:String
+    val number:String
 )

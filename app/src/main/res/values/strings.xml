@@ -142,4 +142,7 @@
     <string name="no_internet_txt">Нет соединения с интернетом\nПроверьте подключение к интернету</string>
     <string name="img_human_desc">Изображение оператора за компьютером для поддержки пользователей\n</string>
     <string name="desc_logo">Логотип Dezis</string>
+    <string name="server_eror_txt">Технические неполадки</string>
+    <string name="sorry_text">Извините за неудобства, возникли технические неполадки в нашем приложении. Мы работаем над исправлением проблемы. Пожалуйста, попробуйте обновить приложение. Спасибо за Ваше понимание!</string>
+    <string name="update_txt">Обновить</string>
 </resources>

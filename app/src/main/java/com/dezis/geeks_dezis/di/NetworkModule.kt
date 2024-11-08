@@ -6,6 +6,9 @@ import android.content.SharedPreferences
 import com.dezis.geeks_dezis.BuildConfig.BASE_URL
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
+import com.dezis.geeks_dezis.data.remote.interceptors.ErrorHandler
+import com.dezis.geeks_dezis.data.remote.interceptors.ErrorHandlingInterceptor
+import com.dezis.geeks_dezis.presentation.activity.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +16,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.conscrypt.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -21,8 +23,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object  NetworkModule {
-
+object NetworkModule {
     @Provides
     @Singleton
     fun provideContext(application: Application): Context {
@@ -36,12 +37,14 @@ object  NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+    fun provideOkHttpClient(errorHandler: ErrorHandler): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(ErrorHandlingInterceptor(errorHandler))
             .connectTimeout(15, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
@@ -71,10 +74,10 @@ object  NetworkModule {
         val apiService = retrofit.create(DezisApiService::class.java)
         return apiService
     }
+
     @Provides
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
     }
-
 }

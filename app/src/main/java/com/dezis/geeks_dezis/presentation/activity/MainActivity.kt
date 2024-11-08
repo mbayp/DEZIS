@@ -8,12 +8,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.utils.PreferenceHelper
+import com.dezis.geeks_dezis.data.remote.interceptors.ErrorHandler
 import com.dezis.geeks_dezis.databinding.ActivityMainBinding
+import com.dezis.geeks_dezis.presentation.fragments.servererror.ServerErrorFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -23,9 +27,11 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private lateinit var navController: NavController
-
     @Inject
     lateinit var sharedPreferences: PreferenceHelper
+
+    @Inject
+    lateinit var errorHandler: ErrorHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -34,15 +40,34 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_controller) as NavHostFragment
         navController = navHostFragment.navController
+        errorHandler.setMainViewModel(viewModel)
 
         checkUserState()
         initBottomNav()
         setupNetworkWarnings()
         handleWindowInsets()
+        checkNetwork()
+        observeViewModel()
 
+
+
+    }
+    private fun checkNetwork(){
         viewModel.networkLiveData.observe(this) { isConnected ->
             updateNetworkStatus(isConnected)
         }
+    }
+    private fun observeViewModel() {
+        viewModel.navigateToError.observe(this, Observer { showError ->
+            if (showError) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_controller, ServerErrorFragment())
+                    .addToBackStack(null)
+                    .commit()
+
+                viewModel.resetNavigationState()
+            }
+        })
     }
 
     private fun checkUserState() {
@@ -55,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             }
             sharedPreferences.isOnboardingShown() -> {
                 navController.navigate(R.id.onBoardFirstFragment)
-                sharedPreferences.setOnboardingShown()  // Устанавливаем флаг, что онбординг был показан
+                sharedPreferences.setOnboardingShown()
             }
             else -> {
                 navController.navigate(R.id.splashScreenFragment)

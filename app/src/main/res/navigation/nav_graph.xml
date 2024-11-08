@@ -118,19 +118,6 @@
         </action>
     </fragment>
 
-<!--    <fragment
-        android:id="@+id/onBoardingFragment"
-        android:name="com.dezis.geeks_dezis.presentation.fragments.onboarding.OnBoardingFragment"
-        android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" >
-        <action
-            android:id="@+id/action_onBoardingFragment_to_adminOrUserFragment"
-            app:destination="@id/adminOrUserFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out"/>
-    </fragment>-->
     <fragment
         android:id="@+id/secondAuthorizationFragment"
         android:name="com.dezis.geeks_dezis.presentation.fragments.authorization.SecondAuthorizationFragment"
@@ -156,6 +143,10 @@
             />
         <argument
             android:name="password"
+            app:argType="string"
+            />
+        <argument
+            android:name="number"
             app:argType="string"
             />
 
@@ -359,4 +350,9 @@
             app:popEnterAnim="@anim/slide_in"
             app:popExitAnim="@anim/slide_out"/>
     </fragment>
+    <fragment
+        android:id="@+id/serverErrorFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.servererror.ServerErrorFragment"
+        android:label="fragment_server_error"
+        tools:layout="@layout/fragment_server_error" />
 </navigation>
