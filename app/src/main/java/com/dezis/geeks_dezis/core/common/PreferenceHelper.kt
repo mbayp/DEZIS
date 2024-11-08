@@ -1,6 +1,7 @@
 package com.dezis.geeks_dezis.core.common
 
 import android.content.SharedPreferences
+import android.util.Log
 import javax.inject.Inject
 
 class PreferenceHelper @Inject constructor(private val sharedPreferences: SharedPreferences) {
@@ -38,10 +39,13 @@ class PreferenceHelper @Inject constructor(private val sharedPreferences: Shared
 
     fun saveUserId(userId: Int) {
         sharedPreferences.edit().putInt(USER_ID, userId).apply()
+        Log.d("PreferenceHelper", "User ID saved: $userId")
     }
 
     fun getUserId(): Int {
-        return sharedPreferences.getInt(USER_ID, -1)
+        val userId = sharedPreferences.getInt(USER_ID, -1)
+        Log.d("PreferenceHelper", "User ID retrieved: $userId")
+        return userId
     }
 
     companion object {
