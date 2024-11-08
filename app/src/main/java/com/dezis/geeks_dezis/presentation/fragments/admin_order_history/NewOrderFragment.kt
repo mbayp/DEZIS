@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
+import com.dezis.geeks_dezis.core.common.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
 import com.dezis.geeks_dezis.data.remote.model.booking.Booking
 import com.google.android.material.tabs.TabLayout
@@ -25,12 +26,12 @@ class NewOrderFragment : Fragment() {
     @Inject
     lateinit var dezisApiService: DezisApiService
 
-    private var orderAdapter = OrderAdapter()
+    @Inject
+    lateinit var preferenceHelper: PreferenceHelper
 
+    private val orderAdapter = OrderAdapter()
     private lateinit var ordersRecyclerView: RecyclerView
-
     private lateinit var tabLayout: TabLayout
-
     private val orders: MutableList<Booking> = mutableListOf()
 
     override fun onCreateView(
@@ -38,14 +39,13 @@ class NewOrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_new_order, container, false)
+        setupUI(view)
+        return view
+    }
 
-
+    private fun setupUI(view: View) {
         val backButton: ImageView = view.findViewById(R.id.img_back)
-
-
-        backButton.setOnClickListener {
-            requireActivity().onBackPressedDispatcher.onBackPressed()
-        }
+        backButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         ordersRecyclerView = view.findViewById(R.id.ordersRecyclerView)
         tabLayout = view.findViewById(R.id.tabLayout)
@@ -53,21 +53,27 @@ class NewOrderFragment : Fragment() {
         ordersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         ordersRecyclerView.adapter = orderAdapter
 
+        Log.d("NewOrderFragment", "User ID from SharedPreferences: ${preferenceHelper.getUserId()}")
+
         fetchNewOrders()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    0 -> fetchNewOrders()
-                    1 -> showCompletedOrders()
+                    0 -> {
+                        orderAdapter.setTab(false)
+                        fetchNewOrders()
+                    }
+                    1 -> {
+                        orderAdapter.setTab(true)
+                        showCompletedOrders()
+                    }
                 }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
-
-        return view
     }
 
     private fun fetchNewOrders() {
@@ -78,12 +84,8 @@ class NewOrderFragment : Fragment() {
                     orders.clear()
                     orders.addAll(ordersResponse)
                     orderAdapter.setOrders(orders)
-                    orderAdapter.notifyDataSetChanged()
                 } else {
-                    Log.e(
-                        "NewOrderFragment",
-                        "Ошибка ответа: ${response.code()} ${response.message()}"
-                    )
+                    Log.e("NewOrderFragment", "Ошибка ответа: ${response.code()} ${response.message()}")
                 }
             }
 
@@ -94,6 +96,6 @@ class NewOrderFragment : Fragment() {
     }
 
     private fun showCompletedOrders() {
+        // Логика для отображения завершенных заказов, если потребуется
     }
-
 }

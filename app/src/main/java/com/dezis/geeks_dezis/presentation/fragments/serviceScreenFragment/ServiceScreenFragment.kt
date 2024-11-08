@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -15,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ServiceScreenFragment : Fragment() {
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,9 +52,15 @@ class ServiceScreenFragment : Fragment() {
         viewPager.adapter = ServicePagerAdapter(services, navController)
 
         backButton.setOnClickListener {
-            navController.popBackStack()
+            navController.navigate(R.id.action_serviceScreenFragment_to_homeFragment)
         }
 
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    navController.navigate(R.id.action_serviceScreenFragment_to_homeFragment)
+                }
+            })
     }
-
 }

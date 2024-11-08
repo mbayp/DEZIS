@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.data.remote.model.booking.Booking
@@ -15,6 +16,19 @@ import javax.inject.Inject
 class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
     private var ordersList = listOf<Booking>()
+    private var isCompletedTab = false
+
+    fun setTab(isCompletedTab: Boolean) {
+        this.isCompletedTab = isCompletedTab
+        notifyDataSetChanged()
+    }
+
+    fun setOrders(orders: List<Booking>) {
+        val diffCallback = OrdersDiffCallback(this.ordersList, orders)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        this.ordersList = orders
+        diffResult.dispatchUpdatesTo(this)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, parent, false)
@@ -22,16 +36,10 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        val order = ordersList[position]
-        holder.bind(order)
+        holder.bind(ordersList[position], isCompletedTab)
     }
 
     override fun getItemCount(): Int = ordersList.size
-
-    fun setOrders(orders: List<Booking>) {
-        ordersList = orders
-        notifyDataSetChanged()
-    }
 
     inner class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val clientName: TextView = itemView.findViewById(R.id.clientName)
@@ -40,14 +48,13 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         private val date: TextView = itemView.findViewById(R.id.date)
         private val completeOrderButton: Button = itemView.findViewById(R.id.completeOrderButton)
 
-        fun bind(order: Booking) {
+        fun bind(order: Booking, isCompletedTab: Boolean) {
             clientName.text = "Client: ${order.user}"
             serviceType.text = order.service
             address.text = "Address: ${order.id}"
             date.text = "${order.date}, ${order.time}"
 
-            completeOrderButton.visibility =
-                if (order.time.isNotEmpty()) View.VISIBLE else View.GONE
+            completeOrderButton.visibility = if (isCompletedTab) View.GONE else View.VISIBLE
 
             completeOrderButton.setOnClickListener {
                 showConfirmationDialog(order)
@@ -55,20 +62,18 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         }
 
         private fun showConfirmationDialog(order: Booking) {
-            val dialogView =
-                LayoutInflater.from(itemView.context).inflate(R.layout.custom_dialog_layout, null)
-            val dialogBuilder = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
-            val dialog = dialogBuilder.setView(dialogView).create()
+            val dialogView = LayoutInflater.from(itemView.context)
+                .inflate(R.layout.custom_dialog_layout, null)
+            val dialog = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
+                .setView(dialogView)
+                .create()
 
-            val yesButton = dialogView.findViewById<TextView>(R.id.dialog_yes_button)
-            val noButton = dialogView.findViewById<TextView>(R.id.dialog_no_button)
-
-            yesButton.setOnClickListener {
+            dialogView.findViewById<TextView>(R.id.dialog_yes_button).setOnClickListener {
                 dialog.dismiss()
                 showOrderCompletedDialog()
             }
 
-            noButton.setOnClickListener {
+            dialogView.findViewById<TextView>(R.id.dialog_no_button).setOnClickListener {
                 dialog.dismiss()
             }
 
@@ -76,14 +81,13 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         }
 
         private fun showOrderCompletedDialog() {
-            val completedDialogView =
-                LayoutInflater.from(itemView.context).inflate(R.layout.order_completed_dialog, null)
-            val completedDialogBuilder =
-                AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
-            val completedDialog = completedDialogBuilder.setView(completedDialogView).create()
+            val completedDialogView = LayoutInflater.from(itemView.context)
+                .inflate(R.layout.order_completed_dialog, null)
+            val completedDialog = AlertDialog.Builder(itemView.context, R.style.CustomAlertDialog)
+                .setView(completedDialogView)
+                .create()
 
-            val closeButton = completedDialogView.findViewById<ImageView>(R.id.closeButton)
-            closeButton.setOnClickListener {
+            completedDialogView.findViewById<ImageView>(R.id.closeButton).setOnClickListener {
                 completedDialog.dismiss()
                 completeOrderButton.visibility = View.GONE
             }
@@ -92,4 +96,20 @@ class OrderAdapter @Inject constructor() : RecyclerView.Adapter<OrderAdapter.Ord
         }
     }
 
+    class OrdersDiffCallback(
+        private val oldList: List<Booking>,
+        private val newList: List<Booking>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+    }
 }
