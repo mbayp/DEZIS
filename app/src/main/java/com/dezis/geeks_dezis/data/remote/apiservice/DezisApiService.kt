@@ -22,6 +22,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface DezisApiService {
@@ -43,7 +44,7 @@ interface DezisApiService {
     @DELETE(DELETE_USER)
     suspend fun deleteUser(@Path("id") userId: Int): Response<Unit>
 
-    @PATCH(PATCH_USER_PUT)
-    suspend fun updateUser(@Path("id") userId: Int, @Body user: UpdateUserRequestModel): Response<Unit>
+    @PUT(PATCH_USER_PUT)
+    suspend fun updateUser(@Path("id") userId: Int, @Body user: UpdateUserRequestModel): Response<UpdateUserRequestModel>
 
 }

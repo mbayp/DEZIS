@@ -17,9 +17,8 @@ class InactiveUserRepository @Inject constructor(private val api: DezisApiServic
         }
     }
 
-    suspend fun updateUser(id: Int): Response<Unit> {
-        val request = UpdateUserRequestModel(isActive = true)
-        return api.updateUser(id, request)
+    suspend fun updateUser(id: Int, model: UpdateUserRequestModel): Response<UpdateUserRequestModel> {
+        return api.updateUser(id, model)
     }
 
     suspend fun deleteUser(id: Int): Response<Unit> {

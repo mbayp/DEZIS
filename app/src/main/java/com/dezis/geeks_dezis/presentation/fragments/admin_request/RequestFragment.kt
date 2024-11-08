@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.core.common.UiState
+import com.dezis.geeks_dezis.data.remote.model.updateUserRequestModel.UpdateUserRequestModel
 import com.dezis.geeks_dezis.databinding.FragmentRequestBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -78,8 +79,8 @@ class RequestFragment :
         }
     }
 
-    override fun onConfirmClicked(userId: Int) {
-        viewModel.updateUser(userId)  // Подтверждение пользователя
+    override fun onConfirmClicked(userId: Int, model: UpdateUserRequestModel) {
+        viewModel.updateUser(userId, model)  // Подтверждение пользователя
     }
 
     override fun onDeleteClicked(userId: Int) {

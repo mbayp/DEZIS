@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.dezis.geeks_dezis.core.base.BaseViewModel
 import com.dezis.geeks_dezis.core.common.UiState
 import com.dezis.geeks_dezis.data.remote.model.inactiveUser.InactiveUserModel
+import com.dezis.geeks_dezis.data.remote.model.updateUserRequestModel.UpdateUserRequestModel
 import com.dezis.geeks_dezis.data.repositories.InactiveUserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,13 +49,13 @@ class RequestViewModell @Inject constructor(private val repository: InactiveUser
         }
     }
 
-    fun updateUser(id: Int) {
+    fun updateUser(id: Int, model: UpdateUserRequestModel) {
         viewModelScope.launch {
             try {
-                val response = repository.updateUser(id)
+                val response = repository.updateUser(id, model)
                 Log.e("ololo", "updateUser failed with code: ${response.code()}, message: ${response.message()}")
                 val errorBody = response.errorBody()?.string()
-                Log.e("ololo", "updateUser error body: $errorBody")
+//                Log.e("ololo", "updateUser error body: $errorBody")
                 if (response.isSuccessful) {
                     getInactiveUser()
                 } else {
