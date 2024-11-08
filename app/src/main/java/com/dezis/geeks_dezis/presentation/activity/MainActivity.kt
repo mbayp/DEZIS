@@ -162,8 +162,8 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.newOrderFragment)
                     true
                 }
-                R.id.chatFragment -> {
-                    navController.navigate(R.id.chats)
+                R.id.error -> {
+                    navController.navigate(R.id.serverErrorFragment)
                     true
                 }
                 R.id.newOrderFragment -> {

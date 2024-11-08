@@ -297,7 +297,7 @@
         android:id="@+id/chats"
         android:name="com.dezis.geeks_dezis.presentation.fragments.admin_order_history.chats.Chats"
         android:label="fragment_chats"
-        tools:layout="@layout/fragment_chats" />
+        tools:layout="@layout/chats" />
 
     <fragment
         android:id="@+id/chatFragment2"
@@ -437,5 +437,10 @@
             app:popExitAnim="@anim/slide_out" />
 
     </fragment>
+    <fragment
+        android:id="@+id/serverErrorFragment"
+        android:name="com.dezis.geeks_dezis.presentation.fragments.servererror.ServerErrorFragment"
+        android:label="fragment_server_error"
+        tools:layout="@layout/fragment_server_error" />
 
 </navigation>
