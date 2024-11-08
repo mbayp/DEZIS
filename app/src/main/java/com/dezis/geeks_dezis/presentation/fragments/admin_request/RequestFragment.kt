@@ -45,7 +45,7 @@ class RequestFragment :
         super.launchObserver()
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.inactiveUserState.collect { uiState ->
-                Log.e("ololo", "launchObserver: $uiState")
+                Log.e("RequestFragment", "launchObserver: $uiState")
                 when (uiState) {
                     is UiState.Loading -> showLoadingIfViewAvailable(true)
                     is UiState.Success -> {
@@ -53,11 +53,12 @@ class RequestFragment :
                         val users = uiState.data
                         if (users.isNullOrEmpty()) {
                             showErrorIfViewAvailable("Список пользователей пуст")
+                            requestAdapter.submitList(users)
+
                         } else {
                             requestAdapter.submitList(users)
                         }
                     }
-
                     is UiState.Error -> {
                         showLoadingIfViewAvailable(false)
                         showErrorIfViewAvailable(uiState.mes)
@@ -66,6 +67,7 @@ class RequestFragment :
             }
         }
     }
+
 
     private fun showLoadingIfViewAvailable(isLoading: Boolean) {
         if (view != null && isAdded) {
@@ -86,7 +88,6 @@ class RequestFragment :
     override fun onDeleteClicked(userId: Int) {
         viewModel.deleteUser(userId)  // Удаление пользователя
     }
-
 
     private fun setupOnBackPressedCallback() {
         requireActivity().onBackPressedDispatcher.addCallback(
