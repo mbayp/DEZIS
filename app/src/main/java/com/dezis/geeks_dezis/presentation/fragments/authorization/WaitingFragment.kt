@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.databinding.FragmentWaitingPermissionBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class WaitingFragment:Fragment() {
+class WaitingFragment : Fragment() {
+
     private val binding by lazy {
         FragmentWaitingPermissionBinding.inflate(layoutInflater)
     }
@@ -29,9 +28,7 @@ class WaitingFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
             delay(10000)
-            //findNavController().navigate(R.id.action_waitingFragment_to_homeFragment)
         }
-
-
     }
+
 }

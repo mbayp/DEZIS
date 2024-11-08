@@ -13,6 +13,12 @@
         <item name="boxStrokeWidthFocused">1dp</item>
         <item name="cursorColor">@color/white</item>
         <item name="cursorErrorColor">@color/white</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:freezesText">true</item>
+        <item name="android:singleLine">true</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="boxBackgroundColor">@color/edit_text_grey</item>
         <item name="errorIconDrawable">@null</item>

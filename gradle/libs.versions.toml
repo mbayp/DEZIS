@@ -36,6 +36,8 @@ binding = "1.5.9"
 dots="5.0"
 pager="1.1.0"
 websocketOkhttp = "0.1.12"
+multidex = "1.0.3"
+
 [libraries]
 
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
@@ -83,6 +85,8 @@ scarlet = { module = "com.tinder.scarlet:scarlet", version.ref = "websocketOkhtt
 splash-screen = {module = "androidx.core:core-splashscreen" ,version.ref = "splashScreen"}
 
 binding = {group="com.github.kirich1409",name="viewbindingpropertydelegate-full", version.ref="binding"}
+
+multidex = { module = "com.android.support:multidex", version.ref = "multidex" }
 
 onboarding = {group="com.tbuonomo",name="dotsindicator",version.ref="dots"}
 

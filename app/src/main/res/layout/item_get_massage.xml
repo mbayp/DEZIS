@@ -34,5 +34,4 @@
         app:drawableEndCompat="@drawable/ic_double_check"
         tools:text="14:58" />
 
-
 </FrameLayout>

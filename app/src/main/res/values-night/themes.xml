@@ -1,7 +1,26 @@
 <resources>
 
-    <style name="Base.Theme.GEEKS_DEZIS" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.GEEKS_DEZIS" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
 
+    </style>
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowMinWidthMajor">80%</item>
+        <item name="android:windowMinWidthMinor">80%</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="Theme.GEEKS_DEZIS" parent="Base.Theme.GEEKS_DEZIS" />
+
+    <style name="Divider">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/black</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginStart">11.5dp</item>
+        <item name="android:layout_marginEnd">9dp</item>
     </style>
 
 </resources>

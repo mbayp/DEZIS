@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">GEEKS_DEZIS</string>
+
     <string name="type_a_massage">Type a massage</string>
     <string name="reg_txt">Регистрация</string>
     <string name="email_txt">example@gmail.com</string>
@@ -22,7 +23,7 @@
     <string name="txt_know">Мы знаем, как эффективно избавиться от вредителей и бактерий. Мы-ваш щит от грязи!</string>
     <string name="txt_tracking">Отслеживайте обработки. Следите за датами первой и последней обработки.</string>
     <string name="txt_show">Вы указываете проблему-мы создаем чистоту быстро и профессионально.</string>
-    <string name="txt_support">Поддержка всегда рядом! Общайтесь с менеджером через встроенный чат.</string>
+    <string name="txt_support">Поддержка всегда рядом! \n Общайтесь с менеджером через \n встроенный чат.</string>
     <string name="txt_ready">Готовы к действиям? Оставьте заявку и вперед к чистоте!</string>
     <string name="continue_txt">Продолжить</string>
     <string name="code_txt">Введите код из СМС</string>
@@ -33,6 +34,8 @@
     <string name="further_txt">Далее</string>
     <string name="success_txt">Вы успешно зарегистрировались</string>
     <string name="Information_about_the_record">Информация о записи</string>
+    <string name="error_order_creatw">Ошибка выполнение заказа</string>
+    <string name="tryagain">Попробовать заново</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
     <string name="_3">3</string>
@@ -91,7 +94,7 @@
     <string name="txt_code">Код:</string>
     <string name="txt_waiting">Пожалуйста, подождите пока администратор даст вам разрешение на вход в приложение!</string>
     <string name="denied_txt">К сожалению администратор не дал вам разрешение на вход в приложение! Попробуйте зайти с другого аккаунта.</string>
-    <string name="return_to_entrance_txt">Вернуться ко входу</string>
+    <string name="return_to_entrance_txt">Вернуться к регистрации</string>
     <string name="login_txt">Логин</string>
     <string name="administrator_txt">Администратор</string>
     <string name="choose">Выберите услугу:</string>
@@ -142,7 +145,8 @@
     <string name="no_internet_txt">Нет соединения с интернетом\nПроверьте подключение к интернету</string>
     <string name="img_human_desc">Изображение оператора за компьютером для поддержки пользователей\n</string>
     <string name="desc_logo">Логотип Dezis</string>
-    <string name="server_eror_txt">Технические неполадки</string>
-    <string name="sorry_text">Извините за неудобства, возникли технические неполадки в нашем приложении. Мы работаем над исправлением проблемы. Пожалуйста, попробуйте обновить приложение. Спасибо за Ваше понимание!</string>
-    <string name="update_txt">Обновить</string>
+    <string name="todo2">TODO</string>
+    <string name="ready_picker">Готово</string>
+    <string name="dump_picker">Сбросить</string>
+
 </resources>

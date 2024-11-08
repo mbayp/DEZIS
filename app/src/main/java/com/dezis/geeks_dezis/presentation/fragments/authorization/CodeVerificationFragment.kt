@@ -3,11 +3,8 @@ package com.dezis.geeks_dezis.presentation.fragments.authorization
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
-import android.os.Bundle
-import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
-import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
@@ -15,16 +12,16 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.core.utils.PreferenceHelper
+import com.dezis.geeks_dezis.core.common.Extensions.showToast
+import com.dezis.geeks_dezis.core.common.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
-import com.dezis.geeks_dezis.data.remote.model.VerificationRequest
+import com.dezis.geeks_dezis.data.remote.model.verify.VerificationRequest
 import com.dezis.geeks_dezis.databinding.FragmentCodeVerificationBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -34,11 +31,15 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,CodeVerificationViewModel>(R.layout.fragment_code_verification) {
-    override val binding: FragmentCodeVerificationBinding by viewBinding(FragmentCodeVerificationBinding::bind)
+class CodeVerificationFragment :
+    BaseFragment<FragmentCodeVerificationBinding, CodeVerificationViewModel>(R.layout.fragment_code_verification) {
+
+    override val binding: FragmentCodeVerificationBinding by viewBinding(
+        FragmentCodeVerificationBinding::bind
+    )
+
     override val viewModel: CodeVerificationViewModel by viewModels()
-    //private val constOtp = "1488"
-    //private val constantEmail = "alohadance@gmail.com"
+
     private val args: CodeVerificationFragmentArgs by navArgs()
 
     @Inject
@@ -72,15 +73,16 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
                         pref.signInUser()
-                        Toast.makeText(requireContext(), "Код подтвержден", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_codeVerificationFragment_to_successfulVerificationFragment)
+                        Toast.makeText(requireContext(), "Код подтвержден", Toast.LENGTH_SHORT)
+                            .show()
+                        findNavController().navigate(R.id.action_codeVerificationFragment_to_waitingFragment3)
                     } else {
                         binding.tilCode.error = "Код введен неверно"
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Ошибка сети: ${e.message}", Toast.LENGTH_SHORT).show()
+                    showToast("Ошибка сети.")
                 }
             }
         }
@@ -90,17 +92,28 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
         val isAllFieldsValid =
             binding.etCode.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
+            binding.btnContinue.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.grey_dark
+                )
+            )
         } else {
-            binding.btnContinue.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
+            binding.btnContinue.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.true_gray
+                )
+            )
         }
     }
-    private fun validateInputs():Boolean{
+
+    private fun validateInputs(): Boolean {
         var isValid = true
-        if (binding.etCode.text.toString().isEmpty()){
+        if (binding.etCode.text.toString().isEmpty()) {
             binding.tilCode.error = "Код введен неверно"
             isValid = false
-        }else{
+        } else {
             binding.tilCode.error = null
         }
         if (!isValid) {
@@ -110,6 +123,7 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
         }
         return isValid
     }
+
     private fun setupClickableText() {
         val termsTextView = binding.termsOfSale
         val spannableString = SpannableString(
@@ -133,10 +147,29 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
         }
 
         spannableString.setSpan(salesTermsClickable, 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.blue
+                )
+            ), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
-        spannableString.setSpan(privacyPolicyClickable, 100,spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            privacyPolicyClickable,
+            100,
+            spannableString.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.blue
+                )
+            ), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
         termsTextView.text = spannableString
         termsTextView.movementMethod = LinkMovementMethod.getInstance()
@@ -149,7 +182,8 @@ class CodeVerificationFragment : BaseFragment<FragmentCodeVerificationBinding,Co
     }
 
     private fun resetBorderColor() {
-        binding.tilCode.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilCode.boxStrokeColor =
+            ContextCompat.getColor(requireContext(), R.color.transparent)
     }
 
 }

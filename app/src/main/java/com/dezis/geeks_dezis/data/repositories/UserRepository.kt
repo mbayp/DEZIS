@@ -1,10 +1,10 @@
 package com.dezis.geeks_dezis.data.repositories
 
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
-import com.dezis.geeks_dezis.data.remote.model.RefreshTokenRequest
-import com.dezis.geeks_dezis.data.remote.model.RegistrationResponse
-import com.dezis.geeks_dezis.data.remote.model.TokenResponse
-import com.dezis.geeks_dezis.data.remote.model.UserRegisterDto
+import com.dezis.geeks_dezis.data.remote.model.register.RefreshTokenRequest
+import com.dezis.geeks_dezis.data.remote.model.register.RegistrationResponse
+import com.dezis.geeks_dezis.data.remote.model.register.TokenResponse
+import com.dezis.geeks_dezis.data.remote.model.user.UserRegisterDto
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -19,7 +19,5 @@ class UserRepository @Inject constructor(private val apiService: UserApiService)
     suspend fun registerUser(userRegistrationRequest: UserRegisterDto): Response<RegistrationResponse> {
         return apiService.registerUser(userRegistrationRequest)
     }
+
 }
-
-
-

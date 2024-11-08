@@ -59,9 +59,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
-            android:backgroundTint="@color/true_gray"
             style="@style/CustomMaterialButtonStyle"
             android:layout_marginTop="24dp"
+            android:backgroundTint="@color/true_gray"
             android:text="@string/continue_txt" />
 
     </LinearLayout>
@@ -76,6 +76,5 @@
         android:linksClickable="true"
         android:text="@string/policy_txt"
         android:textSize="12sp" />
-
 
 </FrameLayout>

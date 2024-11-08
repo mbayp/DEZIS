@@ -3,50 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/dark_blue"
     tools:context=".presentation.fragments.onboarding.onboardscreens.OnBoardFifthFragment">
 
     <ImageView
         android:id="@+id/ic_dezis"
-        android:layout_marginTop="64dp"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginTop="64dp"
         android:src="@drawable/logo_dezis" />
+
     <TextView
         android:id="@+id/tv_dezis_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dezis Group"
         android:layout_below="@id/ic_dezis"
         android:gravity="center"
+        android:text="Dezis Group"
         android:textColor="@color/white"
-        android:textSize="24sp"      />
-
-
-
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/img_humans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/tv_dezis_group"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/img_on_board7" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_ready"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_ready"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_reg"
         android:layout_below="@id/img_humans"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp" />
+        android:fontFamily="@font/roboto_reg"
+        android:text="@string/txt_ready"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,8 +55,10 @@
             android:id="@+id/btn_continue"
             style="@style/CustomMaterialButtonForOnBoard"
             android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
             android:layout_height="wrap_content"
             android:text="@string/continue_txt" />
+
     </RelativeLayout>
 
 </RelativeLayout>

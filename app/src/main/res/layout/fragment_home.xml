@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/gray"
+    android:padding="5dp"
     android:fitsSystemWindows="true"
     tools:context=".presentation.fragments.home.HomeFragment">
 
@@ -71,7 +72,6 @@
         </LinearLayout>
 
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,15 +97,14 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_details_disinfection"
                 style="@style/ServiceButton"
-                app:cornerRadius="10dp"
-                android:text="@string/detailed" />
+                android:text="@string/detailed"
+                app:cornerRadius="10dp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             style="@style/ServiceCardView"
-            app:cardCornerRadius="12dp"
             android:layout_height="260dp"
-            >
+            app:cardCornerRadius="12dp">
 
             <TextView
                 android:id="@+id/tv_title_disinsection"
@@ -120,12 +119,13 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_details_disinsection"
                 style="@style/ServiceButton"
-                app:cornerRadius="10dp"
-                android:text="@string/detailed" />
+                android:text="@string/detailed"
+                app:cornerRadius="10dp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             style="@style/ServiceCardView"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="12dp">
 
             <TextView
@@ -141,9 +141,11 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_details_deratization"
                 style="@style/ServiceButton"
-                app:cornerRadius="10dp"
-                android:text="@string/detailed" />
+                android:text="@string/detailed"
+                app:cornerRadius="10dp" />
+
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
 </ScrollView>

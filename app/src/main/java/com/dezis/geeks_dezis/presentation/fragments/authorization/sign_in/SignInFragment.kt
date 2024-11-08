@@ -19,9 +19,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.core.utils.PreferenceHelper
+import com.dezis.geeks_dezis.core.common.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
-import com.dezis.geeks_dezis.data.remote.model.LoginRequest
+import com.dezis.geeks_dezis.data.remote.model.login.LoginRequest
 import com.dezis.geeks_dezis.databinding.FragmentSignInBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -72,10 +72,15 @@ class SignInFragment : BaseFragment<FragmentSignInBinding, SignInViewModel>(R.la
                 val response = userApiService.loginUser(loginRequest)
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        // Изменено с signUpUser() на signInUser()
                         pref.signInUser()
                         val loginResponse = response.body()
                         loginResponse?.let {
+                            // Сохраняем user_id
+                            pref.saveUserId(it.user_id)
+
+                            // Логируем user_id
+                            println("User ID: ${it.user_id}")
+
                             Toast.makeText(requireContext(), "Вход выполнен успешно", Toast.LENGTH_SHORT).show()
                             val action = SignInFragmentDirections.actionSignInFragmentToHomeFragment(email = email)
                             findNavController().navigate(action)

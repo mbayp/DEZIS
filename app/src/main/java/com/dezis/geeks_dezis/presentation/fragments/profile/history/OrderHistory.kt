@@ -23,7 +23,7 @@ class OrderHistory @Inject constructor() : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: OrderHistoryViewModel by viewModels()
-    private lateinit var adapter: OrderHistoryAdapter
+    private var adapter = OrderHistoryAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,13 +46,7 @@ class OrderHistory @Inject constructor() : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     private fun init() {
-        adapter = OrderHistoryAdapter()
         binding.rvAllServices.adapter = adapter
         binding.rvAllServices.layoutManager = LinearLayoutManager(requireContext())
     }
@@ -76,9 +70,6 @@ class OrderHistory @Inject constructor() : Fragment() {
 
                 is UiState.Loading -> {
                 }
-
-                is UiState.Idle -> {
-                }
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
@@ -94,10 +85,13 @@ class OrderHistory @Inject constructor() : Fragment() {
 
                 is UiState.Loading -> {
                 }
-
-                is UiState.Idle -> {
-                }
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

@@ -20,23 +20,28 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
-import com.dezis.geeks_dezis.data.remote.model.UserRegisterDto
+import com.dezis.geeks_dezis.data.remote.model.user.UserRegisterDto
 import com.dezis.geeks_dezis.databinding.FragmentSecondAuthorizationBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import retrofit2.HttpException
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBinding, SecondAuthorizationViewModel>(R.layout.fragment_second_authorization) {
+class SecondAuthorizationFragment :
+    BaseFragment<FragmentSecondAuthorizationBinding, SecondAuthorizationViewModel>(R.layout.fragment_second_authorization) {
 
-    override val binding: FragmentSecondAuthorizationBinding by viewBinding(FragmentSecondAuthorizationBinding::bind)
+    override val binding: FragmentSecondAuthorizationBinding by viewBinding(
+        FragmentSecondAuthorizationBinding::bind
+    )
+
     override val viewModel: SecondAuthorizationViewModel by viewModels()
-    private val args: SecondAuthorizationFragmentArgs by navArgs() // Получение аргументов из предыдущего фрагмента
+
+    private val args: SecondAuthorizationFragmentArgs by navArgs()
 
     @Inject
     lateinit var userApiService: UserApiService
@@ -121,10 +126,29 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
         }
 
         spannableString.setSpan(salesTermsClickable, 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.blue
+                )
+            ), 63, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
-        spannableString.setSpan(privacyPolicyClickable, 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue)), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            privacyPolicyClickable,
+            100,
+            spannableString.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            ForegroundColorSpan(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.blue
+                )
+            ), 100, spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
         termsTextView.text = spannableString
         termsTextView.movementMethod = LinkMovementMethod.getInstance()
@@ -136,9 +160,19 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
             binding.etAddress.text.toString().isNotEmpty() &&
                     binding.etNumFlat.text.toString().isNotEmpty()
         if (isAllFieldsValid) {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey_dark))
+            binding.btnRegister.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.grey_dark
+                )
+            )
         } else {
-            binding.btnRegister.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.true_gray))
+            binding.btnRegister.setBackgroundColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.true_gray
+                )
+            )
         }
     }
 
@@ -171,7 +205,10 @@ class SecondAuthorizationFragment : BaseFragment<FragmentSecondAuthorizationBind
     }
 
     private fun resetBorderColor() {
-        binding.tilAddress.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
-        binding.tilNumFlat.boxStrokeColor = ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilAddress.boxStrokeColor =
+            ContextCompat.getColor(requireContext(), R.color.transparent)
+        binding.tilNumFlat.boxStrokeColor =
+            ContextCompat.getColor(requireContext(), R.color.transparent)
     }
+
 }

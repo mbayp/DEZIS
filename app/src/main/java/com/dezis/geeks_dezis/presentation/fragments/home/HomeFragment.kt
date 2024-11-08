@@ -37,7 +37,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    requireActivity().finishAffinity() // Закрывает приложение
+                    requireActivity().finishAffinity()
                 }
             })
     }

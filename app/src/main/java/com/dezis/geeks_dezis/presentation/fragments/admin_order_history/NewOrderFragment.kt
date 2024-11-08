@@ -7,16 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.data.remote.apiservice.DezisApiService
-import com.dezis.geeks_dezis.data.remote.model.Booking
+import com.dezis.geeks_dezis.data.remote.model.booking.Booking
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,9 +25,12 @@ class NewOrderFragment : Fragment() {
     @Inject
     lateinit var dezisApiService: DezisApiService
 
-    private lateinit var orderAdapter: OrderAdapter
+    private var orderAdapter = OrderAdapter()
+
     private lateinit var ordersRecyclerView: RecyclerView
+
     private lateinit var tabLayout: TabLayout
+
     private val orders: MutableList<Booking> = mutableListOf()
 
     override fun onCreateView(
@@ -44,14 +44,12 @@ class NewOrderFragment : Fragment() {
 
 
         backButton.setOnClickListener {
-
-            requireActivity().onBackPressed()
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
         ordersRecyclerView = view.findViewById(R.id.ordersRecyclerView)
         tabLayout = view.findViewById(R.id.tabLayout)
 
-        orderAdapter = OrderAdapter()
         ordersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         ordersRecyclerView.adapter = orderAdapter
 
@@ -60,8 +58,8 @@ class NewOrderFragment : Fragment() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {
-                    0 -> fetchNewOrders() // Загружаем новые заказы
-                    1 -> showCompletedOrders() // Логика для завершенных заказов
+                    0 -> fetchNewOrders()
+                    1 -> showCompletedOrders()
                 }
             }
 
@@ -82,7 +80,10 @@ class NewOrderFragment : Fragment() {
                     orderAdapter.setOrders(orders)
                     orderAdapter.notifyDataSetChanged()
                 } else {
-                    Log.e("NewOrderFragment", "Ошибка ответа: ${response.code()} ${response.message()}")
+                    Log.e(
+                        "NewOrderFragment",
+                        "Ошибка ответа: ${response.code()} ${response.message()}"
+                    )
                 }
             }
 
@@ -93,6 +94,6 @@ class NewOrderFragment : Fragment() {
     }
 
     private fun showCompletedOrders() {
-        // логика для завершенных заказов
     }
+
 }

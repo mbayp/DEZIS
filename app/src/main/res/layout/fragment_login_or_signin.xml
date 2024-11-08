@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/ic_dezis"
+        style="@style/CenteredImageWithMargin"
         android:layout_gravity="center"
         android:layout_marginTop="0dp"
-        style="@style/CenteredImageWithMargin"
         android:contentDescription="@string/desc_logo"
         android:src="@drawable/ic_dezis_and_text" />
 
@@ -18,9 +18,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
         android:layout_gravity="bottom"
-        >
+        android:layout_marginBottom="50dp">
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_register"
             style="@style/CustomMaterialButtonForOnBoard"
@@ -30,8 +30,7 @@
             android:text="@string/reg_txt"
             app:layout_constraintBottom_toTopOf="@id/btn_log_in"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_log_in"
@@ -44,6 +43,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:strokeColor="@color/grey_dark"
             app:strokeWidth="1dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

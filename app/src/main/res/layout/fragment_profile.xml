@@ -12,21 +12,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Active Status"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/img_avatar"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center|top"
-        android:scaleType="centerCrop"
         android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_profile2"
         app:riv_corner_radius="30dip"
         app:riv_oval="true" />
@@ -129,6 +129,7 @@
                 android:text="*********"
                 android:textColor="@color/grey"
                 android:textSize="21sp" />
+
         </FrameLayout>
 
         <TextView
@@ -148,13 +149,14 @@
 
             <EditText
                 android:id="@+id/et_phone_number"
+                style="@style/edittext"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center|start"
                 android:layout_marginStart="14dp"
-                android:text="+996 "
-                android:maxLength="20"
                 android:inputType="phone"
+                android:maxLength="20"
+                android:text="+996 "
                 android:textColor="@color/white"
                 android:textSize="21sp" />
 
@@ -197,14 +199,5 @@
         </FrameLayout>
 
     </LinearLayout>
-    <!--
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_gravity="bottom"
-            android:background="@color/dark_blue"
-            app:itemIconTint="@color/white"
-            app:menu="@menu/bottom_nav_menu" />-->
 
 </FrameLayout>

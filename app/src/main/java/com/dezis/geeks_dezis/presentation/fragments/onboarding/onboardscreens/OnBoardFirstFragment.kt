@@ -1,11 +1,10 @@
 package com.dezis.geeks_dezis.presentation.fragments.onboarding.onboardscreens
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.animation.slideIn
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.dezis.geeks_dezis.R
 import com.google.android.material.button.MaterialButton
@@ -21,12 +20,15 @@ class OnBoardFirstFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_on_board_first, container, false)
 
         view.findViewById<MaterialButton>(R.id.btn_continue).setOnClickListener {
-            view.findNavController().navigate(R.id.action_onBoardFirstFragment_to_onBoardSecondFragment)
+            view.findNavController()
+                .navigate(R.id.action_onBoardFirstFragment_to_onBoardSecondFragment)
         }
         view.findViewById<MaterialButton>(R.id.btn_skip).setOnClickListener {
-            view.findNavController().navigate(R.id.action_onBoardFirstFragment_to_onBoardFifthFragment)
+            view.findNavController()
+                .navigate(R.id.action_onBoardFirstFragment_to_onBoardFifthFragment)
         }
 
         return view
     }
+
 }

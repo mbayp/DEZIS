@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LogInOrSignInFragment : Fragment() {
+
     private val binding by lazy {
         FragmentLoginOrSigninBinding.inflate(layoutInflater)
     }

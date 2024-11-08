@@ -9,16 +9,16 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dezis.geeks_dezis.R
 import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.core.utils.PreferenceHelper
+import com.dezis.geeks_dezis.core.common.Extensions.showToast
+import com.dezis.geeks_dezis.core.common.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.apiservice.UserApiService
-import com.dezis.geeks_dezis.data.remote.model.MangerRequest
+import com.dezis.geeks_dezis.data.remote.model.manager.ManagerRequest
 import com.dezis.geeks_dezis.databinding.FragmentAdminSignInBinding
 import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,8 +34,6 @@ class AdminSignInFragment :
     override val binding by viewBinding(FragmentAdminSignInBinding::bind)
     override val viewModel: AdminSignInViewModel by viewModels()
 
-    //private val constantLoh = "Botik"
-    //private val constantPassword = "botik228"
     @Inject
     lateinit var userApiService: UserApiService
 
@@ -60,9 +58,8 @@ class AdminSignInFragment :
         }
     }
 
-
     private fun loginManager(login: String, password: String) {
-        val loginRequest = MangerRequest(login = login, password = password)
+        val loginRequest = ManagerRequest(login = login, password = password)
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = userApiService.loginManager(loginRequest)
@@ -70,34 +67,21 @@ class AdminSignInFragment :
                     if (response.isSuccessful) {
                         val loginResponse = response.body()
                         loginResponse?.let {
-                            Toast.makeText(
-                                requireContext(),
-                                "Вход выполнен успешно",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            showToast("Вход выполнен успешно")
                             shered.signInAdmin()
                             findNavController().navigate(R.id.action_adminSignInFragment_to_requestFragment)
                         }
                     } else {
-                        Toast.makeText(
-                            requireContext(),
-                            "Ошибка входа: ${response.message()}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        showToast("Ошибка входа")
                     }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Ошибка сети: ${e.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    showToast("Ошибка сети.")
                 }
             }
         }
     }
-
 
 
     private fun validateFields() {

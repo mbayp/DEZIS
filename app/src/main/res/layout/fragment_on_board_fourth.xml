@@ -8,43 +8,43 @@
 
     <ImageView
         android:id="@+id/ellipse_img"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="22dp"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
         android:layout_above="@id/buttons_layout"
-        android:scaleType="fitCenter"
-        android:src="@drawable/img_onboard_background_4"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="22dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_onboard_background_4" />
 
     <ImageView
         android:id="@+id/img_human"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/ellipse_img"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:src="@drawable/img_on_board6"
-        android:contentDescription="@string/img_human_desc"/>
+        android:contentDescription="@string/img_human_desc"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_on_board6" />
 
     <TextView
         android:id="@+id/txt1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_human"
+        android:layout_alignBottom="@id/ellipse_img"
+        android:gravity="center"
         android:text="@string/txt_support"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textAlignment="center"
-        android:gravity="center"
-        app:fontFamily="@font/roboto_reg"
-        android:layout_alignBottom="@id/ellipse_img"
-        android:layout_below="@id/img_human"
-        />
+        android:textSize="20sp"
+        app:fontFamily="@font/roboto_reg" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue"
             style="@style/CustomMaterialButtonForOnBoard"
@@ -61,12 +61,13 @@
             style="@style/CustomMaterialButtonForOnBoard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/skip_txt"
             app:backgroundTint="@color/dark_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:strokeColor="@color/grey_dark"
             app:strokeWidth="1dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

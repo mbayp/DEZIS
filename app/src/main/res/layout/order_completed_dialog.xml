@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="@drawable/dialog_background">
+    android:layout_width="280dp"
+    android:layout_height="200dp"
+    android:background="@drawable/dialog_background"
+    android:padding="24dp">
 
     <ImageView
         android:id="@+id/closeButton"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_close"
-        app:tint="@android:color/white"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/close_x"
         android:padding="4dp"
+        android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/close_x" />
+        app:tint="@android:color/white" />
 
     <ImageView
         android:id="@+id/successIcon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/todo2"
         android:src="@drawable/check_circle"
-        app:layout_constraintTop_toBottomOf="@id/closeButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/closeButton" />
 
     <TextView
         android:id="@+id/completionMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/order_done"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/successIcon"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/successIcon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

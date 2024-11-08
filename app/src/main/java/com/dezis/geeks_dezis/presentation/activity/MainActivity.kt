@@ -10,11 +10,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.dezis.geeks_dezis.R
-import com.dezis.geeks_dezis.core.utils.PreferenceHelper
+import com.dezis.geeks_dezis.core.common.PreferenceHelper
 import com.dezis.geeks_dezis.data.remote.interceptors.ErrorHandler
 import com.dezis.geeks_dezis.databinding.ActivityMainBinding
 import com.dezis.geeks_dezis.presentation.fragments.servererror.ServerErrorFragment
@@ -135,7 +134,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
-                R.id.calendar -> {
+                R.id.calendarFragment -> {
                     navController.navigate(R.id.calendarFragment)
                     true
                 }

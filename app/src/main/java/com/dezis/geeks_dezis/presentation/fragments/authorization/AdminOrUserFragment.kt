@@ -29,7 +29,6 @@ class AdminOrUserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Проверка подключения к интернету
         if (!isInternetAvailable(requireContext())) {
             binding.icDezis.setColorFilter(ContextCompat.getColor(requireContext(), R.color.blue))
         }
@@ -43,9 +42,11 @@ class AdminOrUserFragment : Fragment() {
     }
 
     private fun isInternetAvailable(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network = connectivityManager.activeNetwork ?: return false
         val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
         return activeNetwork.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
+
 }

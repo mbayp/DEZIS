@@ -23,11 +23,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_chats"
-            android:layout_marginTop="24dp"
             android:layout_width="match_parent"
-            tools:listitem="@layout/item_chats"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            tools:listitem="@layout/item_chats" />
 
     </LinearLayout>
+
 </FrameLayout>

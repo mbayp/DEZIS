@@ -5,18 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.dezis.geeks_dezis.R
-import com.dezis.geeks_dezis.core.base.BaseFragment
-import com.dezis.geeks_dezis.databinding.FragmentServiceScreenBinding
-import com.dezis.geeks_dezis.presentation.fragments.calendar.CalendarFragment
-import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServiceModel
+import com.dezis.geeks_dezis.data.remote.model.service.ServiceModel
 import com.dezis.geeks_dezis.presentation.fragments.serviceScreenFragment.view_model.ServicePagerAdapter
-import com.dezis.geeks_dezis.presentation.fragments.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,9 +51,10 @@ class ServiceScreenFragment : Fragment() {
         val navController = findNavController()
         viewPager.adapter = ServicePagerAdapter(services, navController)
 
-
         backButton.setOnClickListener {
             navController.popBackStack()
         }
+
     }
+
 }
